@@ -3,203 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>haus STUDIO | Kontakt</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <title>dobrostan STUDIO | Kontakt</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <style>
         /* --- RESET --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         :root {
             --color-bg: #F4F4F2; 
             --color-text-dark: #1A1A1A;
-            --color-accent: #50344f; /* Twój Fiolet */
+            --color-accent: #50344f; 
             --color-gold: #b9a646; 
+            --grid-color: rgba(0, 0, 0, 0.1); 
         }
 
         body {
-            font-family: 'IBM Plex Mono', monospace; /* Reset do standardu */
+            font-family: 'IBM Plex Mono', monospace;
             background-color: var(--color-bg);
             color: var(--color-text-dark);
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+            overflow-x: hidden; 
         }
 
-        /* --- PRECYZYJNY KURSOR (TRICK Z DOTEM) --- */
-        #cursor-dot {
-            position: fixed; top: 0; left: 0; width: 4px; height: 4px;
-            background: var(--color-accent); border-radius: 50%;
-            z-index: 1001; pointer-events: none; transform: translate(-50%, -50%);
-        }
-        #cursor-circle {
-            position: fixed; top: 0; left: 0; width: 40px; height: 40px;
-            border: 1px solid rgba(80, 52, 79, 0.3); border-radius: 50%;
-            z-index: 1000; pointer-events: none;
-            transition: transform 0.15s ease-out, width 0.3s, height 0.3s, background 0.3s;
-            transform: translate(-50%, -50%);
-        }
-        .hover-circle { width: 70px !important; height: 70px !important; background: rgba(80, 52, 79, 0.05); border-color: var(--color-accent) !important; }
-
-        /* --- LAYOUT --- */
-        .layout-wrapper { display: flex; width: 100vw; min-height: 100vh; }
-
-        /* LEWA KOLUMNA (PRZYWRÓCONA DO STANDARDU) */
+        /* --- LEWA KOLUMNA (STAŁA) --- */
         .left-column {
-            width: 30%; height: 100vh; position: fixed; top: 0; left: 0;
-            background-color: var(--color-bg); display: flex; flex-direction: column;
-            justify-content: space-between; padding: 4rem 3rem; z-index: 100;
+            width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
+            background-color: var(--color-bg);
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 132px 132px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; 
+            padding: 4rem 3rem; 
+            z-index: 10;
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
+        .logo-link { text-decoration: none; color: inherit; }
         .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
-        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); }
+        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
 
+        nav.vertical-menu { margin-top: 5rem; }
         nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
         nav.vertical-menu a { 
             text-decoration: none; color: var(--color-text-dark); 
-            font-weight: 500; text-transform: uppercase; 
-            font-size: 0.8rem; letter-spacing: 0.1em; /* Wróciło 0.1em */
-            transition: color 0.3s; font-family: 'IBM Plex Mono', monospace; 
+            font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; 
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            display: inline-block; 
         }
-        nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); }
-        .tech-footer { font-size: 0.65rem; text-transform: uppercase; color: #666; }
+        nav.vertical-menu a:hover, nav.vertical-menu a.active { 
+            color: var(--color-accent); 
+            transform: translateX(10px);
+        }
+
+        .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; color: #666; line-height: 1.5; }
 
         /* --- PRAWA KOLUMNA --- */
-        .right-column { width: 70%; margin-left: 30%; padding: 8rem 10%; }
-
-        /* SUBTELNIEJSZY NAGŁÓWEK (700 zamiast 900) */
-        .manifesto-header { margin-bottom: 6rem; }
-        .manifesto-header h1 { 
-            font-family: 'Inter', sans-serif; font-weight: 700; /* Subtelniej */
-            font-size: 5vw; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase;
-        }
-        .thin { font-weight: 300; }
-        .haus-font { 
-            font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
-            color: var(--color-accent); text-transform: lowercase;
+        .right-column {
+            width: 65%;
+            margin-left: 35%; 
+            padding: 6rem 8% 10rem 8%;
+            min-height: 100vh;
+            position: relative;
+            z-index: 20; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        /* DANE KONTAKTOWE */
-        .contact-data { display: flex; gap: 6rem; margin-bottom: 7rem; }
-        .data-item span { display: block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2rem; color: #888; margin-bottom: 1rem; }
-        .magnetic-link { 
-            display: inline-block; text-decoration: none; font-family: 'Inter', sans-serif;
-            font-size: 1.2rem; color: var(--color-text-dark); font-weight: 300; transition: color 0.3s;
+        .contact-header { margin-bottom: 4rem; }
+        .contact-header h1 { 
+            font-family: 'Inter', sans-serif; font-weight: 900; 
+            font-size: 5vw; text-transform: uppercase; 
+            color: var(--color-accent); letter-spacing: -0.02em;
         }
 
-        /* FORMULARZ Z AURĄ */
-        .sensory-form { max-width: 700px; display: flex; flex-direction: column; gap: 3.5rem; }
-        .field-group { position: relative; width: 100%; }
-        
-        .field-aura {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(80, 52, 79, 0.04) 0%, rgba(255, 255, 255, 0) 70%);
-            opacity: 0; transition: opacity 0.4s ease;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 900px;
         }
 
-        input, textarea {
-            width: 100%; background: transparent; border: none;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            padding: 1.2rem 0; font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.9rem; color: var(--color-text-dark); outline: none;
-            position: relative; z-index: 10;
+        .contact-block {
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 2rem;
         }
 
-        input:focus + .field-aura, textarea:focus + .field-aura { opacity: 1; }
-
-        .submit-btn {
-            align-self: flex-start; background: none; border: 1px solid var(--color-accent);
-            color: var(--color-accent); padding: 1.2rem 4rem; font-family: 'Inter', sans-serif;
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em;
-            font-weight: 700; transition: all 0.3s; margin-top: 2rem;
+        .contact-block h3 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
         }
-        .submit-btn:hover { background: var(--color-accent); color: white; transform: translateY(-3px); }
 
+        /* STYL IMIENIA */
+        .contact-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--color-text-dark);
+            display: block;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-link {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 1.4rem;
+            color: var(--color-text-dark);
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+            margin-bottom: 0.5rem;
+        }
+        .contact-link:hover { color: var(--color-accent); transform: translateX(5px); }
+
+        .address-text {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* QR KOD */
+        .qr-container {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .qr-code {
+            width: 130px;
+            height: 130px;
+            background: white;
+            padding: 8px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: 0.4s;
+        }
+        .qr-code:hover { transform: translateY(-5px); border-color: var(--color-gold); }
+        .qr-label { font-size: 0.6rem; text-transform: uppercase; color: #888; letter-spacing: 0.1em; }
+
+        /* SOCIAL MEDIA */
+        .social-links {
+            margin-top: 4rem;
+            display: flex;
+            gap: 2rem;
+        }
+        .social-links a {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--color-text-dark);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-gold);
+            padding-bottom: 4px;
+            transition: 0.3s;
+        }
+        .social-links a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+
+        /* DOLNY ZAKKADKA INSTA */
+        .instagram-invite {
+            margin-top: 6rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #666;
+            border-left: 2px solid var(--color-gold);
+            padding-left: 20px;
+        }
+        .instagram-invite a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-size: 0.9rem;
+            margin-left: 10px;
+            text-transform: uppercase;
+        }
+
+        /* MOBI */
         @media (max-width: 850px) {
-            * { cursor: auto !important; }
-            #cursor-dot, #cursor-circle { display: none; }
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem; border-right: none; }
-            .right-column { width: 100%; margin-left: 0; padding: 4rem 2rem; }
-            .manifesto-header h1 { font-size: 12vw; }
-            .contact-data { flex-direction: column; gap: 2rem; }
+            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; border-right: none; background-size: 66px 66px; }
+            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; justify-content: flex-start; }
+            .contact-header h1 { font-size: 12vw; }
+            .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
         }
     </style>
 </head>
 <body>
 
-    <div id="cursor-dot"></div>
-    <div id="cursor-circle"></div>
-
-    <div class="layout-wrapper">
+    <main class="layout-wrapper">
+        
         <aside class="left-column">
-            <div class="small-logo"><span>haus</span>STUDIO</div>
+            <a href="index.html" class="logo-link">
+                <div class="small-logo"><span>dobrostan</span>STUDIO</div>
+            </a>
+
             <nav class="vertical-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="projekty.html">Projekty</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
                     <li><a href="omnie.html">O mnie</a></li>
                     <li><a href="kontakt.html" class="active">Kontakt</a></li>
                 </ul>
             </nav>
-            <div class="tech-footer">NEURO-SPACE / © 2026</div>
+
+            <div class="tech-footer">
+                ESTD. 2024<br>
+                SAY HELLO TO WELL-BEING<br>
+                SIEDLCE / WARSZAWA
+            </div>
         </aside>
 
-        <main class="right-column">
-            <header class="manifesto-header">
-                <h1>
-                    <span class="thin">Rozpocznijmy</span> DIALOG.<br>
-                    <span class="haus-font">Twoja cisza,</span><br>
-                    NASZA PRZESTRZEŃ.
-                </h1>
+        <section class="right-column">
+            <header class="contact-header">
+                <h1>KONTAKT*</h1>
             </header>
-
-            <div class="contact-data">
-                <div class="data-item">
-                    <span>E-mail</span>
-                    <a href="mailto:hello@hausstudio.pl" class="magnetic-link">hello@hausstudio.pl</a>
+            
+            <div class="contact-grid">
+                <div class="contact-block">
+                    <h3>PROJEKTY / WSPÓŁPRACA</h3>
+                    <span class="contact-name">Katarzyna Kryniewicz</span>
+                    <a href="mailto:biuro@dobrostanstudio.pl" class="contact-link">biuro@dobrostanstudio.pl</a>
+                    <a href="tel:+48504841587" class="contact-link">+48504841587</a>
                 </div>
-                <div class="data-item">
-                    <span>Telefon</span>
-                    <a href="tel:+48000000000" class="magnetic-link">+48 000 000 000</a>
+
+                <div class="contact-block">
+    <h3>SKANUJ I OBSERWUJ</h3>
+    <div class="qr-container">
+        <img class="qr-code" 
+             src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.instagram.com/dobrostan_yo%3Figsh%3DMWgyenJzb2F3dG16" 
+             alt="QR Kod Instagram">
+        <span class="qr-label">INSTAGRAM @dobrostan_yo</span>
+    </div>
+</div>
+
+                <div class="contact-block">
+                    <h3>LOKALIZACJA</h3>
+                    <div class="address-text">
+                        Pracownia Architektury Wnętrz<br>
+                        Siedlce / Warszawa<br>
+                        Polska
+                    </div>
                 </div>
             </div>
 
-            <form class="sensory-form">
-                <div class="field-group">
-                    <input type="text" placeholder="Imię i Nazwisko">
-                    <div class="field-aura"></div>
-                </div>
-                <div class="field-group">
-                    <input type="email" placeholder="E-mail" required>
-                    <div class="field-aura"></div>
-                </div>
-                <div class="field-group">
-                    <textarea placeholder="Twoja wiadomość..."></textarea>
-                    <div class="field-aura"></div>
-                </div>
-                <button type="submit" class="submit-btn">Wyślij sygnał</button>
-            </form>
-        </main>
-    </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/dobrostan_yo?igsh=MWgyenJzb2F3dG16" target="_blank">Instagram</a>
+                <a href="#" target="_blank">Pinterest</a>
+                <a href="#" target="_blank">Behance</a>
+            </div>
 
-    <script>
-        const dot = document.getElementById('cursor-dot');
-        const circle = document.getElementById('cursor-circle');
-        
-        document.addEventListener('mousemove', e => {
-            // Dot reaguje natychmiast
-            dot.style.left = e.clientX + 'px';
-            dot.style.top = e.clientY + 'px';
-            
-            // Circle ma lekkie opóźnienie (płynność)
-            circle.style.left = e.clientX + 'px';
-            circle.style.top = e.clientY + 'px';
-        });
+            <div class="instagram-invite">
+                Zajrzyj za kulisy moich projektów na <a href="https://www.instagram.com/dobrostan_yo?igsh=MWgyenJzb2F3dG16" target="_blank">@dobrostan_yo</a>
+            </div>
+        </section>
 
-        const targets = document.querySelectorAll('a, button, input, textarea');
-        targets.forEach(t => {
-            t.addEventListener('mouseenter', () => circle.classList.add('hover-circle'));
-            t.addEventListener('mouseleave', () => circle.classList.remove('hover-circle'));
-        });
-    </script>
+    </main>
+
 </body>
 </html>

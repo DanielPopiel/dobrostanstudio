@@ -3,22 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>haus STUDIO | Filozofia</title>
+    <title>dobrostan STUDIO | Filozofia</title>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <style>
         /* --- RESET --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --color-bg: #F4F4F2; 
             --color-text-dark: #1A1A1A;
-            --color-accent: #50344f; /* Twój Fiolet */
-            --color-gold: #b9a646; /* Twój Złoty */
-            --color-text-on-accent: #FFFFFF;
+            --color-accent: #50344f; 
+            --color-gold: #b9a646; 
+            --grid-color: rgba(0, 0, 0, 0.1); 
         }
 
         body {
@@ -29,116 +25,71 @@
             overflow-x: hidden; 
         }
 
-        /* --- UKŁAD GŁÓWNY (SPLIT SCREEN) --- */
-        .layout-wrapper {
-            display: flex;
-            width: 100vw;
-            min-height: 100vh;
-        }
-
-        /* LEWA KOLUMNA (Nieruchoma) */
+        /* --- LEWA KOLUMNA (WARSTWA 1 - TŁO) --- */
         .left-column {
-            width: 30%;
-            height: 100vh;
-            position: fixed; 
-            top: 0;
-            left: 0;
+            width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 4rem 3rem;
-            z-index: 100;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 132px 132px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; 
+            padding: 4rem 3rem; 
+            z-index: 1; /* Kratka najniżej */
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
-        .small-logo {
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            font-size: 1.5rem;
-            letter-spacing: -0.05em;
+        .logo-link { text-decoration: none; color: inherit; }
+        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
+        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
+
+        /* MENU GŁÓWNE - SZTYWNE 5rem OD LOGO */
+        nav.vertical-menu { margin-top: 5rem; }
+        nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+        nav.vertical-menu a { 
+            text-decoration: none; color: var(--color-text-dark); 
+            font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; 
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            display: inline-block; 
         }
-        .small-logo span {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 400;
-            color: var(--color-gold);
-            margin-right: 0.1em;
+        nav.vertical-menu a:hover, nav.vertical-menu a.active { 
+            color: var(--color-accent); 
+            transform: translateX(10px);
         }
 
-        /* NAWIGACJA */
-        .nav-container {
-            margin-top: 2rem;
+        /* SUB-NAV (FILOZOFIA/PROCES) */
+        .nav-divider { height: 1px; width: 40px; background: rgba(0,0,0,0.1); margin: 2rem 0; }
+        .side-sub-nav { list-style: none; }
+        .side-sub-nav li { margin-bottom: 0.8rem; }
+        .side-sub-nav a { 
+            text-decoration: none; font-size: 0.7rem; color: #888; 
+            text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s; 
+            display: inline-block;
+        }
+        .side-sub-nav a.active, .side-sub-nav a:hover { 
+            color: var(--color-text-dark); 
+            transform: translateX(5px);
         }
 
-        nav.vertical-menu ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
+        .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; color: #666; line-height: 1.5; }
 
-        nav.vertical-menu a {
-            text-decoration: none;
-            color: var(--color-text-dark);
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 0.8rem; /* Spójny rozmiar */
-            letter-spacing: 0.1em;
-            transition: color 0.3s ease;
-        }
-
-        nav.vertical-menu a:hover, nav.vertical-menu a.active {
-            color: var(--color-accent);
-        }
-
-        .nav-divider {
-            height: 1px;
-            width: 40px;
-            background: rgba(0,0,0,0.1);
-            margin: 2rem 0;
-        }
-
-        .side-sub-nav {
-            list-style: none;
-        }
-
-        .side-sub-nav li {
-            margin-bottom: 0.8rem;
-        }
-
-        .side-sub-nav a {
-            text-decoration: none;
-            font-size: 0.7rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: color 0.3s ease;
-        }
-
-        .side-sub-nav a.active, .side-sub-nav a:hover {
-            color: var(--color-text-dark);
-        }
-
-        .tech-footer {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            color: #666;
-        }
-
-        /* PRAWA KOLUMNA (Przewijana) */
+        /* --- PRAWA KOLUMNA (WARSTWA 10 - NAD KRATKĄ) --- */
         .right-column {
-            width: 70%;
-            margin-left: 30%; 
-            padding: 6rem 8% 6rem 8%;
+            width: 65%;
+            margin-left: 35%; 
+            padding: 6rem 8% 10rem 8%;
             background-color: var(--color-bg);
             min-height: 100vh;
+            position: relative;
+            z-index: 10; 
         }
 
         /* MANIFEST */
         .manifesto-title {
             font-family: 'Inter', sans-serif;
-            font-weight: 400; /* Cieńszy, jak na stronie głównej */
+            font-weight: 400; 
             font-size: 6vw;
             line-height: 0.9;
             letter-spacing: -0.04em;
@@ -147,12 +98,12 @@
             text-transform: uppercase;
         }
 
-        .haus-font {
+        .dobro-font-italic {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-weight: 400;
             font-size: 0.9em;
-            color: var(--color-accent); /* Zmienione na fiolet zgodnie z prośbą */
+            color: var(--color-accent); 
             text-transform: lowercase;
             display: inline-block;
         }
@@ -183,7 +134,7 @@
             display: block;
         }
 
-        /* FILARY (Grid) */
+        /* FILARY */
         .pillars-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -218,16 +169,11 @@
             color: #666;
         }
 
-        /* =========================================
-           WERSJA MOBILNA
-           ========================================= */
         @media (max-width: 850px) {
-            .layout-wrapper { flex-direction: column; }
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; border-right: none; }
+            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; border-right: none; background-size: 66px 66px; z-index: 50; }
             .nav-divider, .side-sub-nav { display: none; }
             nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-            
-            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
+            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; z-index: 10; }
             .manifesto-title { font-size: 14vw; }
             .detail-image-frame { height: 350px; }
             .pillars-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -239,15 +185,18 @@
     <main class="layout-wrapper">
         
         <aside class="left-column">
-            <div class="small-logo">
-                <span>haus</span>STUDIO
-            </div>
+            <a href="index.html" class="logo-link">
+                <div class="small-logo">
+                    <span>dobrostan</span>STUDIO
+                </div>
+            </a>
 
             <div class="nav-container">
                 <nav class="vertical-menu">
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="projekty.html">Projekty</a></li>
+                        <li><a href="oferta.html">Oferta</a></li>
                         <li><a href="omnie.html" class="active">O mnie</a></li>
                         <li><a href="kontakt.html">Kontakt</a></li>
                     </ul>
@@ -269,9 +218,8 @@
         </aside>
 
         <section class="right-column">
-            
             <header>
-                <h1 class="manifesto-title">PRZESTRZEŃ KSZTAŁTUJE <br><span class="haus-font">umysł</span>.</h1>
+                <h1 class="manifesto-title">PRZESTRZEŃ KSZTAŁTUJE <br><span class="dobro-font-italic">umysł</span>.</h1>
             </header>
             
             <p class="manifesto-intro">
@@ -299,9 +247,7 @@
                     <p>Mniej, ale lepiej. Eliminujemy przebodźcowanie, tworząc minimalistyczne układy, które pozwalają myślom swobodnie płynąć.</p>
                 </div>
             </div>
-
         </section>
-
     </main>
 
 </body>
