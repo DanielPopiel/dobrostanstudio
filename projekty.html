@@ -6,7 +6,7 @@
     <title>dobrostan STUDIO | Projekty</title>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <style>
-        /* --- RESET & STYLE --- */
+        /* --- RESET & ZMIENNE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --color-bg: #F4F4F2; 
@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* --- LEWA KOLUMNA --- */
+        /* --- LEWA KOLUMNA (STAŁA - 35% z KRATKĄ 132px) --- */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -33,60 +33,113 @@
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 132px 132px;
             display: flex; flex-direction: column; justify-content: space-between;
-            padding: 4rem 3rem; z-index: 5; 
+            padding: 4rem 3rem; 
+            z-index: 5; /* Niżej niż prawa kolumna, by napisy mogły najechać */
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
         .logo-link { text-decoration: none; color: inherit; }
-        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
-        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; color: var(--color-gold); }
+        .small-logo { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 900; 
+            font-size: 1.5rem; 
+            letter-spacing: -0.05em; 
+        }
+        .small-logo span { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            font-weight: 400; /* LEKKI NAPIS DOBROSTAN */
+            color: var(--color-gold); 
+            margin-right: 0.1em; 
+        }
 
-        nav.vertical-menu { margin-top: 1rem; }
+        nav.vertical-menu { margin-top: 1rem; } /* Wysokie menu */
         nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
         nav.vertical-menu a { 
-            text-decoration: none; color: var(--color-text-dark); 
-            font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; 
-            transition: 0.3s; display: inline-block; 
+            text-decoration: none; 
+            color: var(--color-text-dark); 
+            font-weight: 500; 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
+            letter-spacing: 0.1em; 
+            transition: color 0.3s ease, transform 0.3s ease; 
+            display: inline-block; 
         }
         nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); transform: translateX(10px); }
 
         .tech-footer { font-size: 0.65rem; text-transform: uppercase; color: #666; line-height: 1.5; }
 
-        /* --- PRAWA KOLUMNA --- */
+        /* --- PRAWA KOLUMNA (SCROLL - 65%) --- */
         .right-column { 
-            width: 65%; margin-left: 35%; 
+            width: 65%; 
+            margin-left: 35%; 
             padding: 6rem 5% 15rem 5%; 
-            min-height: 100vh; position: relative; z-index: 10;
+            min-height: 100vh; 
+            position: relative;
+            z-index: 10;
         }
 
         .portfolio-header { margin-bottom: 5rem; }
         .portfolio-header h1 { 
-            font-family: 'Inter', sans-serif; font-weight: 900; 
-            font-size: 4.5vw; text-transform: uppercase; 
-            color: var(--color-accent); letter-spacing: -0.02em;
+            font-family: 'Inter', sans-serif; 
+            font-weight: 900; 
+            font-size: 4.5vw; 
+            text-transform: uppercase; 
+            color: var(--color-accent); 
+            letter-spacing: -0.02em;
         }
 
-        /* PROJEKTY - ODSTĘPY ZMNIEJSZONE DO 6rem */
-        .project-item { position: relative; margin-bottom: 6rem; cursor: pointer; display: flex; flex-direction: column; width: 100%; }
+        /* LISTA PROJEKTÓW */
+        .project-item { 
+            position: relative; 
+            margin-bottom: 6rem; /* Mniejsze odstępy */
+            cursor: pointer; 
+            display: flex; 
+            flex-direction: column; 
+            width: 100%;
+        }
+        
         .project-item.align-left { align-items: flex-start; }
         .project-item.align-right { align-items: flex-end; }
 
         .project-image-wrapper { width: 85%; position: relative; }
-        .project-image { width: 100%; display: block; filter: grayscale(100%); transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
+        
+        .project-image { 
+            width: 100%; 
+            display: block; 
+            filter: grayscale(100%); 
+            transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); 
+        }
         .project-item:hover .project-image { filter: grayscale(0%); transform: scale(1.02); }
 
         .project-title {
-            position: absolute; bottom: -10%; font-family: 'Inter', sans-serif; font-weight: 900;
-            font-size: 6vw; line-height: 0.8; color: var(--color-text-dark); 
-            z-index: 20; pointer-events: none; white-space: nowrap;
+            position: absolute; 
+            bottom: -10%; 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 900;
+            font-size: 6vw; 
+            line-height: 0.8; 
+            color: var(--color-text-dark); 
+            z-index: 20; 
+            pointer-events: none; 
+            white-space: nowrap;
         }
-        .project-item.align-left .project-title { left: -8%; }
+        .project-item.align-left .project-title { left: -10%; } /* Najeżdża na lewą kolumnę */
         .project-item.align-right .project-title { right: -5%; text-align: right; }
 
-        .project-title span.dobro-font { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: 0.45em; color: var(--color-gold); display: block; margin-bottom: 5px; }
-        .project-meta { margin-top: 4rem; font-size: 0.7rem; color: #888; letter-spacing: 0.2em; text-transform: uppercase; }
+        .project-title span.dobro-font { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            font-weight: 400; 
+            font-size: 0.45em; 
+            color: var(--color-gold); 
+            display: block; 
+            margin-bottom: 5px; 
+        }
 
-        /* MODAL GALERII */
+        .project-meta { margin-top: 4.5rem; font-size: 0.7rem; color: #888; letter-spacing: 0.2em; text-transform: uppercase; }
+
+        /* --- MODAL GALERII --- */
         .gallery-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             background: var(--color-bg); z-index: 200; display: none;
@@ -96,10 +149,12 @@
         .close-gallery { position: fixed; top: 2rem; right: 4rem; font-size: 0.7rem; letter-spacing: 0.2em; cursor: pointer; border-bottom: 1px solid var(--color-text-dark); z-index: 300; text-transform: uppercase; }
         .gallery-content img { width: 100%; margin-bottom: 4rem; display: block; }
 
+        /* MOBI */
         @media (max-width: 850px) {
             .left-column { width: 100%; height: auto; position: relative; padding: 2rem; background-size: 66px 66px; }
+            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
             .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
-            .project-title { font-size: 11vw; position: relative; left: 0 !important; right: 0 !important; margin-top: 1rem; }
+            .project-title { font-size: 11vw; position: relative; left: 0 !important; right: 0 !important; transform: none !important; margin-top: 1rem; }
             .project-image-wrapper { width: 100%; }
         }
     </style>
@@ -107,7 +162,9 @@
 <body>
 
     <aside class="left-column">
-        <a href="index.html" class="logo-link"><div class="small-logo"><span>dobrostan</span>STUDIO</div></a>
+        <a href="index.html" class="logo-link">
+            <div class="small-logo"><span>dobrostan</span>STUDIO</div>
+        </a>
         <nav class="vertical-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -188,6 +245,7 @@
             </div>
             <div class="project-meta">WARSZAWA</div>
         </div>
+
     </main>
 
     <div id="gallery-modal" class="gallery-overlay">
@@ -196,6 +254,7 @@
     </div>
 
     <script>
+        // Funkcja naprawiająca brakujące zdjęcia (szuka .jpg jeśli nie ma .png)
         function handleImageError(image) {
             if (image.src.includes('.png')) {
                 image.src = image.src.replace('.png', '.jpg');
@@ -205,6 +264,7 @@
             return true;
         }
 
+        // Mechanizm galerii
         function autoGallery(folder, imageCount) {
             const galleryImages = document.getElementById('gallery-images');
             galleryImages.innerHTML = '';
