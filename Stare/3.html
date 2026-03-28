@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>haus STUDIO | Architektura i Dobrostan</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #FFFFFF;
+            --color-text-dark: #1A1A1A;
+            --color-accent: #1048c5; /* Twój Kobalt */
+            --color-text-on-accent: #FFFFFF;
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background-color: var(--color-bg);
+            color: var(--color-text-dark);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden; 
+        }
+
+        /* --- MENU --- */
+        header {
+            width: 100%;
+            padding: 2rem;
+            position: fixed; 
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9); 
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-text-dark);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-accent);
+        }
+
+        /* --- SEKCJA GŁÓWNA (HERO) --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 5rem; 
+            padding-bottom: 5rem; 
+        }
+
+        .hero-center-box {
+            position: relative;
+            width: 50%;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .hero-image-frame {
+            width: 100%;
+            border: 1px solid var(--color-text-dark);
+            padding: 10px;
+            background: var(--color-bg);
+        }
+
+        .hero-image {
+            width: 100%;
+            display: block;
+            filter: grayscale(100%); 
+            transition: filter 0.5s ease;
+        }
+
+        .hero-image:hover {
+            filter: grayscale(0%); 
+        }
+
+        /* GIGANTYCZNY TYTUŁ BAZOWY (dla słowa STUDIO) */
+        .gigantic-title {
+            font-family: 'Inter', sans-serif; /* TUTAJ ZMIANA */
+            font-weight: 700;
+            color: var(--color-accent);
+            font-size: 8vw; 
+            white-space: nowrap; 
+            text-transform: none; 
+            position: absolute;
+            top: 40%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2; 
+            pointer-events: none;
+/* TUTAJ DODAJESZ ODSTĘPY: */
+            letter-spacing: +0.05em; /* Przykład zacieśnienia liter */
+        }
+
+        /* KLASA DLA SŁOWA "haus" */
+        .haus-font {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 1.1em;
+            margin-right: 0.4em; /* Zachowaj swój odstęp */
+            
+            /* NOWA LINIA: */
+            color: #efb73a;
+        }
+
+        /* BLOK Z TEKSTEM */
+        .kobalt-text-block {
+            background-color: var(--color-accent);
+            color: var(--color-text-on-accent);
+            padding: 2.5rem 2rem;
+            width: 300px; 
+            position: absolute;
+            bottom: 0; 
+            left: 50%;
+            transform: translate(-50%, 75%); 
+            z-index: 3; 
+        }
+
+        .estd {
+            display: block;
+            text-align: right;
+            font-size: 0.65rem;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .main-description {
+            font-size: 0.75rem; 
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            text-transform: none; 
+        }
+
+        .learn-more {
+            display: block;
+            text-align: left;
+            text-decoration: none;
+            color: var(--color-text-on-accent);
+            font-weight: 500;
+            font-size: 0.75rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .learn-more:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="projekty.html">PROJEKTY</a></li>
+                <li><a href="omnie.html">O MNIE</a></li>
+              
+                <li><a href="kontakt.html">KONTAKT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="hero-center-box">
+            
+            <div class="hero-image-frame">
+                <img src="wnetrze.jpg" alt="Minimalistyczne wnętrze" class="hero-image">
+            </div>
+
+            <h1 class="gigantic-title"><span class="haus-font">haus</span> STUDIO®</h1>
+
+            <div class="kobalt-text-block">
+                <span class="estd">ESTD. 2024</span>
+                <p class="main-description">
+                    haus STUDIO to więcej niż estetyka. Projektujemy w duchu neuroarchitektury, koncentrując się na wpływie przestrzeni na ludzki umysł i dobrostan. Stwarzamy harmonijne, świadome wnętrza, które wspierają zdrowie, redukują stres i pobudzają kreatywność. Nasza architektura to dialog między funkcją, formą a dobrostanem.
+                </p>
+                <a href="#omnie" class="learn-more">ZOBACZ WIĘCEJ &rarr;</a>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

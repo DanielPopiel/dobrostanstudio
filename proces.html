@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>haus STUDIO | Proces</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #F4F4F2; 
+            --color-text-dark: #1A1A1A;
+            --color-accent: #50344f; /* Twój Fiolet */
+            --color-gold: #b9a646; /* Twój Złoty */
+            --color-text-on-accent: #FFFFFF;
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background-color: var(--color-bg);
+            color: var(--color-text-dark);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden; 
+        }
+
+        /* --- UKŁAD GŁÓWNY (SPLIT SCREEN) --- */
+        .layout-wrapper {
+            display: flex;
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+        /* LEWA KOLUMNA (Nieruchoma) */
+        .left-column {
+            width: 30%;
+            height: 100vh;
+            position: fixed; 
+            top: 0;
+            left: 0;
+            background-color: var(--color-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 4rem 3rem;
+            z-index: 100;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .small-logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: -0.05em;
+        }
+        .small-logo span {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--color-gold);
+            margin-right: 0.1em;
+        }
+
+        /* NAWIGACJA */
+        .nav-container {
+            margin-top: 2rem;
+        }
+
+        nav.vertical-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        nav.vertical-menu a {
+            text-decoration: none;
+            color: var(--color-text-dark);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav.vertical-menu a:hover, nav.vertical-menu a.active {
+            color: var(--color-accent);
+        }
+
+        .nav-divider {
+            height: 1px;
+            width: 40px;
+            background: rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .side-sub-nav {
+            list-style: none;
+        }
+
+        .side-sub-nav li {
+            margin-bottom: 0.8rem;
+        }
+
+        .side-sub-nav a {
+            text-decoration: none;
+            font-size: 0.7rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .side-sub-nav a.active, .side-sub-nav a:hover {
+            color: var(--color-text-dark);
+        }
+
+        .tech-footer {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        /* PRAWA KOLUMNA (Przewijana) */
+        .right-column {
+            width: 70%;
+            margin-left: 30%; 
+            padding: 6rem 10% 6rem 8%;
+            background-color: var(--color-bg);
+            min-height: 100vh;
+        }
+
+        /* TYTUŁ SEKCJII */
+        .process-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 6vw;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            color: var(--color-text-dark);
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+        }
+
+        .haus-font {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 0.9em;
+            color: var(--color-accent); /* Fiolet */
+            text-transform: lowercase;
+            display: inline-block;
+        }
+
+        .process-intro {
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-bottom: 6rem;
+            color: #444;
+        }
+
+        /* LISTA KROKÓW */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding: 4rem 0;
+            transition: border-color 0.4s ease;
+        }
+
+        .step-item:hover {
+            border-top-color: var(--color-accent);
+        }
+
+        .step-number {
+            width: 20%;
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 4rem;
+            color: var(--color-accent);
+            line-height: 0.7;
+            letter-spacing: -0.05em;
+        }
+
+        .step-text {
+            width: 80%;
+            padding-left: 2rem;
+        }
+
+        .step-text h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-dark);
+        }
+
+        .step-text p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: #666;
+            max-width: 500px;
+        }
+
+        /* =========================================
+           WERSJA MOBILNA
+           ========================================= */
+        @media (max-width: 850px) {
+            .layout-wrapper { flex-direction: column; }
+            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; border-right: none; }
+            .nav-divider, .side-sub-nav { display: none; }
+            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            
+            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
+            .process-title { font-size: 14vw; }
+            .step-item { flex-direction: column; padding: 3rem 0; }
+            .step-number { width: 100%; margin-bottom: 1.5rem; font-size: 3rem; }
+            .step-text { width: 100%; padding-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="layout-wrapper">
+        
+        <aside class="left-column">
+            <div class="small-logo">
+                <span>haus</span>STUDIO
+            </div>
+
+            <div class="nav-container">
+                <nav class="vertical-menu">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projekty.html">Projekty</a></li>
+                        <li><a href="omnie.html" class="active">O mnie</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </nav>
+
+                <div class="nav-divider"></div>
+
+                <ul class="side-sub-nav">
+                    <li><a href="omnie.html">01 // O MNIE</a></li>
+                    <li><a href="filozofia.html">02 // FILOZOFIA</a></li>
+                    <li><a href="proces.html" class="active">03 // PROCES</a></li>
+                </ul>
+            </div>
+
+            <div class="tech-footer">
+                ESTD. 2024<br>
+                WORKFLOW SYSTEM
+            </div>
+        </aside>
+
+        <section class="right-column">
+            
+            <header>
+                <h1 class="process-title">PROCES <br><span class="haus-font">twórczy</span>.</h1>
+            </header>
+            
+            <p class="process-intro">
+                Projektowanie to dla nas podróż od chaosu do całkowitej harmonii. Przeprowadzamy Inwestorów przez rygorystycznie usystematyzowany proces, który gwarantuje bezkompromisową realizację założeń.
+            </p>
+
+            <div class="process-steps">
+                
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <div class="step-text">
+                        <h3>Wywiad & Badania</h3>
+                        <p>Analizujemy przestrzeń pod kątem nasłonecznienia, akustyki i bodźców, opierając się na wytycznych neuroarchitektury, by stworzyć bazę pod zdrowy dom.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <div class="step-text">
+                        <h3>Koncepcja Przestrzenna</h3>
+                        <p>Opracowujemy optymalny układ funkcjonalny. Tworzymy moodboardy, dobieramy kluczowe materiały i paletę barw, prezentując fotorealistyczne wizualizacje 3D.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <div class="step-text">
+                        <h3>Projekt Wykonawczy</h3>
+                        <p>Powstaje opasła księga projektowa zawierająca rysunki techniczne: elektrykę, hydraulikę, detale stolarskie oraz precyzyjne zestawienie materiałów.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">04</div>
+                    <div class="step-text">
+                        <h3>Nadzór Autorski</h3>
+                        <p>Jesteśmy obecni na budowie, aby dopilnować, by projekt z papieru w 100% pokrywał się z rzeczywistością. Koordynujemy prace ekip wykończeniowych.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

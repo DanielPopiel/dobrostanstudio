@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>haus STUDIO | Kontakt</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
+        
+        :root {
+            --color-bg: #F4F4F2; 
+            --color-text-dark: #1A1A1A;
+            --color-accent: #50344f; /* Twój Fiolet */
+            --color-gold: #b9a646; 
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace; /* Reset do standardu */
+            background-color: var(--color-bg);
+            color: var(--color-text-dark);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- PRECYZYJNY KURSOR (TRICK Z DOTEM) --- */
+        #cursor-dot {
+            position: fixed; top: 0; left: 0; width: 4px; height: 4px;
+            background: var(--color-accent); border-radius: 50%;
+            z-index: 1001; pointer-events: none; transform: translate(-50%, -50%);
+        }
+        #cursor-circle {
+            position: fixed; top: 0; left: 0; width: 40px; height: 40px;
+            border: 1px solid rgba(80, 52, 79, 0.3); border-radius: 50%;
+            z-index: 1000; pointer-events: none;
+            transition: transform 0.15s ease-out, width 0.3s, height 0.3s, background 0.3s;
+            transform: translate(-50%, -50%);
+        }
+        .hover-circle { width: 70px !important; height: 70px !important; background: rgba(80, 52, 79, 0.05); border-color: var(--color-accent) !important; }
+
+        /* --- LAYOUT --- */
+        .layout-wrapper { display: flex; width: 100vw; min-height: 100vh; }
+
+        /* LEWA KOLUMNA (PRZYWRÓCONA DO STANDARDU) */
+        .left-column {
+            width: 30%; height: 100vh; position: fixed; top: 0; left: 0;
+            background-color: var(--color-bg); display: flex; flex-direction: column;
+            justify-content: space-between; padding: 4rem 3rem; z-index: 100;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
+        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); }
+
+        nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+        nav.vertical-menu a { 
+            text-decoration: none; color: var(--color-text-dark); 
+            font-weight: 500; text-transform: uppercase; 
+            font-size: 0.8rem; letter-spacing: 0.1em; /* Wróciło 0.1em */
+            transition: color 0.3s; font-family: 'IBM Plex Mono', monospace; 
+        }
+        nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); }
+        .tech-footer { font-size: 0.65rem; text-transform: uppercase; color: #666; }
+
+        /* --- PRAWA KOLUMNA --- */
+        .right-column { width: 70%; margin-left: 30%; padding: 8rem 10%; }
+
+        /* SUBTELNIEJSZY NAGŁÓWEK (700 zamiast 900) */
+        .manifesto-header { margin-bottom: 6rem; }
+        .manifesto-header h1 { 
+            font-family: 'Inter', sans-serif; font-weight: 700; /* Subtelniej */
+            font-size: 5vw; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase;
+        }
+        .thin { font-weight: 300; }
+        .haus-font { 
+            font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
+            color: var(--color-accent); text-transform: lowercase;
+        }
+
+        /* DANE KONTAKTOWE */
+        .contact-data { display: flex; gap: 6rem; margin-bottom: 7rem; }
+        .data-item span { display: block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2rem; color: #888; margin-bottom: 1rem; }
+        .magnetic-link { 
+            display: inline-block; text-decoration: none; font-family: 'Inter', sans-serif;
+            font-size: 1.2rem; color: var(--color-text-dark); font-weight: 300; transition: color 0.3s;
+        }
+
+        /* FORMULARZ Z AURĄ */
+        .sensory-form { max-width: 700px; display: flex; flex-direction: column; gap: 3.5rem; }
+        .field-group { position: relative; width: 100%; }
+        
+        .field-aura {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(80, 52, 79, 0.04) 0%, rgba(255, 255, 255, 0) 70%);
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+
+        input, textarea {
+            width: 100%; background: transparent; border: none;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 1.2rem 0; font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem; color: var(--color-text-dark); outline: none;
+            position: relative; z-index: 10;
+        }
+
+        input:focus + .field-aura, textarea:focus + .field-aura { opacity: 1; }
+
+        .submit-btn {
+            align-self: flex-start; background: none; border: 1px solid var(--color-accent);
+            color: var(--color-accent); padding: 1.2rem 4rem; font-family: 'Inter', sans-serif;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em;
+            font-weight: 700; transition: all 0.3s; margin-top: 2rem;
+        }
+        .submit-btn:hover { background: var(--color-accent); color: white; transform: translateY(-3px); }
+
+        @media (max-width: 850px) {
+            * { cursor: auto !important; }
+            #cursor-dot, #cursor-circle { display: none; }
+            .left-column { width: 100%; height: auto; position: relative; padding: 2rem; border-right: none; }
+            .right-column { width: 100%; margin-left: 0; padding: 4rem 2rem; }
+            .manifesto-header h1 { font-size: 12vw; }
+            .contact-data { flex-direction: column; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-circle"></div>
+
+    <div class="layout-wrapper">
+        <aside class="left-column">
+            <div class="small-logo"><span>haus</span>STUDIO</div>
+            <nav class="vertical-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projekty.html">Projekty</a></li>
+                    <li><a href="omnie.html">O mnie</a></li>
+                    <li><a href="kontakt.html" class="active">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="tech-footer">NEURO-SPACE / © 2026</div>
+        </aside>
+
+        <main class="right-column">
+            <header class="manifesto-header">
+                <h1>
+                    <span class="thin">Rozpocznijmy</span> DIALOG.<br>
+                    <span class="haus-font">Twoja cisza,</span><br>
+                    NASZA PRZESTRZEŃ.
+                </h1>
+            </header>
+
+            <div class="contact-data">
+                <div class="data-item">
+                    <span>E-mail</span>
+                    <a href="mailto:hello@hausstudio.pl" class="magnetic-link">hello@hausstudio.pl</a>
+                </div>
+                <div class="data-item">
+                    <span>Telefon</span>
+                    <a href="tel:+48000000000" class="magnetic-link">+48 000 000 000</a>
+                </div>
+            </div>
+
+            <form class="sensory-form">
+                <div class="field-group">
+                    <input type="text" placeholder="Imię i Nazwisko">
+                    <div class="field-aura"></div>
+                </div>
+                <div class="field-group">
+                    <input type="email" placeholder="E-mail" required>
+                    <div class="field-aura"></div>
+                </div>
+                <div class="field-group">
+                    <textarea placeholder="Twoja wiadomość..."></textarea>
+                    <div class="field-aura"></div>
+                </div>
+                <button type="submit" class="submit-btn">Wyślij sygnał</button>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        const dot = document.getElementById('cursor-dot');
+        const circle = document.getElementById('cursor-circle');
+        
+        document.addEventListener('mousemove', e => {
+            // Dot reaguje natychmiast
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+            
+            // Circle ma lekkie opóźnienie (płynność)
+            circle.style.left = e.clientX + 'px';
+            circle.style.top = e.clientY + 'px';
+        });
+
+        const targets = document.querySelectorAll('a, button, input, textarea');
+        targets.forEach(t => {
+            t.addEventListener('mouseenter', () => circle.classList.add('hover-circle'));
+            t.addEventListener('mouseleave', () => circle.classList.remove('hover-circle'));
+        });
+    </script>
+</body>
+</html>

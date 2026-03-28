@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>haus STUDIO | Projekty</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & ZMIENNE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-bg: #F4F4F2; 
+            --color-text-dark: #1A1A1A;
+            --color-accent: #50344f; /* Twój Fiolet */
+            --color-gold: #b9a646; /* Twój Złoty */
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background-color: var(--color-bg);
+            color: var(--color-text-dark);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- LAYOUT SPLIT-SCREEN --- */
+        .layout-wrapper { display: flex; width: 100vw; }
+
+        /* LEWA KOLUMNA (Nieruchoma) */
+        .left-column {
+            width: 30%; height: 100vh; position: fixed; top: 0; left: 0;
+            background-color: var(--color-bg); display: flex; flex-direction: column;
+            justify-content: space-between; padding: 4rem 3rem; z-index: 100;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
+        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); }
+
+        nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+        nav.vertical-menu a { text-decoration: none; color: var(--color-text-dark); font-weight: 500; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; transition: color 0.3s ease; }
+        nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); }
+
+        .tech-footer { font-size: 0.65rem; text-transform: uppercase; color: #666; }
+
+        /* PRAWA KOLUMNA (Przewijana) */
+        .right-column { width: 70%; margin-left: 30%; padding: 6rem 5%; min-height: 100vh; }
+
+        .portfolio-header { margin-bottom: 3rem; }
+        .portfolio-header h1 { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 6vw; line-height: 0.85; text-transform: uppercase; }
+        .portfolio-header h1 span.haus-font { font-family: 'Playfair Display', serif; font-style: italic; color: var(--color-accent); font-size: 0.75em; display: block; text-transform: lowercase; }
+
+        /* --- LISTA PROJEKTÓW --- */
+        .project-item { position: relative; margin-bottom: 6rem; display: flex; flex-direction: column; cursor: pointer; }
+        .project-item.align-left { align-items: flex-start; }
+        .project-item.align-right { align-items: flex-end; }
+
+        .project-image-wrapper { width: 75%; position: relative; }
+        .image-mask { width: 100%; overflow: hidden; display: block; }
+        .project-image { width: 100%; display: block; filter: grayscale(100%); transition: filter 0.8s ease, transform 0.8s ease; }
+
+        .project-item:hover .project-image { filter: grayscale(0%); transform: scale(1.05); }
+
+        .project-title {
+            position: absolute; bottom: -5%; font-family: 'Inter', sans-serif; font-weight: 900;
+            font-size: 5.5vw; line-height: 0.8; color: var(--color-text-dark); z-index: 10;
+            width: max-content; pointer-events: none;
+        }
+        .project-item.align-left .project-title { left: 0; transform: translateX(5%); text-align: left; }
+        .project-item.align-right .project-title { right: 0; transform: translateX(-5%); text-align: right; }
+
+        .project-title span.haus-font { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: 0.85em; color: var(--color-gold); display: block; }
+
+        .project-meta { margin-top: 1.8rem; color: #888; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; }
+
+        /* --- MODAL GALERII (OVERLAY) --- */
+        .gallery-overlay {
+            position: fixed; top: 0; left: 30%; width: 70%; height: 100vh;
+            background: var(--color-bg); z-index: 200; display: none;
+            overflow-y: auto; padding: 6rem 8%;
+        }
+        .gallery-overlay.active { display: block; animation: slideIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+
+        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+        .close-gallery {
+            position: fixed; top: 2rem; right: 4rem; font-size: 0.7rem; font-family: 'IBM Plex Mono', monospace;
+            text-transform: uppercase; letter-spacing: 0.2em; cursor: pointer;
+            border-bottom: 1px solid var(--color-text-dark); padding-bottom: 5px; z-index: 300;
+        }
+
+        .gallery-content img { width: 100%; margin-bottom: 3rem; display: block; }
+        .gallery-info { margin-bottom: 5rem; max-width: 600px; border-left: 3px solid var(--color-accent); padding-left: 2rem; }
+        .gallery-info h2 { font-family: 'Inter', sans-serif; font-size: 3.5rem; text-transform: uppercase; margin-bottom: 1rem; line-height: 0.9; }
+        .gallery-info p { font-size: 0.9rem; line-height: 1.8; color: #444; }
+
+        /* --- RESPONSYWNOŚĆ --- */
+        @media (max-width: 850px) {
+            .left-column { width: 100%; height: auto; position: relative; padding: 2rem; border-right: none; }
+            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
+            .gallery-overlay { left: 0; width: 100%; padding: 4rem 1.5rem; }
+            .project-title { font-size: 11vw; position: relative; transform: none !important; margin-top: -1.5rem; text-align: center !important; width: auto; }
+            .project-image-wrapper { width: 100%; }
+            .gallery-info h2 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="layout-wrapper">
+        <aside class="left-column">
+            <div class="small-logo"><span>haus</span>STUDIO</div>
+            <nav class="vertical-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projekty.html" class="active">Projekty</a></li>
+                    <li><a href="omnie.html">O mnie</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="tech-footer">SELECTED WORKS<br>© 2026</div>
+        </aside>
+
+        <main class="right-column">
+            <header class="portfolio-header">
+                <h1><span class="haus-font">Wybrane</span>PRACE.</h1>
+            </header>
+
+            <div class="project-item align-left" onclick="autoGallery('DOBROSTAN', 'Projekt dobrostan', 'Minimalistyczna przestrzeń zaprojektowana z myślą o wyciszeniu bodźców. Surowy beton łączy się tu z ciepłym drewnem dębowym.', 5)">
+                <div class="project-image-wrapper">
+                    <div class="image-mask"><img src="Projekty/DOBROSTAN/main.jpg" class="project-image"></div>
+                    <h2 class="project-title"><span class="haus-font">apartament</span>DOBROSTAN</h2>
+                </div>
+                <div class="project-meta">01 / WARSZAWA / 120 M2</div>
+            </div>
+
+            <div class="project-item align-right" onclick="autoGallery('Izabelin', 'Rezydencja Izabelin', 'Dom w sercu Kampinosu. Architektura, która znika w lesie, oddając pole naturze.', 6)">
+                <div class="project-image-wrapper">
+                    <div class="image-mask"><img src="Projekty/Izabelin/main.jpg" class="project-image"></div>
+                    <h2 class="project-title"><span class="haus-font">rezydencja</span>IZABELIN</h2>
+                </div>
+                <div class="project-meta">02 / KAMPINOS / 350 M2</div>
+            </div>
+
+            <div class="project-item align-left" onclick="autoGallery('Klinika', 'Klinika Dobrostan', 'Projekt wnętrz medycznych oparty na zasadach neuroarchitektury. Kojąca paleta barw i naturalne światło.', 4)">
+                <div class="project-image-wrapper">
+                    <div class="image-mask"><img src="Projekty/Klinika/main.jpg" class="project-image"></div>
+                    <h2 class="project-title"><span class="haus-font">klinika</span>DOBROSTAN</h2>
+                </div>
+                <div class="project-meta">03 / KRAKÓW / 400 M2</div>
+            </div>
+
+            <div class="project-item align-right" onclick="autoGallery('Loft', 'Loft Praga', 'Przemysłowy charakter i butikowy detal. Nowoczesna interpretacja warszawskiej Pragi.', 5)">
+                <div class="project-image-wrapper">
+                    <div class="image-mask"><img src="Projekty/Loft/main.jpg" class="project-image"></div>
+                    <h2 class="project-title"><span class="haus-font">loft</span>PRAGA</h2>
+                </div>
+                <div class="project-meta">04 / WARSZAWA / 85 M2</div>
+            </div>
+
+            <div class="project-item align-left" onclick="autoGallery('Sopot', 'Willą nad Morzem', 'Luksus w wydaniu organicznym. Piasek, kamień i len w głównej roli.', 6)">
+                <div class="project-image-wrapper">
+                    <div class="image-mask"><img src="Projekty/Sopot/main.jpg" class="project-image"></div>
+                    <h2 class="project-title"><span class="haus-font">willia</span>SOPOT</h2>
+                </div>
+                <div class="project-meta">05 / SOPOT / 210 M2</div>
+            </div>
+
+            <div class="project-item align-right" onclick="autoGallery('Biuro', 'Office Space', 'Ergonomia spotyka design. Przestrzeń biurowa sprzyjająca głębokiej pracy i kreatywności.', 4)">
+                <div class="project-image-wrapper">
+                    <div class="image-mask"><img src="Projekty/Biuro/main.jpg" class="project-image"></div>
+                    <h2 class="project-title"><span class="haus-font">studio</span>OFFICE</h2>
+                </div>
+                <div class="project-meta">06 / WROCŁAW / 500 M2</div>
+            </div>
+
+        </main>
+    </div>
+
+    <div id="gallery-modal" class="gallery-overlay">
+        <div class="close-gallery" onclick="closeGallery()">ZAMKNIJ (X)</div>
+        <div class="gallery-info" id="gallery-info"></div>
+        <div class="gallery-content" id="gallery-images"></div>
+    </div>
+
+    <script>
+        function autoGallery(folder, title, desc, imageCount) {
+            const galleryImages = document.getElementById('gallery-images');
+            const galleryInfo = document.getElementById('gallery-info');
+            galleryImages.innerHTML = '';
+            galleryInfo.innerHTML = `<h2>${title}</h2><p>${desc}</p>`;
+            
+            for (let i = 1; i <= imageCount; i++) {
+                const img = document.createElement('img');
+                img.src = `Projekty/${folder}/${i}.jpg`;
+                img.alt = title;
+                img.loading = "lazy";
+                galleryImages.appendChild(img);
+            }
+            
+            document.getElementById('gallery-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+            document.getElementById('gallery-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
