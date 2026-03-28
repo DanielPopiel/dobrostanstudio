@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>haus STUDIO | O Mnie</title>
+    <title>dobrostan STUDIO | O Mnie</title>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <style>
         /* --- RESET --- */
@@ -13,11 +13,11 @@
             box-sizing: border-box;
         }
 
-          :root {
-            --color-bg: #F4F4F2; /* Delikatnie złamany, "papierowy" biały */
+        :root {
+            --color-bg: #F4F4F2; 
             --color-text-dark: #1A1A1A;
             --color-accent: #50344f; /* Kobalt */
-            --color-gold: #b9a646; /* koral haus */
+            --color-gold: #b9a646; /* Złoty dobrostan */
             --color-text-on-accent: #FFFFFF;
         }
 
@@ -37,9 +37,9 @@
             position: relative;
         }
 
-        /* LEWA KOLUMNA (Zmniejszyliśmy z-index!) */
+        /* LEWA KOLUMNA (35% jak na index) */
         .left-column {
-            width: 30%;
+            width: 35%;
             height: 100vh;
             position: fixed; 
             top: 0;
@@ -49,8 +49,14 @@
             flex-direction: column;
             justify-content: space-between;
             padding: 4rem 3rem;
-            z-index: 5; /* <--- TUTAJ ZMIANA: Niższy priorytet niż tekst */
+            z-index: 5; 
             border-right: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* LOGO JAKO LINK */
+        .logo-link {
+            text-decoration: none;
+            color: inherit;
         }
 
         .small-logo {
@@ -78,16 +84,15 @@
         .side-sub-nav a.active, .side-sub-nav a:hover { color: var(--color-text-dark); }
         .tech-footer { font-size: 0.65rem; text-transform: uppercase; color: #666; }
 
-        /* PRAWA KOLUMNA */
+        /* PRAWA KOLUMNA (Dopasowana do 35% lewej) */
         .right-column {
-            width: 70%;
-            margin-left: 30%; 
+            width: 65%;
+            margin-left: 35%; 
             height: 100vh;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* USUNIĘTO overflow: hidden; */
         }
 
         .portrait-frame {
@@ -105,31 +110,32 @@
             display: block;
         }
 
-        /* GIGANTYCZNY TEKST (Zwiększyliśmy z-index!) */
+        /* GIGANTYCZNY TEKST */
         .about-giant-text {
             position: absolute;
             top: 45%;
-            left: -18%; /* <--- Przesunięcie mocno w lewo, na kolumnę */
+            left: -18%; 
             transform: translateY(-50%);
             font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: 9.5vw;
             line-height: 0.8;
             letter-spacing: -0.05em;
-            z-index: 10; /* <--- TUTAJ ZMIANA: Wyższy priorytet niż kolumna */
+            z-index: 10;
             pointer-events: none;
-           
+            mix-blend-mode: difference;
+            color: #FFFFFF;
         }
 
-        .about-giant-text .haus-font {
+        .about-giant-text .dobro-font {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-weight: 400;
-            font-size: 0.9em;
-            color: var(--color-accent); /* Teraz użyje Twojego fioletu #50344f */
+            font-size: 0.45em; /* MNIEJSZY NAPIS dobrostan */
+            color: var(--color-gold); 
             display: block;
             margin-bottom: 0.1em;
-        
+            letter-spacing: 0.05em;
         }
 
         .kobalt-bio-block {
@@ -164,9 +170,11 @@
     <main class="layout-wrapper">
         
         <aside class="left-column">
-            <div class="small-logo">
-                <span>haus</span>STUDIO
-            </div>
+            <a href="index.html" class="logo-link">
+                <div class="small-logo">
+                    <span>dobrostan</span>STUDIO
+                </div>
+            </a>
             <div class="nav-container">
                 <nav class="vertical-menu">
                     <ul>
@@ -193,8 +201,8 @@
             </div>
 
             <h1 class="about-giant-text">
-                <span class="haus-font">Cześć,</span>
-                TWORZĘ<br>STUDIO.
+                <span class="dobro-font">dobrostan</span>
+                STUDIO*
             </h1>
 
             <div class="kobalt-bio-block">

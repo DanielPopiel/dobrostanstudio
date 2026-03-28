@@ -65,21 +65,21 @@
             min-height: 100vh; 
         }
 
-        .portfolio-header { margin-bottom: 6rem; }
+        .portfolio-header { margin-bottom: 5rem; }
         .portfolio-header h1 { 
             font-family: 'Inter', sans-serif; 
             font-weight: 900; 
-            font-size: 4.5vw; /* Zmniejszony nagłówek */
+            font-size: 4.5vw; 
             line-height: 1; 
             text-transform: uppercase; 
             letter-spacing: -0.02em;
             color: var(--color-accent);
         }
 
-        /* LISTA PROJEKTÓW */
+        /* LISTA PROJEKTÓW - PRZERWA ZMNIEJSZONA DO 7rem */
         .project-item { 
             position: relative; 
-            margin-bottom: 12rem; 
+            margin-bottom: 7rem; /* <--- TUTAJ ZMIANA */
             cursor: pointer; 
             display: flex; 
             flex-direction: column;
@@ -107,10 +107,9 @@
             transform: scale(1.05); 
         }
 
-        /* NAPRAWIONE NAPISY - WYSTAJĄCE I NIEUCIĘTE */
         .project-title {
             position: absolute; 
-            bottom: -12%; 
+            bottom: -8%; 
             left: -8%; 
             font-family: 'Inter', sans-serif; 
             font-weight: 900;
@@ -134,7 +133,7 @@
         }
 
         .project-meta { 
-            margin-top: 5rem; 
+            margin-top: 4rem; 
             font-size: 0.7rem; 
             color: #888; 
             letter-spacing: 0.2em; 
@@ -190,7 +189,7 @@
             <h1>PROJEKTY</h1>
         </header>
 
-        <div class="project-item" onclick="autoGallery('Mokotow', 'Apartament Mokotów', 'Opis Twojego projektu na Mokotowie...', 5)">
+        <div class="project-item" onclick="autoGallery('Mokotow', 'Apartament Mokotów', 'Opis projektu...', 5)">
             <div class="project-image-wrapper">
                 <div class="image-container">
                     <img src="Projekty/Mokotow/main.jpg" class="project-image">
@@ -200,7 +199,7 @@
             <div class="project-meta">01 / WARSZAWA / 120 M2</div>
         </div>
 
-        <div class="project-item" onclick="autoGallery('Izabelin', 'Rezydencja Izabelin', 'Opis projektu w Izabelinie...', 6)">
+        <div class="project-item" onclick="autoGallery('Izabelin', 'Rezydencja Izabelin', 'Opis projektu...', 6)">
             <div class="project-image-wrapper">
                 <div class="image-container">
                     <img src="Projekty/Izabelin/main.jpg" class="project-image">
@@ -219,14 +218,12 @@
     </div>
 
     <script>
-        // MECHANIZM AUTOMATYCZNEGO GENEROWANIA GALERII
         function autoGallery(folder, title, desc, imageCount) {
             const galleryImages = document.getElementById('gallery-images');
             const galleryInfo = document.getElementById('gallery-info');
             galleryImages.innerHTML = '';
             galleryInfo.innerHTML = `<h2>${title}</h2><p>${desc}</p>`;
             
-            // Pętla sama dodaje zdjęcia 1.jpg, 2.jpg itd. z folderu projektu
             for (let i = 1; i <= imageCount; i++) {
                 const img = document.createElement('img');
                 img.src = `Projekty/${folder}/${i}.jpg`;
