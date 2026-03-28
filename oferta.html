@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dobrostan STUDIO | Oferta</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --color-bg: #F4F4F2; 
+            --color-text-dark: #1A1A1A;
+            --color-accent: #50344f; 
+            --color-gold: #b9a646; 
+            --grid-color: rgba(0, 0, 0, 0.1); 
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background-color: var(--color-bg);
+            color: var(--color-text-dark);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- LEWA KOLUMNA (UJEDNOLICONA) --- */
+        .left-column {
+            width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
+            background-color: var(--color-bg);
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 132px 132px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start;
+            padding: 4rem 3rem; 
+            z-index: 100;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo-link { text-decoration: none; color: inherit; }
+        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
+        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
+
+        /* MENU - POŁOŻENIE ZIDENTYFIKOWANE Z HOME (5rem) */
+        nav.vertical-menu { margin-top: 5rem; }
+        nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+        nav.vertical-menu a { 
+            text-decoration: none; color: var(--color-text-dark); 
+            font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; 
+            transition: 0.3s; display: inline-block; 
+        }
+        nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); transform: translateX(10px); }
+
+        .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; color: #666; line-height: 1.5; }
+
+        /* --- PRAWA KOLUMNA (65%) --- */
+        .right-column { width: 65%; margin-left: 35%; padding: 6rem 8% 10rem 8%; min-height: 100vh; }
+
+        .header-section { margin-bottom: 6rem; }
+        .header-section h1 { 
+            font-family: 'Inter', sans-serif; font-weight: 900; 
+            font-size: 4.5vw; text-transform: uppercase; 
+            color: var(--color-accent); letter-spacing: -0.02em;
+        }
+
+        /* USŁUGI */
+        .service-item {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 3rem 0;
+            display: grid;
+            grid-template-columns: 80px 1fr 200px;
+            align-items: start;
+            transition: 0.3s;
+        }
+        .service-item:hover { border-bottom-color: var(--color-accent); }
+
+        .service-num { font-size: 0.75rem; color: var(--color-gold); font-weight: 500; }
+        
+        .service-content h2 { 
+            font-family: 'Inter', sans-serif; font-weight: 700; 
+            font-size: 1.8rem; text-transform: uppercase; margin-bottom: 1rem;
+        }
+        .service-content p { font-size: 0.9rem; line-height: 1.6; color: #555; max-width: 500px; }
+        
+        .service-price { 
+            text-align: right; font-family: 'Inter', sans-serif; 
+            font-weight: 900; font-size: 1rem; color: var(--color-accent);
+        }
+
+        /* MOBI */
+        @media (max-width: 850px) {
+            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; text-align: center; background-size: 66px 66px; }
+            nav.vertical-menu { margin-top: 2rem; }
+            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
+            .service-item { grid-template-columns: 40px 1fr; gap: 1rem; }
+            .service-price { grid-column: 2; text-align: left; margin-top: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="left-column">
+        <a href="index.html" class="logo-link">
+            <div class="small-logo"><span>dobrostan</span>STUDIO</div>
+        </a>
+        
+        <nav class="vertical-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projekty.html">Projekty</a></li>
+                <li><a href="oferta.html" class="active">Oferta</a></li>
+                <li><a href="omnie.html">O mnie</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+
+        <div class="tech-footer">
+            ESTD. 2024<br>
+            ARCHITECTURE & WELL-BEING<br>
+            SIEDLCE / WARSZAWA
+        </div>
+    </aside>
+
+    <main class="right-column">
+        <header class="header-section">
+            <h1>OFERTA*</h1>
+        </header>
+
+        <div class="service-item">
+            <div class="service-num">01/</div>
+            <div class="service-content">
+                <h2>Konsultacje</h2>
+                <p>Szybkie wsparcie projektowe. Analiza układu funkcjonalnego, dobór kolorystyki lub pomoc w wyborze materiałów wykończeniowych.</p>
+            </div>
+            <div class="service-price">OD 500 PLN</div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-num">02/</div>
+            <div class="service-content">
+                <h2>Projekt Koncepcyjny</h2>
+                <p>Układ funkcjonalny w 2-3 wariantach, moodboardy oraz fotorealistyczne wizualizacje 3D. Fundament Twojego dobrostanu.</p>
+            </div>
+            <div class="service-price">OD 150 PLN / M2</div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-num">03/</div>
+            <div class="service-content">
+                <h2>Projekt Kompleksowy</h2>
+                <p>Pełna dokumentacja techniczna, rysunki dla wykonawców, zestawienia materiałowe i kosztorys. Pełen spokój podczas budowy.</p>
+            </div>
+            <div class="service-price">OD 250 PLN / M2</div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-num">04/</div>
+            <div class="service-content">
+                <h2>Nadzór Autorski</h2>
+                <p>Osobista kontrola nad realizacją projektu na budowie. Dbałość o każdy detal i zgodność z dokumentacją.</p>
+            </div>
+            <div class="service-price">WYCENA INDYWIUALNA</div>
+        </div>
+    </main>
+
+</body>
+</html>
