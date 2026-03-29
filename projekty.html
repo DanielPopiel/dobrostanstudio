@@ -56,26 +56,46 @@
 
         .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; color: #666; line-height: 1.5; }
 
-        /* --- PRAWA KOLUMNA (GALERIA) --- */
+        /* --- PRAWA KOLUMNA --- */
         .right-column { 
             width: 65%; margin-left: 35%; 
-            padding: 6rem 5% 15rem 5%; 
+            padding: 6rem 5% 10rem 5%; 
             min-height: 100vh; position: relative; z-index: 5;
         }
 
+        /* NAGŁÓWEK PORTFOLIO */
         .portfolio-header { margin-bottom: 5rem; }
         .portfolio-header h1 { 
             font-family: 'Inter', sans-serif; font-weight: 900; 
             font-size: 4.5vw; text-transform: uppercase; 
             color: var(--color-accent); 
+            line-height: 1;
+        }
+
+        /* NOWY STYL DLA NAPISU POD "PROJEKTY" */
+        .portfolio-hint {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-gold);
+            margin-top: 1.2rem;
+            display: block;
+            opacity: 0.9;
         }
 
         /* --- ELEMENTY PROJEKTU --- */
-        .project-item { position: relative; margin-bottom: 10rem; cursor: pointer; display: flex; flex-direction: column; width: 100%; }
+        .project-item { 
+            position: relative; 
+            margin-bottom: 5rem; 
+            cursor: pointer; 
+            display: flex; 
+            flex-direction: column; 
+            width: 100%; 
+        }
         .project-item.align-left { align-items: flex-start; }
         .project-item.align-right { align-items: flex-end; }
         
-        /* WRAPPER Z NAROŻNIKAMI ARCHITEKTONICZNYMI */
         .project-image-wrapper { 
             width: 85%; 
             position: relative;
@@ -83,7 +103,6 @@
             transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* Tworzenie narożników */
         .project-image-wrapper::before,
         .project-image-wrapper::after {
             content: "";
@@ -93,20 +112,17 @@
             transition: all 0.5s ease;
             opacity: 0.3;
         }
-        /* Lewy górny */
         .project-image-wrapper::before {
             top: 0; left: 0;
             border-top: 1px solid var(--color-text-dark);
             border-left: 1px solid var(--color-text-dark);
         }
-        /* Prawy dolny */
         .project-image-wrapper::after {
             bottom: 0; right: 0;
             border-bottom: 1px solid var(--color-text-dark);
             border-right: 1px solid var(--color-text-dark);
         }
 
-        /* Hover na narożniki: "zaciskają się" i zmieniają kolor */
         .project-item:hover .project-image-wrapper::before {
             top: 10px; left: 10px;
             border-color: var(--color-gold);
@@ -125,10 +141,9 @@
         }
         .project-item:hover .project-image { filter: grayscale(0%); transform: scale(1.01); }
 
-        /* TYTUŁY */
         .project-title {
-            position: absolute; bottom: -8%; font-family: 'Inter', sans-serif; font-weight: 900;
-            font-size: 5.5vw; line-height: 0.8; color: var(--color-text-dark); 
+            position: absolute; bottom: -5%; font-family: 'Inter', sans-serif; font-weight: 900;
+            font-size: 5vw; line-height: 0.8; color: var(--color-text-dark); 
             z-index: 100; pointer-events: none; white-space: nowrap;
         }
         .project-item.align-left .project-title { left: -5%; }
@@ -139,23 +154,71 @@
             font-size: 0.4em; color: var(--color-gold); display: block; margin-bottom: 5px; 
         }
 
-        .project-meta { margin-top: 3.5rem; font-size: 0.7rem; color: #888; letter-spacing: 0.2em; text-transform: uppercase; }
+        .project-meta { 
+            margin-top: 2rem; 
+            font-size: 0.65rem; color: #888; letter-spacing: 0.2em; text-transform: uppercase; 
+        }
 
-        /* MODAL GALERII */
-        .gallery-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--color-bg); z-index: 200; display: none; overflow-y: auto; padding: 6rem 10%; }
+        /* --- MODAL GALERII --- */
+        .gallery-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
+            background: var(--color-bg); z-index: 200; display: none; 
+            overflow-y: auto; padding: 6rem 0; 
+        }
         .gallery-overlay.active { display: block; }
-        .close-gallery { position: fixed; top: 2rem; right: 4rem; font-size: 0.7rem; cursor: pointer; border-bottom: 1px solid; z-index: 300; text-transform: uppercase; }
-        .gallery-content img { width: 100%; margin-bottom: 4rem; display: block; }
+        
+        .close-gallery { 
+            position: fixed; top: 2rem; right: 4rem; font-size: 0.7rem; 
+            cursor: pointer; border-bottom: 1px solid; z-index: 300; 
+            text-transform: uppercase; 
+        }
+
+        .modal-image-wrapper {
+            width: 60%; 
+            max-width: 900px;
+            margin: 0 auto 6rem auto;
+            position: relative;
+            padding: 20px;
+            background: transparent;
+        }
+
+        .modal-image-wrapper img { 
+            width: 100%; 
+            display: block; 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.03);
+        }
+
+        .modal-image-wrapper::before,
+        .modal-image-wrapper::after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+            transition: all 0.5s ease;
+        }
+        .modal-image-wrapper::before {
+            top: 0; left: 0;
+            border-top: 1px solid var(--color-text-dark);
+            border-left: 1px solid var(--color-text-dark);
+        }
+        .modal-image-wrapper::after {
+            bottom: 0; right: 0;
+            border-bottom: 1px solid var(--color-text-dark);
+            border-right: 1px solid var(--color-text-dark);
+        }
 
         /* --- MOBILE --- */
         @media (max-width: 850px) {
             .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; border-right: none; align-items: center; }
             nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
             .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
-            .project-image-wrapper { width: 100%; padding: 10px; }
             .project-image { height: 350px; }
-            .project-title { font-size: 11vw; position: relative; bottom: 0; margin-top: 1.5rem; left: 0 !important; right: 0 !important; text-align: left !important; white-space: normal; }
-            .project-image-wrapper::before, .project-image-wrapper::after { width: 20px; height: 20px; } /* Mniejsze narożniki na telefonie */
+            .portfolio-header h1 { font-size: 12vw; }
+            .portfolio-hint { font-size: 0.6rem; text-align: center; }
+            .project-title { font-size: 10vw; position: relative; bottom: 0; margin-top: 1rem; left: 0 !important; right: 0 !important; text-align: left !important; white-space: normal; }
+            .modal-image-wrapper { width: 95%; padding: 10px; margin-bottom: 2rem; }
+            .modal-image-wrapper::before, .modal-image-wrapper::after { width: 20px; height: 20px; }
         }
     </style>
 </head>
@@ -163,7 +226,7 @@
 
     <aside class="left-column">
         <a href="index.html" class="logo-link">
-            <div class="small-logo"><span>dobrostan</span>STUDIO</div>
+            <div class="small-logo"><span>dobrostan</span>STUDIO.</div>
         </a>
         <nav class="vertical-menu">
             <ul>
@@ -178,7 +241,10 @@
     </aside>
 
     <main class="right-column">
-        <header class="portfolio-header"><h1>PROJEKTY*</h1></header>
+        <header class="portfolio-header">
+            <h1>PROJEKTY.</h1>
+            <span class="portfolio-hint">KLIKNIJ W OBRAZ, BY OTWORZYĆ GALERIĘ</span>
+        </header>
 
         <div class="project-item align-left" onclick="autoGallery('BODEGA', 8)">
             <div class="project-image-wrapper">
@@ -204,38 +270,6 @@
             <div class="project-meta">SIEDLCE / STUDIO</div>
         </div>
 
-        <div class="project-item align-right" onclick="autoGallery('ESSENCE', 8)">
-            <div class="project-image-wrapper">
-                <img src="Projekty/ESSENCE/main.png" class="project-image" onerror="handleImageError(this)">
-                <h2 class="project-title"><span class="dobro-font">minimalizm</span>ESSENCE</h2>
-            </div>
-            <div class="project-meta">WARSZAWA / APARTAMENT</div>
-        </div>
-
-        <div class="project-item align-left" onclick="autoGallery('FORMA', 7)">
-            <div class="project-image-wrapper">
-                <img src="Projekty/FORMA/main.png" class="project-image" onerror="handleImageError(this)">
-                <h2 class="project-title"><span class="dobro-font">geometria</span>FORMA</h2>
-            </div>
-            <div class="project-meta">WARSZAWA / PRYWATNE</div>
-        </div>
-
-        <div class="project-item align-right" onclick="autoGallery('LIMONE', 8)">
-            <div class="project-image-wrapper">
-                <img src="Projekty/LIMONE/main.png" class="project-image" onerror="handleImageError(this)">
-                <h2 class="project-title"><span class="dobro-font">świeżość</span>LIMONE</h2>
-            </div>
-            <div class="project-meta">GDYNIA / APARTAMENT</div>
-        </div>
-
-        <div class="project-item align-left" onclick="autoGallery('NOWO', 6)">
-            <div class="project-image-wrapper">
-                <img src="Projekty/NOWO/main.png" class="project-image" onerror="handleImageError(this)">
-                <h2 class="project-title"><span class="dobro-font">nowoczesność</span>NOWO</h2>
-            </div>
-            <div class="project-meta">SIEDLCE / DOM</div>
-        </div>
-
         <div class="project-item align-right" onclick="autoGallery('SKOSY', 9)">
             <div class="project-image-wrapper">
                 <img src="Projekty/SKOSY/main.png" class="project-image" onerror="handleImageError(this)">
@@ -243,7 +277,7 @@
             </div>
             <div class="project-meta">WARSZAWA / PRYWATNE</div>
         </div>
-
+        
     </main>
 
     <div id="gallery-modal" class="gallery-overlay">
@@ -263,12 +297,17 @@
             document.getElementById('gallery-modal').scrollTop = 0;
 
             for (let i = 1; i <= imageCount; i++) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'modal-image-wrapper';
+
                 const img = document.createElement('img');
                 img.src = `Projekty/${folder}/${i}.png`;
                 img.onerror = function() { 
                     if (this.src.includes('.png')) this.src = this.src.replace('.png', '.jpg'); 
                 };
-                galleryImages.appendChild(img);
+                
+                wrapper.appendChild(img);
+                galleryImages.appendChild(wrapper);
             }
             document.getElementById('gallery-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
