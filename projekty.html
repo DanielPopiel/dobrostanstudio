@@ -6,7 +6,7 @@
     <title>dobrostan STUDIO | Projekty</title>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <style>
-        /* --- RESET --- */
+        /* --- RESET & VARIABLES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
@@ -43,13 +43,7 @@
 
         .logo-link { text-decoration: none; color: inherit; }
         .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
-        .small-logo span { 
-            font-family: 'Playfair Display', serif; 
-            font-style: italic; 
-            font-weight: 400; 
-            color: var(--color-gold); 
-            margin-right: 0.1em; 
-        }
+        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
 
         nav.vertical-menu { margin-top: 5rem; }
         nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
@@ -76,22 +70,65 @@
             color: var(--color-accent); 
         }
 
-        /* INDYWIDUALNE PROJEKTY */
-        .project-item { position: relative; margin-bottom: 6rem; cursor: pointer; display: flex; flex-direction: column; width: 100%; }
+        /* --- ELEMENTY PROJEKTU --- */
+        .project-item { position: relative; margin-bottom: 10rem; cursor: pointer; display: flex; flex-direction: column; width: 100%; }
         .project-item.align-left { align-items: flex-start; }
         .project-item.align-right { align-items: flex-end; }
         
-        .project-image-wrapper { width: 85%; position: relative; }
+        /* WRAPPER Z NAROŻNIKAMI ARCHITEKTONICZNYMI */
+        .project-image-wrapper { 
+            width: 85%; 
+            position: relative;
+            padding: 20px;
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Tworzenie narożników */
+        .project-image-wrapper::before,
+        .project-image-wrapper::after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            transition: all 0.5s ease;
+            opacity: 0.3;
+        }
+        /* Lewy górny */
+        .project-image-wrapper::before {
+            top: 0; left: 0;
+            border-top: 1px solid var(--color-text-dark);
+            border-left: 1px solid var(--color-text-dark);
+        }
+        /* Prawy dolny */
+        .project-image-wrapper::after {
+            bottom: 0; right: 0;
+            border-bottom: 1px solid var(--color-text-dark);
+            border-right: 1px solid var(--color-text-dark);
+        }
+
+        /* Hover na narożniki: "zaciskają się" i zmieniają kolor */
+        .project-item:hover .project-image-wrapper::before {
+            top: 10px; left: 10px;
+            border-color: var(--color-gold);
+            opacity: 1;
+        }
+        .project-item:hover .project-image-wrapper::after {
+            bottom: 10px; right: 10px;
+            border-color: var(--color-gold);
+            opacity: 1;
+        }
+
         .project-image { 
             width: 100%; height: 500px; display: block; 
             filter: grayscale(100%); transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); object-fit: cover;
-            object-position: center center; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
         }
-        .project-item:hover .project-image { filter: grayscale(0%); transform: scale(1.02); }
+        .project-item:hover .project-image { filter: grayscale(0%); transform: scale(1.01); }
 
+        /* TYTUŁY */
         .project-title {
-            position: absolute; bottom: -10%; font-family: 'Inter', sans-serif; font-weight: 900;
-            font-size: 5vw; line-height: 0.8; color: var(--color-text-dark); 
+            position: absolute; bottom: -8%; font-family: 'Inter', sans-serif; font-weight: 900;
+            font-size: 5.5vw; line-height: 0.8; color: var(--color-text-dark); 
             z-index: 100; pointer-events: none; white-space: nowrap;
         }
         .project-item.align-left .project-title { left: -5%; }
@@ -100,10 +137,9 @@
         .project-title span.dobro-font { 
             font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; 
             font-size: 0.4em; color: var(--color-gold); display: block; margin-bottom: 5px; 
-            text-transform: lowercase;
         }
 
-        .project-meta { margin-top: 3rem; font-size: 0.7rem; color: #888; letter-spacing: 0.2em; text-transform: uppercase; }
+        .project-meta { margin-top: 3.5rem; font-size: 0.7rem; color: #888; letter-spacing: 0.2em; text-transform: uppercase; }
 
         /* MODAL GALERII */
         .gallery-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--color-bg); z-index: 200; display: none; overflow-y: auto; padding: 6rem 10%; }
@@ -111,13 +147,15 @@
         .close-gallery { position: fixed; top: 2rem; right: 4rem; font-size: 0.7rem; cursor: pointer; border-bottom: 1px solid; z-index: 300; text-transform: uppercase; }
         .gallery-content img { width: 100%; margin-bottom: 4rem; display: block; }
 
-        /* MOBI */
+        /* --- MOBILE --- */
         @media (max-width: 850px) {
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem; border-right: none; }
+            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; border-right: none; align-items: center; }
+            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
             .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
-            .project-image-wrapper { width: 100%; }
-            .project-title { font-size: 10vw; position: relative; bottom: 0; margin-top: 1rem; }
-            .project-item.align-left .project-title, .project-item.align-right .project-title { left: 0; right: 0; text-align: left; }
+            .project-image-wrapper { width: 100%; padding: 10px; }
+            .project-image { height: 350px; }
+            .project-title { font-size: 11vw; position: relative; bottom: 0; margin-top: 1.5rem; left: 0 !important; right: 0 !important; text-align: left !important; white-space: normal; }
+            .project-image-wrapper::before, .project-image-wrapper::after { width: 20px; height: 20px; } /* Mniejsze narożniki na telefonie */
         }
     </style>
 </head>
@@ -222,8 +260,6 @@
         function autoGallery(folder, imageCount) {
             const galleryImages = document.getElementById('gallery-images');
             galleryImages.innerHTML = '';
-            
-            // Przewijanie na górę modala przy otwarciu
             document.getElementById('gallery-modal').scrollTop = 0;
 
             for (let i = 1; i <= imageCount; i++) {
