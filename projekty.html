@@ -13,7 +13,7 @@
             --color-bg: #F4F4F2; 
             --color-text-dark: #1A1A1A;
             --color-accent: #50344f; 
-            --color-gold: #b9a646; 
+            --color-gold: #b9a646; /* POWRÓT DO SZLACHETNEGO ZŁOTA */
             --grid-color: rgba(0, 0, 0, 0.1); 
         }
 
@@ -42,8 +42,22 @@
         }
 
         .logo-link { text-decoration: none; color: inherit; }
-        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
-        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
+        
+        /* LOGO: STUDIO* FIOLETOWE */
+        .small-logo { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 900; 
+            font-size: 1.5rem; 
+            letter-spacing: -0.05em; 
+            color: var(--color-accent); 
+        }
+        .small-logo span { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            font-weight: 400; 
+            color: var(--color-gold); 
+            margin-right: 0.1em; 
+        }
 
         nav.vertical-menu { margin-top: 5rem; }
         nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
@@ -63,7 +77,6 @@
             min-height: 100vh; position: relative; z-index: 5;
         }
 
-        /* NAGŁÓWEK PORTFOLIO */
         .portfolio-header { margin-bottom: 5rem; }
         .portfolio-header h1 { 
             font-family: 'Inter', sans-serif; font-weight: 900; 
@@ -72,13 +85,12 @@
             line-height: 1;
         }
 
-        /* NOWY STYL DLA NAPISU POD "PROJEKTY" */
         .portfolio-hint {
             font-family: 'IBM Plex Mono', monospace;
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
-            color: var(--color-gold);
+            color: var(--color-gold); 
             margin-top: 1.2rem;
             display: block;
             opacity: 0.9;
@@ -96,42 +108,20 @@
         .project-item.align-left { align-items: flex-start; }
         .project-item.align-right { align-items: flex-end; }
         
+        /* PEŁNA SUBTELNA RAMKA */
         .project-image-wrapper { 
             width: 85%; 
             position: relative;
-            padding: 20px;
+            padding: 15px;
             transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid rgba(26, 26, 26, 0.15);
+            background: transparent;
         }
 
-        .project-image-wrapper::before,
-        .project-image-wrapper::after {
-            content: "";
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            transition: all 0.5s ease;
-            opacity: 0.3;
-        }
-        .project-image-wrapper::before {
-            top: 0; left: 0;
-            border-top: 1px solid var(--color-text-dark);
-            border-left: 1px solid var(--color-text-dark);
-        }
-        .project-image-wrapper::after {
-            bottom: 0; right: 0;
-            border-bottom: 1px solid var(--color-text-dark);
-            border-right: 1px solid var(--color-text-dark);
-        }
-
-        .project-item:hover .project-image-wrapper::before {
-            top: 10px; left: 10px;
+        .project-item:hover .project-image-wrapper {
             border-color: var(--color-gold);
-            opacity: 1;
-        }
-        .project-item:hover .project-image-wrapper::after {
-            bottom: 10px; right: 10px;
-            border-color: var(--color-gold);
-            opacity: 1;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
 
         .project-image { 
@@ -143,7 +133,8 @@
 
         .project-title {
             position: absolute; bottom: -5%; font-family: 'Inter', sans-serif; font-weight: 900;
-            font-size: 5vw; line-height: 0.8; color: var(--color-text-dark); 
+            font-size: 5vw; line-height: 0.8; 
+            color: var(--color-accent); 
             z-index: 100; pointer-events: none; white-space: nowrap;
         }
         .project-item.align-left .project-title { left: -5%; }
@@ -178,34 +169,15 @@
             max-width: 900px;
             margin: 0 auto 6rem auto;
             position: relative;
-            padding: 20px;
+            padding: 15px;
             background: transparent;
+            border: 1px solid rgba(26, 26, 26, 0.15); 
         }
 
         .modal-image-wrapper img { 
             width: 100%; 
             display: block; 
             box-shadow: 0 15px 30px rgba(0,0,0,0.03);
-        }
-
-        .modal-image-wrapper::before,
-        .modal-image-wrapper::after {
-            content: "";
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            opacity: 0.3;
-            transition: all 0.5s ease;
-        }
-        .modal-image-wrapper::before {
-            top: 0; left: 0;
-            border-top: 1px solid var(--color-text-dark);
-            border-left: 1px solid var(--color-text-dark);
-        }
-        .modal-image-wrapper::after {
-            bottom: 0; right: 0;
-            border-bottom: 1px solid var(--color-text-dark);
-            border-right: 1px solid var(--color-text-dark);
         }
 
         /* --- MOBILE --- */
@@ -217,8 +189,7 @@
             .portfolio-header h1 { font-size: 12vw; }
             .portfolio-hint { font-size: 0.6rem; text-align: center; }
             .project-title { font-size: 10vw; position: relative; bottom: 0; margin-top: 1rem; left: 0 !important; right: 0 !important; text-align: left !important; white-space: normal; }
-            .modal-image-wrapper { width: 95%; padding: 10px; margin-bottom: 2rem; }
-            .modal-image-wrapper::before, .modal-image-wrapper::after { width: 20px; height: 20px; }
+            .project-image-wrapper, .modal-image-wrapper { width: 100%; padding: 10px; margin-bottom: 2rem; }
         }
     </style>
 </head>
@@ -226,7 +197,7 @@
 
     <aside class="left-column">
         <a href="index.html" class="logo-link">
-            <div class="small-logo"><span>dobrostan</span>STUDIO.</div>
+            <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
         </a>
         <nav class="vertical-menu">
             <ul>
@@ -242,7 +213,7 @@
 
     <main class="right-column">
         <header class="portfolio-header">
-            <h1>PROJEKTY.</h1>
+            <h1>PROJEKTY*</h1>
             <span class="portfolio-hint">KLIKNIJ W OBRAZ, BY OTWORZYĆ GALERIĘ</span>
         </header>
 
