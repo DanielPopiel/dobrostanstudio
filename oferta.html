@@ -13,7 +13,7 @@
             --color-bg: #F4F4F2; 
             --color-text-dark: #1A1A1A;
             --color-accent: #50344f; 
-            --color-gold: #b9a646; 
+            --color-gold: #b9a646; /* SZLACHETNE ZŁOTO */
             --grid-color: rgba(0, 0, 0, 0.1); 
         }
 
@@ -25,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* --- LEWA KOLUMNA (UJEDNOLICONA) --- */
+        /* --- LEWA KOLUMNA --- */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -42,10 +42,21 @@
         }
 
         .logo-link { text-decoration: none; color: inherit; }
-        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
-        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
+        .small-logo { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 900; 
+            font-size: 1.5rem; 
+            letter-spacing: -0.05em; 
+            color: var(--color-accent); /* STUDIO* NA FIOLETOWO */
+        }
+        .small-logo span { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            font-weight: 400; 
+            color: var(--color-gold); 
+            margin-right: 0.1em; 
+        }
 
-        /* MENU - POŁOŻENIE ZIDENTYFIKOWANE Z HOME (5rem) */
         nav.vertical-menu { margin-top: 5rem; }
         nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
         nav.vertical-menu a { 
@@ -57,28 +68,26 @@
 
         .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; color: #666; line-height: 1.5; }
 
-        /* --- PRAWA KOLUMNA (65%) --- */
+        /* --- PRAWA KOLUMNA --- */
         .right-column { width: 65%; margin-left: 35%; padding: 6rem 8% 10rem 8%; min-height: 100vh; }
 
-        .header-section { margin-bottom: 6rem; }
+        .header-section { margin-bottom: 2.5rem; }
         .header-section h1 { 
             font-family: 'Inter', sans-serif; font-weight: 900; 
             font-size: 4.5vw; text-transform: uppercase; 
             color: var(--color-accent); letter-spacing: -0.02em;
         }
+        .header-section h1 span.gold-asterisk { color: var(--color-gold); } /* GWIAZDKA NA ZŁOTO */
 
         /* USŁUGI */
         .service-item {
             border-bottom: 1px solid rgba(0,0,0,0.1);
             padding: 3rem 0;
             display: grid;
-            grid-template-columns: 80px 1fr 200px;
+            grid-template-columns: 80px 1fr 220px;
             align-items: start;
-            transition: 0.3s;
         }
-        .service-item:hover { border-bottom-color: var(--color-accent); }
-
-        .service-num { font-size: 0.75rem; color: var(--color-gold); font-weight: 500; }
+        .service-num { font-size: 0.75rem; color: var(--color-gold); font-weight: 500; } /* NUMERACJA USŁUG ZŁOTA */
         
         .service-content h2 { 
             font-family: 'Inter', sans-serif; font-weight: 700; 
@@ -88,17 +97,96 @@
         
         .service-price { 
             text-align: right; font-family: 'Inter', sans-serif; 
-            font-weight: 900; font-size: 1rem; color: var(--color-accent);
+            font-weight: 900; font-size: 0.9rem; color: var(--color-accent);
+        }
+
+        /* --- ETAPY PROJEKTU --- */
+        .stages-section { margin-top: 8rem; }
+        .stages-section h2 { 
+            font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2rem; 
+            text-transform: uppercase; color: var(--color-gold); /* NAGŁÓWEK NA ZŁOTO */
+            margin-bottom: 4rem; 
+        }
+
+        .timeline-axis {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding-top: 2rem;
+            padding-bottom: 2rem; /* Miejsce na suwak */
+            border-top: 1px solid rgba(0,0,0,0.1);
+            overflow-x: auto;
+            gap: 40px;
+            /* Scrollbar behavior */
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-accent) rgba(0,0,0,0.05);
+        }
+
+        /* --- STYLIZACJA PASKA PRZEWIJANIA (SCROLLBAR) --- */
+        .timeline-axis::-webkit-scrollbar {
+            height: 4px; /* Bardzo cienki pasek poziomy */
+        }
+
+        .timeline-axis::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05); /* Subtelny tor */
+            border-radius: 10px;
+        }
+
+        .timeline-axis::-webkit-scrollbar-thumb {
+            background: var(--color-accent); /* Fioletowy uchwyt */
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .timeline-axis::-webkit-scrollbar-thumb:hover {
+            background: var(--color-gold); /* Zmienia się na złoty przy najechaniu */
+        }
+
+        .timeline-step {
+            flex: 0 0 160px; /* Stała szerokość etapów dla lepszego efektu osi */
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .step-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--color-accent); /* NUMERACJA ETAPÓW FIOLETOWA */
+        }
+
+        .step-line {
+            width: 100%; height: 1px;
+            background-color: rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-step:first-child .step-line::after {
+            content: ""; position: absolute; top: 0; left: 0;
+            width: 100%; height: 2px;
+            background-color: var(--color-text-dark);
+        }
+
+        .step-title {
+            font-size: 0.7rem; line-height: 1.4;
+            text-transform: uppercase; letter-spacing: 0.05em;
+            color: #444; font-weight: 500;
         }
 
         /* MOBI */
         @media (max-width: 850px) {
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; text-align: center; background-size: 66px 66px; }
+            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; text-align: center; }
             nav.vertical-menu { margin-top: 2rem; }
             nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
             .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
-            .service-item { grid-template-columns: 40px 1fr; gap: 1rem; }
+            .service-item { grid-template-columns: 40px 1fr; gap: 1rem; padding: 2rem 0; }
             .service-price { grid-column: 2; text-align: left; margin-top: 1rem; }
+            /* Na mobile rezygnujemy z osi poziomej na rzecz pionowej dla wygody */
+            .timeline-axis { flex-direction: column; border-top: none; overflow-x: visible; }
+            .timeline-step { flex: 1; border-left: 1px solid rgba(0,0,0,0.1); padding-left: 1.5rem; padding-bottom: 2rem; gap: 0.5rem; min-width: 100%; }
+            .timeline-step:first-child { border-left: 2px solid var(--color-text-dark); }
+            .step-line { display: none; }
         }
     </style>
 </head>
@@ -106,9 +194,8 @@
 
     <aside class="left-column">
         <a href="index.html" class="logo-link">
-            <div class="small-logo"><span>dobrostan</span>STUDIO</div>
+            <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
         </a>
-        
         <nav class="vertical-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -118,17 +205,12 @@
                 <li><a href="kontakt.html">Kontakt</a></li>
             </ul>
         </nav>
-
-        <div class="tech-footer">
-            ESTD. 2024<br>
-            ARCHITECTURE & WELL-BEING<br>
-            SIEDLCE / WARSZAWA
-        </div>
+        <div class="tech-footer">ESTD. 2024<br>ARCHITECTURE & WELL-BEING<br>SIEDLCE / WARSZAWA</div>
     </aside>
 
     <main class="right-column">
         <header class="header-section">
-            <h1>OFERTA*</h1>
+            <h1>OFERTA<span class="gold-asterisk">*</span></h1>
         </header>
 
         <div class="service-item">
@@ -137,7 +219,7 @@
                 <h2>Konsultacje</h2>
                 <p>Szybkie wsparcie projektowe. Analiza układu funkcjonalnego, dobór kolorystyki lub pomoc w wyborze materiałów wykończeniowych.</p>
             </div>
-            <div class="service-price">OD 500 PLN</div>
+            <div class="service-price">250 PLN / H</div>
         </div>
 
         <div class="service-item">
@@ -153,7 +235,7 @@
             <div class="service-num">03/</div>
             <div class="service-content">
                 <h2>Projekt Kompleksowy</h2>
-                <p>Pełna dokumentacja techniczna, rysunki dla wykonawców, zestawienia materiałowe i kosztorys. Pełen spokój podczas budowy.</p>
+                <p>Pełna dokumentacja techniczna, rysunki dla wykonawców, zestawienia materiałowe i kosztorys.</p>
             </div>
             <div class="service-price">OD 250 PLN / M2</div>
         </div>
@@ -164,8 +246,59 @@
                 <h2>Nadzór Autorski</h2>
                 <p>Osobista kontrola nad realizacją projektu na budowie. Dbałość o każdy detal i zgodność z dokumentacją.</p>
             </div>
-            <div class="service-price">WYCENA INDYWIUALNA</div>
+            <div class="service-price">WYCENA INDYWIDUALNA</div>
         </div>
+
+        <section class="stages-section">
+            <h2>ETAPY PROJEKTU</h2>
+            <div class="timeline-axis">
+                <div class="timeline-step">
+                    <span class="step-number">01</span>
+                    <div class="step-line"></div>
+                    <span class="step-title">Rozpoznanie<br>potrzeb</span>
+                </div>
+                <div class="timeline-step">
+                    <span class="step-number">02</span>
+                    <div class="step-line"></div>
+                    <span class="step-title">Inwentaryzacja</span>
+                </div>
+                <div class="timeline-step">
+                    <span class="step-number">03</span>
+                    <div class="step-line"></div>
+                    <span class="step-title">Układ<br>funkcjonalny</span>
+                </div>
+                <div class="timeline-step">
+                    <span class="step-number">04</span>
+                    <div class="step-line"></div>
+                    <span class="step-title">Modelowanie 3D<br>i wizualizacje</span>
+                </div>
+                <div class="timeline-step">
+                    <span class="step-number">05</span>
+                    <div class="step-line"></div>
+                    <span class="step-title">Projekt<br>wykonawczy</span>
+                </div>
+                <div class="timeline-step">
+                    <span class="step-number">06</span>
+                    <div class="step-line"></div>
+                    <span class="step-title">Dobór<br>materiałów</span>
+                </div>
+                <div class="timeline-step">
+                    <span class="step-number">07</span>
+                    <div class="step-line"></div>
+                    <span class="step-title">Spis materiałów<br>i kosztorys</span>
+                </div>
+                <div class="timeline-step">
+                    <span class="step-number">08</span>
+                    <div class="step-line"></div>
+                    <span class="step-title">Ustalenia<br>z wykonawcami</span>
+                </div>
+                <div class="timeline-step">
+                    <span class="step-number">09</span>
+                    <div class="step-line"></div>
+                    <span class="step-title">Nadzór nad<br>realizacją</span>
+                </div>
+            </div>
+        </section>
     </main>
 
 </body>
