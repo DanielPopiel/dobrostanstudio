@@ -25,7 +25,7 @@
             overflow-x: hidden; 
         }
 
-        /* --- LEWA KOLUMNA (WARSTWA 1 - TŁO) --- */
+        /* --- LEWA KOLUMNA --- */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -37,29 +37,37 @@
             flex-direction: column; 
             justify-content: flex-start; 
             padding: 4rem 3rem; 
-            z-index: 1; /* Kratka najniżej */
+            z-index: 1;
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
         .logo-link { text-decoration: none; color: inherit; }
-        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
-        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
+        
+        .small-logo { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 900; 
+            font-size: 1.5rem; 
+            letter-spacing: -0.05em; 
+            color: var(--color-accent); 
+        }
+        .small-logo span { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            font-weight: 400; 
+            color: var(--color-gold); 
+            margin-right: 0.1em; 
+        }
 
-        /* MENU GŁÓWNE - SZTYWNE 5rem OD LOGO */
         nav.vertical-menu { margin-top: 5rem; }
         nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
         nav.vertical-menu a { 
             text-decoration: none; color: var(--color-text-dark); 
             font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; 
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            transition: 0.3s; 
             display: inline-block; 
         }
-        nav.vertical-menu a:hover, nav.vertical-menu a.active { 
-            color: var(--color-accent); 
-            transform: translateX(10px);
-        }
+        nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); transform: translateX(10px); }
 
-        /* SUB-NAV (FILOZOFIA/PROCES) */
         .nav-divider { height: 1px; width: 40px; background: rgba(0,0,0,0.1); margin: 2rem 0; }
         .side-sub-nav { list-style: none; }
         .side-sub-nav li { margin-bottom: 0.8rem; }
@@ -68,14 +76,11 @@
             text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s; 
             display: inline-block;
         }
-        .side-sub-nav a.active, .side-sub-nav a:hover { 
-            color: var(--color-text-dark); 
-            transform: translateX(5px);
-        }
+        .side-sub-nav a.active, .side-sub-nav a:hover { color: var(--color-text-dark); transform: translateX(5px); }
 
         .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; color: #666; line-height: 1.5; }
 
-        /* --- PRAWA KOLUMNA (WARSTWA 10 - NAD KRATKĄ) --- */
+        /* --- PRAWA KOLUMNA --- */
         .right-column {
             width: 65%;
             margin-left: 35%; 
@@ -86,12 +91,11 @@
             z-index: 10; 
         }
 
-        /* MANIFEST - ZMIENIONY FONT-WEIGHT */
         .manifesto-title {
             font-family: 'Inter', sans-serif;
-            font-weight: 900; /* ZMIENIONO Z 400 NA 900 */
-            font-size: 6vw;
-            line-height: 0.9;
+            font-weight: 900;
+            font-size: 4.5vw;
+            line-height: 0.95;
             letter-spacing: -0.04em;
             color: var(--color-text-dark);
             margin-bottom: 2.5rem;
@@ -102,8 +106,8 @@
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-weight: 400;
-            font-size: 0.9em;
-            color: var(--color-accent); 
+            font-size: 0.95em;
+            color: var(--color-gold);
             text-transform: lowercase;
             display: inline-block;
         }
@@ -112,25 +116,28 @@
             font-size: 1rem;
             line-height: 1.8;
             max-width: 650px;
-            margin-bottom: 6rem;
+            margin-bottom: 5rem;
             color: #444;
         }
 
-        /* ZDJĘCIE DETALU */
+        /* --- NOWA KONFIGURACJA ZDJĘCIA: DOPASOWANIE DO EKRANU --- */
         .detail-image-frame {
             width: 100%;
-            height: 500px;
-            border: 1px solid var(--color-text-dark);
-            padding: 12px;
+            max-width: 1000px; /* Ograniczenie, by nie było za szerokie na monitorach 4K */
+            border: 1px solid rgba(26, 26, 26, 0.15);
+            padding: 10px;
             margin-bottom: 6rem;
             background: var(--color-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .detail-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
+            width: auto;
+            max-width: 100%;    /* Nigdy nie wyjdzie poza ramkę na szerokość */
+            max-height: 65vh;   /* ZAWSZE ZMIEŚCI SIĘ W EKRANIE (65% wysokości okna) */
+            height: auto;       /* Zachowuje proporcje */
             display: block;
         }
 
@@ -170,12 +177,13 @@
         }
 
         @media (max-width: 850px) {
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; border-right: none; background-size: 66px 66px; z-index: 50; }
+            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; border-right: none; }
             .nav-divider, .side-sub-nav { display: none; }
             nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; z-index: 10; }
-            .manifesto-title { font-size: 14vw; }
-            .detail-image-frame { height: 350px; }
+            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
+            .manifesto-title { font-size: 12vw; }
+            .detail-image-frame { margin-bottom: 3rem; }
+            .detail-image { max-height: 50vh; } /* Krótsze na telefonach */
             .pillars-grid { grid-template-columns: 1fr; gap: 3rem; }
         }
     </style>
@@ -186,9 +194,7 @@
         
         <aside class="left-column">
             <a href="index.html" class="logo-link">
-                <div class="small-logo">
-                    <span>dobrostan</span>STUDIO
-                </div>
+                <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
             </a>
 
             <div class="nav-container">
@@ -219,11 +225,14 @@
 
         <section class="right-column">
             <header>
-                <h1 class="manifesto-title">PRZESTRZEŃ KSZTAŁTUJE <br><span class="dobro-font-italic">umysł</span>.</h1>
+                <h1 class="manifesto-title">
+                    PRZESTRZEŃ KSZTAŁTUJE <br>
+                    <span class="dobro-font-italic">nasze</span> SAMOPOCZUCIE.
+                </h1>
             </header>
             
             <p class="manifesto-intro">
-                Odrzucamy chwilowe trendy na rzecz ponadczasowego rzemiosła. Nasza filozofia opiera się na założeniach neuroarchitektury – badamy, jak proporcje, światło i materiały wpływają na ludzki układ nerwowy.
+                Wierzę, że przestrzeń nie jest tylko tłem dla codzienności – ona aktywnie ją kształtuje. W moim studiu projektuję w oparciu o neuroarchitekturę, co oznacza, że każda decyzja o świetle, materiale czy ergonomii służy Twojemu dobrostanowi. Tworzę miejsca, które redukują przebodźcowanie, koją zmysły i naturalnie wspierają regenerację. Bo dom powinien być narzędziem, które pomaga nam czuć się lepiej.
             </p>
 
             <div class="detail-image-frame">
@@ -243,8 +252,8 @@
                 </div>
                 <div class="pillar">
                     <span class="pillar-number">03</span>
-                    <h3>Redukcja</h3>
-                    <p>Mniej, ale lepiej. Eliminujemy przebodźcowanie, tworząc minimalistyczne układy, które pozwalają myślom swobodnie płynąć.</p>
+                    <h3>Akustyka</h3>
+                    <p>Eliminujemy przebodźcowanie hałasem, tworząc przestrzenie zaopiekowane pod względem akustycznym.</p>
                 </div>
             </div>
         </section>
