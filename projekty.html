@@ -13,7 +13,7 @@
             --color-bg: #F4F4F2; 
             --color-text-dark: #1A1A1A;
             --color-accent: #50344f; 
-            --color-gold: #b9a646; /* POWRÓT DO SZLACHETNEGO ZŁOTA */
+            --color-gold: #b9a646;
             --grid-color: rgba(0, 0, 0, 0.1); 
         }
 
@@ -25,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* --- LEWA KOLUMNA (STAŁA) --- */
+        /* --- LEWA KOLUMNA (DESKTOP) --- */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -43,7 +43,6 @@
 
         .logo-link { text-decoration: none; color: inherit; }
         
-        /* LOGO: STUDIO* FIOLETOWE */
         .small-logo { 
             font-family: 'Inter', sans-serif; 
             font-weight: 900; 
@@ -70,7 +69,7 @@
 
         .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; color: #666; line-height: 1.5; }
 
-        /* --- PRAWA KOLUMNA --- */
+        /* --- PRAWA KOLUMNA (CONTENT) --- */
         .right-column { 
             width: 65%; margin-left: 35%; 
             padding: 6rem 5% 10rem 5%; 
@@ -99,7 +98,7 @@
         /* --- ELEMENTY PROJEKTU --- */
         .project-item { 
             position: relative; 
-            margin-bottom: 5rem; 
+            margin-bottom: 8rem; 
             cursor: pointer; 
             display: flex; 
             flex-direction: column; 
@@ -108,7 +107,6 @@
         .project-item.align-left { align-items: flex-start; }
         .project-item.align-right { align-items: flex-end; }
         
-        /* PEŁNA SUBTELNA RAMKA */
         .project-image-wrapper { 
             width: 85%; 
             position: relative;
@@ -159,15 +157,15 @@
         .gallery-overlay.active { display: block; }
         
         .close-gallery { 
-            position: fixed; top: 2rem; right: 4rem; font-size: 0.7rem; 
+            position: fixed; top: 2rem; right: 2rem; font-size: 0.7rem; 
             cursor: pointer; border-bottom: 1px solid; z-index: 300; 
-            text-transform: uppercase; 
+            text-transform: uppercase; background: var(--color-bg); padding: 5px;
         }
 
         .modal-image-wrapper {
-            width: 60%; 
+            width: 80%; 
             max-width: 900px;
-            margin: 0 auto 6rem auto;
+            margin: 0 auto 4rem auto;
             position: relative;
             padding: 15px;
             background: transparent;
@@ -180,16 +178,44 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.03);
         }
 
-        /* --- MOBILE --- */
+        /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 850px) {
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; border-right: none; align-items: center; }
-            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
-            .project-image { height: 350px; }
-            .portfolio-header h1 { font-size: 12vw; }
-            .portfolio-hint { font-size: 0.6rem; text-align: center; }
-            .project-title { font-size: 10vw; position: relative; bottom: 0; margin-top: 1rem; left: 0 !important; right: 0 !important; text-align: left !important; white-space: normal; }
-            .project-image-wrapper, .modal-image-wrapper { width: 100%; padding: 10px; margin-bottom: 2rem; }
+            .left-column { 
+                width: 100%; height: auto; position: relative; 
+                padding: 1.5rem; border-right: none; align-items: center; 
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                background-size: 66px 66px;
+            }
+
+            nav.vertical-menu { margin-top: 1rem; width: 100%; }
+            nav.vertical-menu ul { 
+                flex-direction: row; flex-wrap: wrap; 
+                justify-content: center; gap: 1rem; 
+            }
+            nav.vertical-menu a { font-size: 0.75rem; }
+            nav.vertical-menu a:hover { transform: none; }
+
+            .right-column { width: 100%; margin-left: 0; padding: 3rem 1.5rem; }
+            
+            .portfolio-header { margin-bottom: 3rem; text-align: center; }
+            .portfolio-header h1 { font-size: 14vw; }
+            
+            .project-item { margin-bottom: 5rem; align-items: flex-start !important; }
+            .project-image-wrapper { width: 100%; padding: 10px; }
+            .project-image { height: 300px; filter: grayscale(0%); } /* Na mobile zdjęcia są od razu w kolorze */
+            
+            .project-title { 
+                position: relative; bottom: 0; left: 0 !important; right: 0 !important;
+                font-size: 10vw; white-space: normal; margin-top: 1rem;
+                text-align: left !important;
+            }
+            
+            .project-meta { margin-top: 0.5rem; font-size: 0.6rem; }
+
+            .modal-image-wrapper { width: 95%; padding: 8px; margin-bottom: 2rem; }
+            .close-gallery { right: 1rem; top: 1rem; }
+            
+            .tech-footer { display: none; }
         }
     </style>
 </head>

@@ -13,7 +13,7 @@
             --color-bg: #F4F4F2; 
             --color-text-dark: #1A1A1A;
             --color-accent: #50344f; 
-            --color-gold: #b9a646; /* SZLACHETNE ZŁOTO */
+            --color-gold: #b9a646;
             --grid-color: rgba(0, 0, 0, 0.1); 
         }
 
@@ -25,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* --- LEWA KOLUMNA --- */
+        /* --- LEWA KOLUMNA (DESKTOP) --- */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -47,7 +47,7 @@
             font-weight: 900; 
             font-size: 1.5rem; 
             letter-spacing: -0.05em; 
-            color: var(--color-accent); /* STUDIO* NA FIOLETOWO */
+            color: var(--color-accent); 
         }
         .small-logo span { 
             font-family: 'Playfair Display', serif; 
@@ -77,7 +77,7 @@
             font-size: 4.5vw; text-transform: uppercase; 
             color: var(--color-accent); letter-spacing: -0.02em;
         }
-        .header-section h1 span.gold-asterisk { color: var(--color-gold); } /* GWIAZDKA NA ZŁOTO */
+        .header-section h1 span.gold-asterisk { color: var(--color-gold); }
 
         /* USŁUGI */
         .service-item {
@@ -87,7 +87,7 @@
             grid-template-columns: 80px 1fr 220px;
             align-items: start;
         }
-        .service-num { font-size: 0.75rem; color: var(--color-gold); font-weight: 500; } /* NUMERACJA USŁUG ZŁOTA */
+        .service-num { font-size: 0.75rem; color: var(--color-gold); font-weight: 500; } 
         
         .service-content h2 { 
             font-family: 'Inter', sans-serif; font-weight: 700; 
@@ -104,7 +104,7 @@
         .stages-section { margin-top: 8rem; }
         .stages-section h2 { 
             font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2rem; 
-            text-transform: uppercase; color: var(--color-gold); /* NAGŁÓWEK NA ZŁOTO */
+            text-transform: uppercase; color: var(--color-gold); 
             margin-bottom: 4rem; 
         }
 
@@ -117,20 +117,17 @@
             border-top: 1px solid rgba(0,0,0,0.1);
             overflow-x: auto;
             gap: 40px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--color-accent) rgba(0,0,0,0.05);
         }
 
         .timeline-axis::-webkit-scrollbar { height: 4px; }
-        .timeline-axis::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); border-radius: 10px; }
-        .timeline-axis::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 10px; }
-        .timeline-axis::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
+        .timeline-axis::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); }
+        .timeline-axis::-webkit-scrollbar-thumb { background: var(--color-accent); }
 
         .timeline-step { flex: 0 0 160px; display: flex; flex-direction: column; gap: 1.5rem; }
         .step-number {
             font-family: 'IBM Plex Mono', monospace;
             font-size: 0.8rem; font-weight: 500;
-            color: var(--color-accent); /* NUMERACJA ETAPÓW FIOLETOWA */
+            color: var(--color-accent);
         }
 
         .step-line { width: 100%; height: 1px; background-color: rgba(0,0,0,0.1); position: relative; }
@@ -141,14 +138,58 @@
 
         .step-title { font-size: 0.7rem; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.05em; color: #444; font-weight: 500; }
 
+        /* --- MOBILE --- */
         @media (max-width: 850px) {
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; text-align: center; }
-            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
-            .service-item { grid-template-columns: 40px 1fr; gap: 1rem; padding: 2rem 0; }
-            .service-price { grid-column: 2; text-align: left; margin-top: 1rem; }
-            .timeline-axis { flex-direction: column; border-top: none; overflow-x: visible; }
-            .timeline-step { flex: 1; border-left: 1px solid rgba(0,0,0,0.1); padding-left: 1.5rem; padding-bottom: 2rem; gap: 0.5rem; min-width: 100%; }
+            .left-column { 
+                width: 100%; height: auto; position: sticky; top: 0; 
+                padding: 1.5rem; align-items: center; text-align: center; 
+                background-size: 66px 66px; border-right: none;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+            }
+            nav.vertical-menu { margin-top: 1rem; width: 100%; }
+            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+            nav.vertical-menu a { font-size: 0.75rem; }
+
+            .right-column { width: 100%; margin-left: 0; padding: 3rem 1.5rem; }
+            .header-section h1 { font-size: 14vw; text-align: center; }
+
+            .service-item { 
+                grid-template-columns: 1fr; 
+                gap: 0.5rem; 
+                padding: 2.5rem 0; 
+            }
+            .service-num { margin-bottom: 0.5rem; }
+            .service-content h2 { font-size: 1.4rem; }
+            .service-price { 
+                text-align: left; 
+                margin-top: 1rem; 
+                padding-left: 0;
+                font-size: 0.8rem;
+                color: var(--color-gold);
+            }
+
+            .stages-section { margin-top: 5rem; }
+            .stages-section h2 { font-size: 1.5rem; text-align: center; margin-bottom: 3rem; }
+            
+            .timeline-axis { 
+                flex-direction: column; 
+                border-top: none; 
+                gap: 0; 
+                padding-top: 0;
+            }
+            .timeline-step { 
+                flex: 1; 
+                border-left: 1px solid var(--color-gold); 
+                padding-left: 1.5rem; 
+                padding-bottom: 2.5rem; 
+                gap: 0.5rem; 
+                min-width: 100%; 
+            }
+            .step-line { display: none; }
+            .step-number { font-size: 0.7rem; }
+            .step-title { font-size: 0.85rem; color: var(--color-text-dark); }
+
+            .tech-footer { display: none; }
         }
     </style>
 </head>
@@ -197,7 +238,7 @@
             <div class="service-num">03/</div>
             <div class="service-content">
                 <h2>Projekt Wykonawczy</h2>
-                <p>Zawiera projekt koncepcyjny oraz dodatkowo pełną dokumentację techniczną, rysunki dla wykonawców, zestawienia materiałowe i kosztorys. Pakiet, który jest wybierany najczęściej przez klientów, przeprowadzi Cię od początku do końca projektu. Pełen spokój podczas realizacji.</p>
+                <p>Zawiera projekt koncepcyjny oraz dodatkowo pełną dokumentację techniczną, rysunki dla wykonawców, zestawienia materiałowe i kosztorys. Pakiet, który jest wybierany najczęściej przez klientów, przeprowadzi Cię od początku do końca projektu.</p>
             </div>
             <div class="service-price">OD 250 PLN / M2</div>
         </div>
@@ -217,7 +258,7 @@
                 <div class="timeline-step">
                     <span class="step-number">01</span>
                     <div class="step-line"></div>
-                    <span class="step-title">Rozpoznanie<br>potrzeb</span>
+                    <span class="step-title">Rozpoznanie potrzeb</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">02</span>
@@ -227,37 +268,37 @@
                 <div class="timeline-step">
                     <span class="step-number">03</span>
                     <div class="step-line"></div>
-                    <span class="step-title">Układ<br>funkcjonalny</span>
+                    <span class="step-title">Układ funkcjonalny</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">04</span>
                     <div class="step-line"></div>
-                    <span class="step-title">Modelowanie 3D<br>i wizualizacje</span>
+                    <span class="step-title">Modelowanie 3D i wizualizacje</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">05</span>
                     <div class="step-line"></div>
-                    <span class="step-title">Projekt<br>wykonawczy</span>
+                    <span class="step-title">Projekt wykonawczy</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">06</span>
                     <div class="step-line"></div>
-                    <span class="step-title">Dobór<br>materiałów</span>
+                    <span class="step-title">Dobór materiałów</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">07</span>
                     <div class="step-line"></div>
-                    <span class="step-title">Spis materiałów<br>i kosztorys</span>
+                    <span class="step-title">Spis materiałów i kosztorys</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">08</span>
                     <div class="step-line"></div>
-                    <span class="step-title">Ustalenia<br>z wykonawcami</span>
+                    <span class="step-title">Ustalenia z wykonawcami</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">09</span>
                     <div class="step-line"></div>
-                    <span class="step-title">Nadzór nad<br>realizacją</span>
+                    <span class="step-title">Nadzór nad realizacją</span>
                 </div>
             </div>
         </section>

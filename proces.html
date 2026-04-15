@@ -25,7 +25,7 @@
             overflow-x: hidden; 
         }
 
-        /* --- LEWA KOLUMNA (STAŁA: 35% + KRATKA) --- */
+        /* --- LEWA KOLUMNA (DESKTOP) --- */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -37,15 +37,14 @@
             flex-direction: column; 
             justify-content: flex-start; 
             padding: 4rem 3rem; 
-            z-index: 1; /* Kratka w tle */
+            z-index: 1000;
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
         .logo-link { text-decoration: none; color: inherit; }
-        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
+        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; color: var(--color-accent); }
         .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
 
-        /* MENU GŁÓWNE - IDENTYCZNE POŁOŻENIE (5rem) */
         nav.vertical-menu { margin-top: 5rem; }
         nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
         nav.vertical-menu a { 
@@ -54,12 +53,8 @@
             transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
             display: inline-block; 
         }
-        nav.vertical-menu a:hover, nav.vertical-menu a.active { 
-            color: var(--color-accent); 
-            transform: translateX(10px);
-        }
+        nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); transform: translateX(10px); }
 
-        /* SUB-NAV (AKTYWNY PROCES) */
         .nav-divider { height: 1px; width: 40px; background: rgba(0,0,0,0.1); margin: 2rem 0; }
         .side-sub-nav { list-style: none; }
         .side-sub-nav li { margin-bottom: 0.8rem; }
@@ -68,14 +63,11 @@
             text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s; 
             display: inline-block;
         }
-        .side-sub-nav a.active, .side-sub-nav a:hover { 
-            color: var(--color-text-dark); 
-            transform: translateX(5px);
-        }
+        .side-sub-nav a.active, .side-sub-nav a:hover { color: var(--color-text-dark); transform: translateX(5px); }
 
         .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; color: #666; line-height: 1.5; }
 
-        /* --- PRAWA KOLUMNA (WARSTWA NAD KRATKĄ) --- */
+        /* --- PRAWA KOLUMNA --- */
         .right-column {
             width: 65%;
             margin-left: 35%; 
@@ -115,27 +107,47 @@
 
         .step-content p { 
             font-size: 0.85rem; line-height: 1.8; color: #555; 
-            max-width: 550px; margin-bottom: 1rem;
+            max-width: 550px; margin-bottom: 1.5rem;
         }
 
-        .step-tags { display: flex; gap: 1rem; }
-        .tag { font-size: 0.6rem; text-transform: uppercase; background: #eee; padding: 4px 8px; color: #888; }
+        .step-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { font-size: 0.6rem; text-transform: uppercase; background: rgba(0,0,0,0.05); padding: 4px 10px; color: #888; letter-spacing: 0.05em; }
 
-        /* MOBI */
+        /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 850px) {
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; border-right: none; background-size: 66px 66px; z-index: 50; }
-            .nav-divider, .side-sub-nav { display: none; }
-            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
-            .process-header h1 { font-size: 12vw; }
-            .step-card { grid-template-columns: 1fr; gap: 1rem; }
+            body { overflow-y: auto; }
+            .left-column { 
+                width: 100%; height: auto; position: sticky; top: 0; 
+                padding: 1.5rem; align-items: center; border-right: none; 
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                background-size: 66px 66px; z-index: 1000;
+            }
+            nav.vertical-menu { margin-top: 1rem; width: 100%; }
+            nav.vertical-menu ul { 
+                flex-direction: row; flex-wrap: wrap; 
+                justify-content: center; gap: 1rem; 
+            }
+            nav.vertical-menu a { font-size: 0.75rem; }
+            nav.vertical-menu a:hover { transform: none; }
+            
+            .nav-divider, .side-sub-nav, .tech-footer { display: none; }
+
+            .right-column { width: 100%; margin-left: 0; padding: 3rem 1.5rem; }
+            
+            .process-header { margin-bottom: 3rem; text-align: center; }
+            .process-header h1 { font-size: 14vw; }
+
+            .steps-container { gap: 3rem; }
+            .step-card { grid-template-columns: 1fr; gap: 1rem; padding-top: 1.5rem; }
+            .step-num { font-size: 2rem; color: var(--color-gold); }
+            .step-content h2 { margin-bottom: 0.8rem; font-size: 1rem; }
+            .step-content p { font-size: 0.9rem; margin-bottom: 1rem; }
         }
     </style>
 </head>
 <body>
 
     <main class="layout-wrapper">
-        
         <aside class="left-column">
             <a href="index.html" class="logo-link">
                 <div class="small-logo"><span>dobrostan</span>STUDIO</div>
@@ -222,7 +234,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 
 </body>

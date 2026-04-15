@@ -25,7 +25,7 @@
             overflow-x: hidden; 
         }
 
-        /* --- LEWA KOLUMNA --- */
+        /* --- LEWA KOLUMNA (DESKTOP) --- */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -37,7 +37,7 @@
             flex-direction: column; 
             justify-content: flex-start; 
             padding: 4rem 3rem; 
-            z-index: 1;
+            z-index: 1000;
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
@@ -120,10 +120,9 @@
             color: #444;
         }
 
-        /* --- NOWA KONFIGURACJA ZDJĘCIA: DOPASOWANIE DO EKRANU --- */
         .detail-image-frame {
             width: 100%;
-            max-width: 1000px; /* Ograniczenie, by nie było za szerokie na monitorach 4K */
+            max-width: 1000px;
             border: 1px solid rgba(26, 26, 26, 0.15);
             padding: 10px;
             margin-bottom: 6rem;
@@ -135,9 +134,9 @@
 
         .detail-image {
             width: auto;
-            max-width: 100%;    /* Nigdy nie wyjdzie poza ramkę na szerokość */
-            max-height: 65vh;   /* ZAWSZE ZMIEŚCI SIĘ W EKRANIE (65% wysokości okna) */
-            height: auto;       /* Zachowuje proporcje */
+            max-width: 100%;
+            max-height: 65vh;
+            height: auto;
             display: block;
         }
 
@@ -176,46 +175,76 @@
             color: #666;
         }
 
+        /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 850px) {
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; border-right: none; }
-            .nav-divider, .side-sub-nav { display: none; }
-            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
-            .manifesto-title { font-size: 12vw; }
-            .detail-image-frame { margin-bottom: 3rem; }
-            .detail-image { max-height: 50vh; } /* Krótsze na telefonach */
-            .pillars-grid { grid-template-columns: 1fr; gap: 3rem; }
+            body { overflow-y: auto; }
+            .left-column { 
+                width: 100%; height: auto; position: sticky; top: 0; 
+                padding: 1.5rem; align-items: center; border-right: none; 
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                background-size: 66px 66px; z-index: 1000;
+            }
+            nav.vertical-menu { margin-top: 1rem; width: 100%; }
+            nav.vertical-menu ul { 
+                flex-direction: row; flex-wrap: wrap; 
+                justify-content: center; gap: 1rem; 
+            }
+            nav.vertical-menu a { font-size: 0.75rem; }
+            nav.vertical-menu a:hover { transform: none; }
+            
+            .nav-divider, .side-sub-nav, .tech-footer { display: none; }
+
+            .right-column { width: 100%; margin-left: 0; padding: 3rem 1.5rem; }
+            
+            .manifesto-title { 
+                font-size: 13vw; 
+                text-align: left; 
+                margin-bottom: 2rem;
+            }
+
+            .manifesto-intro { 
+                font-size: 0.95rem; 
+                margin-bottom: 3rem;
+            }
+
+            .detail-image-frame { margin-bottom: 3rem; padding: 5px; }
+            .detail-image { max-height: 45vh; } 
+
+            .pillars-grid { 
+                grid-template-columns: 1fr; 
+                gap: 3rem; 
+            }
+            
+            .pillar { padding-top: 1.5rem; }
+            .pillar-number { font-size: 1.5rem; margin-bottom: 1rem; }
         }
     </style>
 </head>
 <body>
 
     <main class="layout-wrapper">
-        
         <aside class="left-column">
             <a href="index.html" class="logo-link">
                 <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
             </a>
 
-            <div class="nav-container">
-                <nav class="vertical-menu">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="projekty.html">Projekty</a></li>
-                        <li><a href="oferta.html">Oferta</a></li>
-                        <li><a href="omnie.html" class="active">O mnie</a></li>
-                        <li><a href="kontakt.html">Kontakt</a></li>
-                    </ul>
-                </nav>
-
-                <div class="nav-divider"></div>
-
-                <ul class="side-sub-nav">
-                    <li><a href="omnie.html">01 // O MNIE</a></li>
-                    <li><a href="filozofia.html" class="active">02 // FILOZOFIA</a></li>
-                    <li><a href="proces.html">03 // PROCES</a></li>
+            <nav class="vertical-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projekty.html">Projekty</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="omnie.html" class="active">O mnie</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
                 </ul>
-            </div>
+            </nav>
+
+            <div class="nav-divider"></div>
+
+            <ul class="side-sub-nav">
+                <li><a href="omnie.html">01 // O MNIE</a></li>
+                <li><a href="filozofia.html" class="active">02 // FILOZOFIA</a></li>
+                <li><a href="proces.html">03 // PROCES</a></li>
+            </ul>
 
             <div class="tech-footer">
                 ESTD. 2024<br>
@@ -236,7 +265,7 @@
             </p>
 
             <div class="detail-image-frame">
-                <img src="detal.jpg" alt="Detal Architektoniczny" class="detail-image">
+                <img src="detal.jpg" alt="Detal Architektoniczny dobrostan STUDIO" class="detail-image">
             </div>
 
             <div class="pillars-grid">
