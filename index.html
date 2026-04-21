@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dobrostan STUDIO | Architektura i Dobrostan</title>
+    
+    <title>dobrostanSTUDIO* | Neuroarchitektura i Projektowanie Wnętrz | Siedlce, Warszawa</title>
+    <meta name="description" content="Projektuję świadome przestrzenie wspierające zdrowie i komfort. dobrostanSTUDIO to unikalne podejście do architektury wnętrz oparte na neurobiologii i psychologii.">
+    <meta name="keywords" content="architekt wnętrz Siedlce, projektowanie wnętrz Warszawa, neuroarchitektura, dobrostan, świadome wnętrza, Katarzyna Kryniewicz">
+    <meta name="author" content="dobrostanSTUDIO">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <meta property="og:title" content="dobrostanSTUDIO* | Architektura i Dobrostan">
+    <meta property="og:description" content="Odkryj, jak Twoje otoczenie wpływa na Twoje samopoczucie. Projektuję wnętrza wspierające biologię człowieka.">
+    <meta property="og:image" content="wnetrze.jpg">
+    <meta property="og:url" content="https://www.dobrostanstudio.pl">
+    <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@200;500;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
     <style>
         /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,7 +41,7 @@
             overflow-x: hidden;
         }
 
-        /* --- UKŁAD GŁÓWNY (DESKTOP) --- */
+        /* --- DESKTOP LAYOUT --- */
         .layout-wrapper {
             display: flex;
             min-height: 100vh;
@@ -34,7 +49,7 @@
             position: relative;
         }
 
-        /* --- LEWA KOLUMNA --- */
+        /* LEWA KOLUMNA */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -46,26 +61,13 @@
             flex-direction: column; 
             justify-content: flex-start; 
             padding: 4rem 3rem; 
-            z-index: 10;
+            z-index: 100;
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
         .logo-link { text-decoration: none; color: inherit; }
-        
-        .small-logo { 
-            font-family: 'Inter', sans-serif; 
-            font-weight: 900; 
-            font-size: 1.5rem; 
-            letter-spacing: -0.05em; 
-            color: var(--color-accent); 
-        }
-        .small-logo span { 
-            font-family: 'Playfair Display', serif; 
-            font-style: italic; 
-            font-weight: 400; 
-            color: var(--color-gold); 
-            margin-right: 0.1em; 
-        }
+        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; color: var(--color-accent); }
+        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
 
         nav.vertical-menu { margin-top: 5rem; }
         nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
@@ -83,11 +85,11 @@
 
         .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; line-height: 1.5; color: #666; }
 
-        /* --- PRAWA KOLUMNA --- */
+        /* PRAWA KOLUMNA */
         .right-column { width: 65%; height: 100vh; margin-left: 35%; position: relative; background-color: #000; z-index: 5; }
         .hero-image { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) contrast(1.1); opacity: 0.8; }
 
-        /* --- GŁÓWNY TYTUŁ --- */
+        /* TYTUŁY */
         .giant-title {
             position: absolute;
             top: 35%;
@@ -98,20 +100,14 @@
             font-size: 11vw; 
             line-height: 0.75;
             letter-spacing: -0.05em;
-            z-index: 100;
+            z-index: 110;
             pointer-events: none;
             color: var(--color-accent); 
         }
 
         .giant-title .dobro-font {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 400;
-            font-size: 0.45em; 
-            color: var(--color-gold);
-            display: block;
-            margin-bottom: 0.1em;
-            margin-left: 0.1em; 
+            font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; 
+            font-size: 0.45em; color: var(--color-gold); display: block; margin-bottom: 0.1em;
             letter-spacing: 0.05em;
         }
 
@@ -119,7 +115,7 @@
         .ticker-wrap {
             position: absolute; bottom: 20%; left: 0; width: 100vw; height: 60px;
             background-color: #1A1A1A; border-top: 1px solid #333; border-bottom: 1px solid #333;
-            display: flex; align-items: center; overflow: hidden; z-index: 110;
+            display: flex; align-items: center; overflow: hidden; z-index: 120;
         }
         .ticker-move { display: flex; white-space: nowrap; animation: ticker 25s linear infinite; }
         .ticker-item {
@@ -135,52 +131,34 @@
         .bio-block {
             position: absolute; bottom: 5%; left: 28%; width: 400px;
             background-color: var(--color-accent); color: var(--color-text-on-accent);
-            padding: 2.5rem 2rem; z-index: 120; box-shadow: 15px 15px 0px rgba(0,0,0,0.1);
+            padding: 2.5rem 2rem; z-index: 130; box-shadow: 15px 15px 0px rgba(0,0,0,0.1);
         }
         .bio-block p { font-size: 0.75rem; line-height: 1.7; margin-bottom: 1.5rem; }
         .bio-block a { display: inline-block; text-decoration: none; color: var(--color-text-on-accent); font-weight: 500; font-size: 0.75rem; border-bottom: 1px solid var(--color-text-on-accent); padding-bottom: 2px; transition: 0.3s; }
 
-        /* --- RWD: MOBILE OPTIMIZATION --- */
+        /* MOBILE OPTIMIZATION */
         @media (max-width: 850px) {
             body { overflow-y: auto; }
-            .layout-wrapper { flex-direction: column; height: auto; }
-
+            .layout-wrapper { flex-direction: column; }
             .left-column { 
-                width: 100%; height: auto; position: relative; 
-                padding: 2rem 1.5rem; align-items: center; text-align: center; 
-                background-size: 66px 66px; z-index: 10; border-right: none;
+                width: 100%; height: auto; position: sticky; top: 0; 
+                padding: 1.5rem; align-items: center; text-align: center; 
+                background-size: 66px 66px; z-index: 200; border-right: none;
                 border-bottom: 1px solid rgba(0,0,0,0.05);
             }
-
-            nav.vertical-menu { margin-top: 1.5rem; width: 100%; }
-            nav.vertical-menu ul { 
-                flex-direction: row; 
-                flex-wrap: wrap; 
-                justify-content: center; 
-                gap: 1rem; 
-            }
+            nav.vertical-menu { margin-top: 1rem; width: 100%; }
+            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
             nav.vertical-menu a { font-size: 0.75rem; }
-            nav.vertical-menu a:hover { transform: none; }
-
-            .tech-footer { margin-top: 1.5rem; font-size: 0.6rem; }
-
+            .tech-footer { display: none; }
             .right-column { width: 100%; height: 60vh; margin-left: 0; }
-            
             .giant-title { 
-                position: relative; 
-                top: auto; bottom: auto; left: 0; 
-                transform: none; padding: 3rem 1.5rem; 
-                font-size: 16vw; width: 100%; 
-                background-color: var(--color-bg);
+                position: relative; top: 0; transform: none; padding: 3rem 1.5rem; 
+                font-size: 16vw; width: 100%; background-color: var(--color-bg);
             }
-
-            .ticker-wrap { position: relative; bottom: auto; margin-top: 0; }
-
+            .ticker-wrap { position: relative; bottom: auto; }
             .bio-block { 
-                position: relative; width: 90%; 
-                margin: 2rem auto 4rem auto; 
-                left: auto; bottom: auto; 
-                box-shadow: 10px 10px 0px rgba(0,0,0,0.1); 
+                position: relative; width: 90%; margin: 2rem auto 4rem auto; 
+                left: auto; bottom: auto; box-shadow: 10px 10px 0px rgba(0,0,0,0.1); 
             }
         }
     </style>
@@ -188,32 +166,37 @@
 <body>
 
     <main class="layout-wrapper">
-        <aside class="left-column">
-            <a href="index.html" class="logo-link">
-                <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
-            </a>
-            <nav class="vertical-menu">
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="projekty.html">Projekty</a></li>
-                    <li><a href="oferta.html">Oferta</a></li>
-                    <li><a href="omnie.html">O mnie</a></li>
-                    <li><a href="kontakt.html">Kontakt</a></li>
-                </ul>
-            </nav>
-            <div class="tech-footer">ESTD. 2024<br>SIEDLCE / WARSZAWA, PL</div>
-        </aside>
+        <header>
+            <aside class="left-column">
+                <a href="index.html" class="logo-link" title="dobrostanSTUDIO Home">
+                    <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
+                </a>
+                <nav class="vertical-menu" aria-label="Menu główne">
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="projekty.html">Projekty</a></li>
+                        <li><a href="oferta.html">Oferta</a></li>
+                        <li><a href="omnie.html">O mnie</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </nav>
+                <div class="tech-footer">
+                    ESTD. 2024<br>
+                    SIEDLCE / WARSZAWA, PL
+                </div>
+            </aside>
+        </header>
 
-        <div class="right-column">
-            <img src="wnetrze.jpg" alt="dobrostan STUDIO" class="hero-image">
-        </div>
+        <article class="right-column">
+            <img src="wnetrze.jpg" alt="Projekt wnętrza w duchu neuroarchitektury - dobrostanSTUDIO" class="hero-image">
+        </article>
 
         <h1 class="giant-title">
             <span class="dobro-font">dobrostan</span>
             STUDIO*
         </h1>
 
-        <div class="ticker-wrap">
+        <div class="ticker-wrap" aria-hidden="true">
             <div class="ticker-move">
                 <div class="ticker-item">Neuroarchitektura</div>
                 <div class="ticker-item">Dobrostan</div>
@@ -226,10 +209,10 @@
             </div>
         </div>
 
-        <div class="bio-block">
-            <p>W swoich projektach podkreślam, że otoczenie ma znaczenie. Doradzam jak tworzyć design, który poprawia komfort życia, efektywność i nasz szeroko pojęty dobrostan. Moim celem jest projektowanie przestrzeni aby była wspierająca, może duże słowo ale czasem również uzdrawiająca.</p>
-            <a href="omnie.html">ZOBACZ PROFIL &rarr;</a>
-        </div>
+        <section class="bio-block">
+            <p>W swoich projektach podkreślam, że otoczenie ma znaczenie. Doradzam jak tworzyć design, który poprawia komfort życia, efektywność i nasz szeroko pojęty dobrostan. Moim celem jest projektowanie przestrzeni, która jest wspierająca i uzdrawiająca.</p>
+            <a href="omnie.html" title="Dowiedz się więcej o Katarzynie Kryniewicz">ZOBACZ PROFIL &rarr;</a>
+        </section>
     </main>
 
 </body>

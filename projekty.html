@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dobrostan STUDIO | Projekty</title>
+    
+    <title>Portfolio Projektów | dobrostanSTUDIO* | Architektura Wnętrz</title>
+    <meta name="description" content="Poznaj realizacje dobrostanSTUDIO. Projekty wnętrz oparte na neuroarchitekturze i dobrostanie. Siedlce, Warszawa i cała Polska.">
+    <meta name="keywords" content="portfolio architekt wnętrz, neuroarchitektura projekty, architektura wnętrz Siedlce, projektowanie wnętrz Warszawa">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <meta property="og:title" content="Projekty | dobrostanSTUDIO*">
+    <meta property="og:description" content="Zestawienie projektów wnętrz wspierających biologię i psychologię człowieka.">
+    <meta property="og:image" content="Projekty/BODEGA/main.png">
+
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    
     <style>
         /* --- RESET & VARIABLES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,7 +49,7 @@
             flex-direction: column; 
             justify-content: flex-start; 
             padding: 4rem 3rem; 
-            z-index: 10;
+            z-index: 100;
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
@@ -151,14 +163,14 @@
         /* --- MODAL GALERII --- */
         .gallery-overlay { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
-            background: var(--color-bg); z-index: 200; display: none; 
+            background: var(--color-bg); z-index: 2000; display: none; 
             overflow-y: auto; padding: 6rem 0; 
         }
         .gallery-overlay.active { display: block; }
         
         .close-gallery { 
             position: fixed; top: 2rem; right: 2rem; font-size: 0.7rem; 
-            cursor: pointer; border-bottom: 1px solid; z-index: 300; 
+            cursor: pointer; border-bottom: 1px solid; z-index: 2100; 
             text-transform: uppercase; background: var(--color-bg); padding: 5px;
         }
 
@@ -181,10 +193,10 @@
         /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 850px) {
             .left-column { 
-                width: 100%; height: auto; position: relative; 
+                width: 100%; height: auto; position: sticky; top: 0; 
                 padding: 1.5rem; border-right: none; align-items: center; 
                 border-bottom: 1px solid rgba(0,0,0,0.05);
-                background-size: 66px 66px;
+                background-size: 66px 66px; z-index: 1000;
             }
 
             nav.vertical-menu { margin-top: 1rem; width: 100%; }
@@ -196,13 +208,12 @@
             nav.vertical-menu a:hover { transform: none; }
 
             .right-column { width: 100%; margin-left: 0; padding: 3rem 1.5rem; }
-            
             .portfolio-header { margin-bottom: 3rem; text-align: center; }
             .portfolio-header h1 { font-size: 14vw; }
             
             .project-item { margin-bottom: 5rem; align-items: flex-start !important; }
             .project-image-wrapper { width: 100%; padding: 10px; }
-            .project-image { height: 300px; filter: grayscale(0%); } /* Na mobile zdjęcia są od razu w kolorze */
+            .project-image { height: 300px; filter: grayscale(0%); }
             
             .project-title { 
                 position: relative; bottom: 0; left: 0 !important; right: 0 !important;
@@ -211,31 +222,31 @@
             }
             
             .project-meta { margin-top: 0.5rem; font-size: 0.6rem; }
-
             .modal-image-wrapper { width: 95%; padding: 8px; margin-bottom: 2rem; }
             .close-gallery { right: 1rem; top: 1rem; }
-            
             .tech-footer { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <aside class="left-column">
-        <a href="index.html" class="logo-link">
-            <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
-        </a>
-        <nav class="vertical-menu">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projekty.html" class="active">Projekty</a></li>
-                <li><a href="oferta.html">Oferta</a></li>
-                <li><a href="omnie.html">O mnie</a></li>
-                <li><a href="kontakt.html">Kontakt</a></li>
-            </ul>
-        </nav>
-        <div class="tech-footer">SIEDLCE / WARSZAWA, PL</div>
-    </aside>
+    <header>
+        <aside class="left-column">
+            <a href="index.html" class="logo-link">
+                <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
+            </a>
+            <nav class="vertical-menu" aria-label="Menu nawigacyjne">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projekty.html" class="active">Projekty</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="omnie.html">O mnie</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="tech-footer">SIEDLCE / WARSZAWA, PL</div>
+        </aside>
+    </header>
 
     <main class="right-column">
         <header class="portfolio-header">
@@ -243,41 +254,41 @@
             <span class="portfolio-hint">KLIKNIJ W OBRAZ, BY OTWORZYĆ GALERIĘ</span>
         </header>
 
-        <div class="project-item align-left" onclick="autoGallery('BODEGA', 8)">
+        <article class="project-item align-left" onclick="autoGallery('BODEGA', 8, 'Restauracja Bodega Sopot')">
             <div class="project-image-wrapper">
-                <img src="Projekty/BODEGA/main.png" class="project-image" onerror="handleImageError(this)">
+                <img src="Projekty/BODEGA/main.png" alt="Projekt restauracji Bodega Sopot - dobrostanSTUDIO" class="project-image" onerror="handleImageError(this)">
                 <h2 class="project-title"><span class="dobro-font">restauracja</span>BODEGA</h2>
             </div>
             <div class="project-meta">SOPOT / KOMERCYJNE</div>
-        </div>
+        </article>
 
-        <div class="project-item align-right" onclick="autoGallery('BOHO', 6)">
+        <article class="project-item align-right" onclick="autoGallery('BOHO', 6, 'Apartament Boho Warszawa')">
             <div class="project-image-wrapper">
-                <img src="Projekty/BOHO/main.png" class="project-image" onerror="handleImageError(this)">
+                <img src="Projekty/BOHO/main.png" alt="Apartament Boho Warszawa - projekt wnętrz dobrostanSTUDIO" class="project-image" onerror="handleImageError(this)">
                 <h2 class="project-title"><span class="dobro-font">apartament</span>BOHO</h2>
             </div>
             <div class="project-meta">WARSZAWA / PRYWATNE</div>
-        </div>
+        </article>
 
-        <div class="project-item align-left" onclick="autoGallery('DOBROSTAN', 10)">
+        <article class="project-item align-left" onclick="autoGallery('DOBROSTAN', 10, 'Wnętrze Dobrostan Siedlce')">
             <div class="project-image-wrapper">
-                <img src="Projekty/DOBROSTAN/main.png" class="project-image" onerror="handleImageError(this)">
+                <img src="Projekty/DOBROSTAN/main.png" alt="Studio projektowe dobrostanSTUDIO Siedlce" class="project-image" onerror="handleImageError(this)">
                 <h2 class="project-title"><span class="dobro-font">wnętrze</span>DOBROSTAN</h2>
             </div>
             <div class="project-meta">SIEDLCE / STUDIO</div>
-        </div>
+        </article>
 
-        <div class="project-item align-right" onclick="autoGallery('SKOSY', 9)">
+        <article class="project-item align-right" onclick="autoGallery('SKOSY', 9, 'Poddasze Skosy Warszawa')">
             <div class="project-image-wrapper">
-                <img src="Projekty/SKOSY/main.png" class="project-image" onerror="handleImageError(this)">
+                <img src="Projekty/SKOSY/main.png" alt="Projekt poddasza Skosy Warszawa - architektura wnętrz" class="project-image" onerror="handleImageError(this)">
                 <h2 class="project-title"><span class="dobro-font">poddasze</span>SKOSY</h2>
             </div>
             <div class="project-meta">WARSZAWA / PRYWATNE</div>
-        </div>
+        </article>
         
     </main>
 
-    <div id="gallery-modal" class="gallery-overlay">
+    <div id="gallery-modal" class="gallery-overlay" aria-modal="true" role="dialog">
         <div class="close-gallery" onclick="closeGallery()">ZAMKNIJ (X)</div>
         <div class="gallery-content" id="gallery-images"></div>
     </div>
@@ -288,7 +299,8 @@
             return true;
         }
 
-        function autoGallery(folder, imageCount) {
+        // Dodany parametr description dla SEO obrazów w galerii
+        function autoGallery(folder, imageCount, description) {
             const galleryImages = document.getElementById('gallery-images');
             galleryImages.innerHTML = '';
             document.getElementById('gallery-modal').scrollTop = 0;
@@ -299,6 +311,8 @@
 
                 const img = document.createElement('img');
                 img.src = `Projekty/${folder}/${i}.png`;
+                img.alt = `${description} - Realizacja ${i} | dobrostanSTUDIO`;
+                
                 img.onerror = function() { 
                     if (this.src.includes('.png')) this.src = this.src.replace('.png', '.jpg'); 
                 };
