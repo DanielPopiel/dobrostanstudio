@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekty | dobrostanSTUDIO*</title>
+    
+    <title>Projekty | dobrostanSTUDIO* | Portfolio Architektury Wnętrz</title>
+    <meta name="description" content="Poznaj realizacje dobrostanSTUDIO. Świadome projektowanie wnętrz oparte na neuroarchitekturze.">
+    
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    
     <style>
         /* --- RESET & VARIABLES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,13 +44,35 @@
 
         nav.vertical-menu { margin-top: 5rem; }
         nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
-        nav.vertical-menu a { text-decoration: none; color: var(--color-text-dark); font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; transition: 0.3s; }
+        nav.vertical-menu a { text-decoration: none; color: var(--color-text-dark); font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; transition: 0.3s; display: inline-block; }
+        
+        /* Poprawka: aktywny link i hover teraz odstawiają w prawo o 10px */
         nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); transform: translateX(10px); }
 
+        /* --- CONTENT COLUMN --- */
         .right-column { width: 65%; margin-left: 35%; padding: 6rem 5% 10rem 5%; min-height: 100vh; position: relative; z-index: 5; }
-        .portfolio-header { margin-bottom: 5rem; display: flex; flex-direction: column; }
+        
+        .portfolio-header { 
+            margin-bottom: 5rem; 
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Wyrównanie do lewej dla całości sekcji */
+        }
         .portfolio-header h1 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 4.5vw; text-transform: uppercase; color: var(--color-accent); line-height: 1; }
-        .gallery-instruction { align-self: flex-end; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-dark); margin-top: 1rem; opacity: 0.7; font-weight: 500; border-bottom: 1px solid var(--color-gold); padding-bottom: 3px; }
+        
+        /* Poprawka: Napis wyrównany pod napisem PROJEKTY */
+        .gallery-instruction {
+            align-self: flex-start; 
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-text-dark);
+            margin-top: 1rem;
+            opacity: 0.7;
+            font-weight: 500;
+            border-bottom: 1px solid var(--color-gold);
+            padding-bottom: 3px;
+        }
 
         /* --- PROJECTS --- */
         .project-item { position: relative; margin-bottom: 8rem; cursor: pointer; display: flex; flex-direction: column; width: 100%; }
@@ -65,15 +93,17 @@
         .gallery-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--color-bg); z-index: 2000; display: none; overflow-y: auto; padding: 6rem 0; }
         .gallery-overlay.active { display: block; }
         .close-gallery { position: fixed; top: 2rem; right: 2rem; font-size: 0.7rem; cursor: pointer; border-bottom: 1px solid; z-index: 2100; text-transform: uppercase; background: var(--color-bg); padding: 5px; }
-        .modal-image-wrapper { width: 80%; max-width: 900px; margin: 0 auto 4rem auto; padding: 15px; border: 1px solid rgba(26, 26, 26, 0.15); display: block; }
+        .modal-image-wrapper { width: 80%; max-width: 900px; margin: 0 auto 4rem auto; padding: 15px; border: 1px solid rgba(26, 26, 26, 0.15); }
         .modal-image-wrapper img { width: 100%; display: block; }
 
         @media (max-width: 850px) {
-            .left-column { width: 100%; height: auto; position: sticky; top: 0; padding: 1.5rem; align-items: center; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; }
+            .left-column { width: 100%; height: auto; position: sticky; top: 0; padding: 1.5rem; align-items: center; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); background-size: 66px 66px; z-index: 1000; }
             nav.vertical-menu { margin-top: 1rem; width: 100%; }
             nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+            nav.vertical-menu a:hover, nav.vertical-menu a.active { transform: none; } /* Usuwamy przesunięcie na mobile dla czytelności */
             .right-column { width: 100%; margin-left: 0; padding: 3rem 1.5rem; }
             .portfolio-header h1 { font-size: 14vw; }
+            .gallery-instruction { align-self: flex-start; font-size: 0.55rem; }
             .project-image { height: 350px; filter: grayscale(0%); }
             .project-title { position: relative; font-size: 10vw; left: 0 !important; right: 0 !important; margin-top: 1rem; white-space: normal; }
             .project-image-wrapper { width: 100%; }
@@ -111,48 +141,41 @@
         <article class="project-item align-right" onclick="openGallery('BOHO', 'Boho')">
             <div class="project-image-wrapper">
                 <img src="Projekty/BOHO/main.webp" alt="Boho" class="project-image" loading="lazy">
-                <h2 class="project-title"><span class="city-font">apartament</span>BOHO</h2>
+                <h2 class="project-title"><span class="city-font">siedlce</span>BOHO CHIC</h2>
             </div>
         </article>
 
-        <article class="project-item align-left" onclick="openGallery('DOBROSTAN', 'Dobrostan')">
-            <div class="project-image-wrapper">
-                <img src="Projekty/DOBROSTAN/main.webp" alt="Dobrostan" class="project-image" loading="lazy">
-                <h2 class="project-title"><span class="city-font">wnętrze</span>DOBROSTAN</h2>
-            </div>
-        </article>
-
-        <article class="project-item align-right" onclick="openGallery('ESSENCE', 'Essence')">
+        <article class="project-item align-left" onclick="openGallery('ESSENCE', 'Essence')">
             <div class="project-image-wrapper">
                 <img src="Projekty/ESSENCE/main.webp" alt="Essence" class="project-image" loading="lazy">
                 <h2 class="project-title"><span class="city-font">poznań</span>ESSENCE</h2>
             </div>
         </article>
 
-        <article class="project-item align-left" onclick="openGallery('FORMA', 'Forma')">
+        <article class="project-item align-right" onclick="openGallery('FORMA', 'Forma')">
             <div class="project-image-wrapper">
                 <img src="Projekty/FORMA/main.webp" alt="Forma" class="project-image" loading="lazy">
                 <h2 class="project-title"><span class="city-font">warszawa</span>FORMA</h2>
             </div>
         </article>
 
-        <article class="project-item align-right" onclick="openGallery('NOWO', 'Nowo')">
+        <article class="project-item align-left" onclick="openGallery('NOWO', 'Nowo')">
             <div class="project-image-wrapper">
                 <img src="Projekty/NOWO/main.webp" alt="Nowo" class="project-image" loading="lazy">
                 <h2 class="project-title"><span class="city-font">warszawa</span>NOWO</h2>
             </div>
         </article>
 
-        <article class="project-item align-left" onclick="openGallery('SENTIENT', 'Sentient')">
+        <article class="project-item align-right" onclick="openGallery('SENTIENT', 'Sentient')">
             <div class="project-image-wrapper">
-                <img src="Projekty/SENTIENT/main.webp" alt="Sentient" class="project-image" loading="lazy">
+                <img src="Projekty/SENTIENT/main.webp" alt="Sentient Siedlce" class="project-image" loading="lazy">
                 <h2 class="project-title"><span class="city-font">siedlce</span>SENTIENT</h2>
             </div>
         </article>
 
-        <article class="project-item align-right" onclick="openGallery('SKOSY', 'Skosy')">
+        <article class="project-item align-left" onclick="openGallery('SKOSY', 'Skosy')">
             <div class="project-image-wrapper">
-                <img src="Projekty/SKOSY/main.webp" alt="Skosy" class="project-image" loading="lazy">
+                <img src="Projekty/SKOSY/main.webp" alt="Skosy Warszawa" class="project-image" loading="lazy">
                 <h2 class="project-title"><span class="city-font">warszawa</span>SKOSY</h2>
             </div>
         </article>
@@ -167,31 +190,23 @@
     <script>
         function openGallery(folder, desc) {
             const galleryImages = document.getElementById('gallery-images');
-            galleryImages.innerHTML = ''; 
-            
-            // Pętla próbuje załadować do 30 zdjęć
+            galleryImages.innerHTML = '';
             for (let i = 1; i <= 30; i++) {
                 const wrapper = document.createElement('div');
                 wrapper.className = 'modal-image-wrapper';
-                
                 const img = document.createElement('img');
                 img.src = `Projekty/${folder}/${i}.webp`;
                 img.alt = `${desc} - ${i}`;
                 img.loading = "lazy";
-                
-                // Kluczowa poprawka: jeśli zdjęcie nie istnieje, usuwamy całą ramkę
                 img.onerror = function() {
                     this.parentElement.style.display = 'none';
                 };
-                
                 wrapper.appendChild(img);
                 galleryImages.appendChild(wrapper);
             }
-
             document.getElementById('gallery-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
         function closeGallery() {
             document.getElementById('gallery-modal').classList.remove('active');
             document.body.style.overflow = 'auto';
