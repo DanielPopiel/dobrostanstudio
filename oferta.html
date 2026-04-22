@@ -5,28 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Oferta Projektowa | dobrostanSTUDIO* | Konsultacje i Projekty Wnętrz</title>
-    <meta name="description" content="Sprawdź ofertę dobrostanSTUDIO. Oferujemy profesjonalne projekty koncepcyjne, wykonawcze oraz konsultacje z zakresu neuroarchitektury w Siedlcach i Warszawie.">
-    <meta name="keywords" content="cennik projektant wnętrz Siedlce, projekty wnętrz Warszawa oferta, konsultacje architektoniczne, etapy projektu wnętrz">
+    <meta name="description" content="Profesjonalne projekty koncepcyjne i wykonawcze oparte na neuroarchitekturze. Sprawdź cennik i etapy współpracy z dobrostanSTUDIO w Siedlcach i Warszawie.">
+    <meta name="keywords" content="cennik projektant wnętrz Siedlce, projekty wnętrz Warszawa oferta, konsultacje architektoniczne, etapy projektu wnętrz, neuroarchitektura cena">
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
 
-    <meta property="og:title" content="Oferta i Proces Projektowy | dobrostanSTUDIO*">
-    <meta property="og:description" content="Kompleksowe wsparcie w tworzeniu przestrzeni wspierającej dobrostan.">
-    <meta property="og:type" content="website">
-
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     
-    <style>
-        /* --- RESET --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Projektowanie Wnętrz",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "dobrostanSTUDIO*"
+      },
+      "areaServed": ["Siedlce", "Warszawa"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Usługi Projektowe",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Konsultacje projektowe" }, "price": "250", "priceCurrency": "PLN" },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Projekt Koncepcyjny" }, "price": "150", "priceCurrency": "PLN" }
+        ]
+      }
+    }
+    </script>
 
+    <style>
+        /* --- RESET & VARIABLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --color-bg: #F4F4F2; 
             --color-text-dark: #1A1A1A;
             --color-accent: #50344f; 
             --color-gold: #b9a646; 
-            --grid-color: rgba(0, 0, 0, 0.1); 
+            --grid-color: rgba(0, 0, 0, 0.07); 
         }
 
         body {
@@ -35,6 +51,7 @@
             color: var(--color-text-dark);
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            line-height: 1.5;
         }
 
         /* --- LEWA KOLUMNA (DESKTOP) --- */
@@ -45,11 +62,7 @@
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 132px 132px;
-            display: flex; 
-            flex-direction: column; 
-            justify-content: flex-start;
-            padding: 4rem 3rem; 
-            z-index: 1000;
+            display: flex; flex-direction: column; padding: 4rem 3rem; z-index: 1000;
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
@@ -69,229 +82,186 @@
         .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; color: #666; line-height: 1.5; }
 
         /* --- PRAWA KOLUMNA --- */
-        .right-column { width: 65%; margin-left: 35%; padding: 6rem 8% 10rem 8%; min-height: 100vh; }
-
-        .header-section { margin-bottom: 2.5rem; }
+        .right-column { width: 65%; margin-left: 35%; padding: 6rem 8% 10rem 8%; min-height: 100vh; position: relative; z-index: 5; }
+        .header-section { margin-bottom: 4rem; }
         .header-section h1 { 
             font-family: 'Inter', sans-serif; font-weight: 900; 
             font-size: 4.5vw; text-transform: uppercase; 
             color: var(--color-accent); letter-spacing: -0.02em;
         }
-        .header-section h1 span.gold-asterisk { color: var(--color-gold); }
 
         /* USŁUGI */
         .service-item {
             border-bottom: 1px solid rgba(0,0,0,0.1);
-            padding: 3rem 0;
+            padding: 3.5rem 0;
             display: grid;
-            grid-template-columns: 80px 1fr 220px;
+            grid-template-columns: 60px 1fr 240px;
+            gap: 2rem;
             align-items: start;
         }
-        .service-num { font-size: 0.75rem; color: var(--color-gold); font-weight: 500; } 
-        
+        .service-num { font-size: 0.75rem; color: var(--color-gold); font-weight: 600; padding-top: 0.5rem; } 
         .service-content h2 { 
             font-family: 'Inter', sans-serif; font-weight: 700; 
-            font-size: 1.8rem; text-transform: uppercase; margin-bottom: 1rem;
+            font-size: 1.7rem; text-transform: uppercase; margin-bottom: 1rem; color: var(--color-accent);
         }
-        .service-content p { font-size: 0.9rem; line-height: 1.6; color: #555; max-width: 500px; }
-        
+        .service-content p { font-size: 0.95rem; line-height: 1.7; color: #444; max-width: 550px; }
         .service-price { 
             text-align: right; font-family: 'Inter', sans-serif; 
-            font-weight: 900; font-size: 0.9rem; color: var(--color-accent);
+            font-weight: 900; font-size: 1rem; color: var(--color-text-dark);
+            letter-spacing: 0.05em; padding-top: 0.5rem;
         }
 
         /* --- ETAPY PROJEKTU --- */
-        .stages-section { margin-top: 8rem; }
+        .stages-section { margin-top: 10rem; }
         .stages-section h2 { 
-            font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2rem; 
+            font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.2rem; 
             text-transform: uppercase; color: var(--color-gold); 
-            margin-bottom: 4rem; 
+            margin-bottom: 5rem; 
         }
 
         .timeline-axis {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            overflow-x: auto;
-            gap: 40px;
+            display: flex; justify-content: flex-start;
+            padding-top: 2rem; padding-bottom: 3rem;
+            border-top: 2px solid var(--color-accent);
+            overflow-x: auto; gap: 50px; scrollbar-width: thin;
         }
-
         .timeline-axis::-webkit-scrollbar { height: 4px; }
-        .timeline-axis::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); }
-        .timeline-axis::-webkit-scrollbar-thumb { background: var(--color-accent); }
+        .timeline-axis::-webkit-scrollbar-thumb { background: var(--color-gold); }
 
-        .timeline-step { flex: 0 0 160px; display: flex; flex-direction: column; gap: 1.5rem; }
-        .step-number {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.8rem; font-weight: 500;
-            color: var(--color-accent);
-        }
+        .timeline-step { flex: 0 0 180px; display: flex; flex-direction: column; gap: 1.5rem; }
+        .step-number { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 600; color: var(--color-gold); }
+        .step-title { font-size: 0.75rem; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.08em; color: #222; font-weight: 700; }
 
-        .step-line { width: 100%; height: 1px; background-color: rgba(0,0,0,0.1); position: relative; }
-        .timeline-step:first-child .step-line::after {
-            content: ""; position: absolute; top: 0; left: 0;
-            width: 100%; height: 2px; background-color: var(--color-text-dark);
-        }
-
-        .step-title { font-size: 0.7rem; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.05em; color: #444; font-weight: 500; }
-
-        /* --- MOBILE --- */
+        /* --- MOBILE (UJEDNOLICONE) --- */
         @media (max-width: 850px) {
             .left-column { 
                 width: 100%; height: auto; position: sticky; top: 0; 
-                padding: 1.5rem; align-items: center; text-align: center; 
-                background-size: 66px 66px; border-right: none;
-                border-bottom: 1px solid rgba(0,0,0,0.05);
-                z-index: 1000;
+                padding: 1.5rem; align-items: center; border-right: none;
+                border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000;
             }
             nav.vertical-menu { margin-top: 1rem; width: 100%; }
-            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+            nav.vertical-menu ul { 
+                flex-direction: row; flex-wrap: wrap; 
+                justify-content: center; gap: 1rem; /* Zgodne z resztą podstron */
+            }
             nav.vertical-menu a { font-size: 0.75rem; }
+            .tech-footer { display: none; }
 
-            .right-column { width: 100%; margin-left: 0; padding: 3rem 1.5rem; }
+            .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
             .header-section h1 { font-size: 14vw; text-align: center; }
 
-            .service-item { 
-                grid-template-columns: 1fr; 
-                gap: 0.5rem; 
-                padding: 2.5rem 0; 
-            }
-            .service-price { 
-                text-align: left; 
-                margin-top: 1rem; 
-                color: var(--color-gold);
-            }
+            .service-item { grid-template-columns: 1fr; gap: 0.8rem; padding: 3rem 0; }
+            .service-price { text-align: left; font-size: 1.1rem; color: var(--color-gold); }
 
-            .stages-section h2 { font-size: 1.5rem; text-align: center; }
-            
-            .timeline-axis { 
-                flex-direction: column; 
-                border-top: none; 
-                gap: 0; 
-            }
+            .stages-section h2 { font-size: 1.8rem; text-align: left; margin-bottom: 3rem; }
+            .timeline-axis { flex-direction: column; border-top: none; gap: 0; overflow-x: visible; }
             .timeline-step { 
-                flex: 1; 
-                border-left: 1px solid var(--color-gold); 
-                padding-left: 1.5rem; 
-                padding-bottom: 2.5rem; 
-                min-width: 100%; 
+                flex: 1; border-left: 2px solid var(--color-gold); 
+                padding-left: 2rem; padding-bottom: 3rem; min-width: 100%; 
+                position: relative;
             }
-            .step-line { display: none; }
-            .tech-footer { display: none; }
+            .timeline-step::before {
+                content: ""; position: absolute; left: -6px; top: 0;
+                width: 10px; height: 10px; background: var(--color-accent); border-radius: 50%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <aside class="left-column">
-            <a href="index.html" class="logo-link">
-                <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
-            </a>
-            <nav class="vertical-menu" aria-label="Główne menu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="projekty.html">Projekty</a></li>
-                    <li><a href="oferta.html" class="active">Oferta</a></li>
-                    <li><a href="omnie.html">O mnie</a></li>
-                    <li><a href="kontakt.html">Kontakt</a></li>
-                </ul>
-            </nav>
-            <div class="tech-footer">ESTD. 2024<br>ARCHITECTURE & WELL-BEING<br>SIEDLCE / WARSZAWA</div>
-        </aside>
-    </header>
+    <aside class="left-column">
+        <a href="index.html" class="logo-link">
+            <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
+        </a>
+        <nav class="vertical-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projekty.html">Projekty</a></li>
+                <li><a href="oferta.html" class="active">Oferta</a></li>
+                <li><a href="omnie.html">O mnie</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+        <div class="tech-footer">ESTD. 2024<br>ARCHITECTURE & WELL-BEING<br>SIEDLCE / WARSZAWA</div>
+    </aside>
 
     <main class="right-column">
         <header class="header-section">
-            <h1>OFERTA<span class="gold-asterisk">*</span></h1>
+            <h1>OFERTA*</h1>
         </header>
 
-        <article class="service-item">
-            <div class="service-num">01/</div>
-            <div class="service-content">
-                <h2>Konsultacje projektowe</h2>
-                <p>Szybkie wsparcie projektowe. Analiza układu funkcjonalnego, dobór kolorystyki lub pomoc w wyborze materiałów wykończeniowych dla Twojego wnętrza.</p>
-            </div>
-            <div class="service-price">250 PLN / H</div>
-        </article>
+        <section aria-label="Lista usług">
+            <article class="service-item">
+                <div class="service-num">01/</div>
+                <div class="service-content">
+                    <h2>Konsultacje projektowe</h2>
+                    <p>Idealne rozwiązanie, gdy potrzebujesz szybkiej porady. Analizujemy Twój obecny układ funkcjonalny i dobieramy oświetlenie w oparciu o psychologię koloru.</p>
+                </div>
+                <div class="service-price">250 PLN / GODZ.</div>
+            </article>
 
-        <article class="service-item">
-            <div class="service-num">02/</div>
-            <div class="service-content">
-                <h2>Projekt Koncepcyjny</h2>
-                <p>Układ funkcjonalny w 2-3 wariantach, moodboardy oraz fotorealistyczne wizualizacje 3D. Fundament Twojego przyszłego dobrostanu.</p>
-            </div>
-            <div class="service-price">OD 150 PLN / M2</div>
-        </article>
+            <article class="service-item">
+                <div class="service-num">02/</div>
+                <div class="service-content">
+                    <h2>Projekt Koncepcyjny</h2>
+                    <p>Opracowanie układu funkcjonalnego w 2-3 rzutach, moodboardy oraz fotorealistyczne wizualizacje 3D. Skupiamy się na Twoim samopoczuciu.</p>
+                </div>
+                <div class="service-price">OD 150 PLN / M²</div>
+            </article>
 
-        <article class="service-item">
-            <div class="service-num">03/</div>
-            <div class="service-content">
-                <h2>Projekt Wykonawczy</h2>
-                <p>Pełna dokumentacja techniczna, rysunki dla wykonawców, zestawienia materiałowe i kosztorys. Kompleksowy pakiet zapewniający pełen spokój podczas realizacji.</p>
-            </div>
-            <div class="service-price">OD 250 PLN / M2</div>
-        </article>
+            <article class="service-item">
+                <div class="service-num">03/</div>
+                <div class="service-content">
+                    <h2>Projekt Wykonawczy</h2>
+                    <p>Pełna teczka techniczna dla wykonawców. Zawiera rzuty instalacji, detale meblowe, zestawienia materiałów oraz kosztorys.</p>
+                </div>
+                <div class="service-price">OD 250 PLN / M²</div>
+            </article>
 
-        <article class="service-item">
-            <div class="service-num">04/</div>
-            <div class="service-content">
-                <h2>Nadzór Autorski</h2>
-                <p>Osobista kontrola nad realizacją projektu na budowie. Dbałość o każdy detal i pełna zgodność z przygotowaną dokumentacją.</p>
-            </div>
-            <div class="service-price">WYCENA INDYWIDUALNA</div>
-        </article>
+            <article class="service-item">
+                <div class="service-num">04/</div>
+                <div class="service-content">
+                    <h2>Nadzór Autorski</h2>
+                    <p>Zdejmuję ciężar budowy z Twoich barków. Pilnuję zgodności prac z projektem i koordynuję dostawy na miejscu realizacji.</p>
+                </div>
+                <div class="service-price">WYCENA INDYWIDUALNA</div>
+            </article>
+        </section>
 
         <section class="stages-section">
             <h2>ETAPY PROJEKTU</h2>
             <div class="timeline-axis">
                 <div class="timeline-step">
                     <span class="step-number">01</span>
-                    <div class="step-line"></div>
                     <span class="step-title">Rozpoznanie potrzeb</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">02</span>
-                    <div class="step-line"></div>
                     <span class="step-title">Inwentaryzacja</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">03</span>
-                    <div class="step-line"></div>
-                    <span class="step-title">Układ funkcjonalny</span>
+                    <span class="step-title">Koncepcja funkcjonalna</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">04</span>
-                    <div class="step-line"></div>
-                    <span class="step-title">Modelowanie 3D i wizualizacje</span>
+                    <span class="step-title">Wizualizacje 3D</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">05</span>
-                    <div class="step-line"></div>
-                    <span class="step-title">Projekt wykonawczy</span>
+                    <span class="step-title">Dokumentacja techniczna</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">06</span>
-                    <div class="step-line"></div>
-                    <span class="step-title">Dobór materiałów</span>
+                    <span class="step-title">Zestawienia i kosztorys</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">07</span>
-                    <div class="step-line"></div>
-                    <span class="step-title">Kosztorys materiałowy</span>
+                    <span class="step-title">Finalizacja projektu</span>
                 </div>
                 <div class="timeline-step">
                     <span class="step-number">08</span>
-                    <div class="step-line"></div>
-                    <span class="step-title">Ustalenia wykonawcze</span>
-                </div>
-                <div class="timeline-step">
-                    <span class="step-number">09</span>
-                    <div class="step-line"></div>
-                    <span class="step-title">Nadzór nad realizacją</span>
+                    <span class="step-title">Start realizacji</span>
                 </div>
             </div>
         </section>
