@@ -2,49 +2,73 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>dobrostanSTUDIO* | Neuroarchitektura i Projektowanie Wnętrz</title>
-    <meta name="description" content="Projektuję świadome przestrzenie wspierające zdrowie i komfort. dobrostanSTUDIO to unikalne podejście oparte na neurobiologii i psychologii.">
-    
-    <link rel="icon" type="image/png" href="favicon.png">
+    <title>dobrostanSTUDIO* | Neuroarchitektura i Projektowanie Wnętrz | Siedlce, Warszawa</title>
+    <meta name="description" content="Projektuję świadome przestrzenie wspierające zdrowie i komfort. dobrostanSTUDIO to unikalne podejście do architektury wnętrz oparte na neurobiologii i psychologii.">
+    <meta name="keywords" content="architekt wnętrz Siedlce, projektowanie wnętrz Warszawa, neuroarchitektura, dobrostan, świadome wnętrza, Katarzyna Kryniewicz">
+    <meta name="author" content="dobrostanSTUDIO">
+
     <link rel="preload" as="image" href="MAIN/1.webp">
 
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <meta property="og:title" content="dobrostanSTUDIO* | Architektura i Dobrostan">
+    <meta property="og:description" content="Projektuję wnętrza wspierające biologię człowieka.">
+    <meta property="og:image" content="MAIN/1.webp">
+    <meta property="og:url" content="https://www.dobrostanstudio.pl">
+    <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@200;500;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "InteriorDesign",
+      "name": "dobrostanSTUDIO*",
+      "alternateName": "Katarzyna Kryniewicz Projektowanie Wnętrz",
+      "description": "Projektowanie wnętrz oparte na neuroarchitekturze.",
+      "url": "https://www.dobrostanstudio.pl",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": ["Siedlce", "Warszawa"],
+        "addressCountry": "PL"
+      }
+    }
+    </script>
 
     <style>
-        /* --- RESET & GLOBAL FIXES --- */
+        /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html, body { 
-            width: 100%;
-            overflow-x: hidden; 
-            background-color: #F4F4F2;
-            -webkit-font-smoothing: antialiased;
-        }
 
         :root {
             --color-bg: #F4F4F2; 
             --color-text-dark: #1A1A1A;
             --color-accent: #50344f; 
             --color-gold: #b9a646;
+            --color-text-on-accent: #FFFFFF;
             --grid-color: rgba(0, 0, 0, 0.1); 
         }
 
         body {
             font-family: 'IBM Plex Mono', monospace;
+            background-color: var(--color-bg);
             color: var(--color-text-dark);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            text-rendering: optimizeLegibility;
         }
 
+        /* --- DESKTOP LAYOUT --- */
         .layout-wrapper {
             display: flex;
             min-height: 100vh;
-            width: 100%;
+            width: 100vw;
             position: relative;
-            overflow-x: hidden;
         }
 
-        /* --- LEWA KOLUMNA (DESKTOP) --- */
+        /* LEWA KOLUMNA */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -52,8 +76,12 @@
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 132px 132px;
-            display: flex; flex-direction: column; padding: 4rem 3rem; 
-            z-index: 100; border-right: 1px solid rgba(0,0,0,0.05);
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; 
+            padding: 4rem 3rem; 
+            z-index: 100;
+            border-right: 1px solid rgba(0,0,0,0.05);
         }
 
         .logo-link { text-decoration: none; color: inherit; }
@@ -63,115 +91,99 @@
         nav.vertical-menu { margin-top: 5rem; }
         nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
         nav.vertical-menu a {
-            text-decoration: none; color: var(--color-text-dark);
-            font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em;
-            transition: 0.3s ease; display: inline-block;
+            text-decoration: none;
+            color: var(--color-text-dark);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            transition: 0.3s ease;
+            display: inline-block;
         }
         nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); transform: translateX(10px); }
 
         .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; line-height: 1.5; color: #666; }
 
-        /* --- PRAWA KOLUMNA --- */
+        /* PRAWA KOLUMNA */
         .right-column { width: 65%; height: 100vh; margin-left: 35%; position: relative; background-color: #000; z-index: 5; }
-        .hero-image { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; display: block; }
+        .hero-image { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            filter: contrast(1.05); 
+            opacity: 0.9;
+            display: block;
+        }
 
-        /* --- TYTUŁY (DESKTOP) --- */
+        /* TYTUŁY - Zoptymalizowane pod kątem czytelności */
         .giant-title {
-            position: absolute; top: 35%; left: 20%; transform: translateY(-50%);
-            font-family: 'Inter', sans-serif; font-weight: 900; font-size: 11vw;
-            line-height: 0.75; letter-spacing: -0.05em; z-index: 110;
-            pointer-events: none; color: var(--color-accent);
-        }
-        .giant-title .dobro-font {
-            font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
-            font-size: 0.45em; color: var(--color-gold); display: block; margin-bottom: 0.1em;
+            position: absolute;
+            top: 35%;
+            left: 20%; 
+            transform: translateY(-50%);
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 11vw; 
+            line-height: 0.75;
+            letter-spacing: -0.05em;
+            z-index: 110;
+            pointer-events: none;
+            color: var(--color-accent); 
         }
 
-        /* --- TICKER --- */
+        .giant-title .dobro-font {
+            font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; 
+            font-size: 0.45em; color: var(--color-gold); display: block; margin-bottom: 0.1em;
+            letter-spacing: 0.05em;
+        }
+
+        /* TICKER */
         .ticker-wrap {
-            position: absolute; bottom: 20%; left: 0; width: 100%; height: 60px;
-            background-color: #1A1A1A; overflow: hidden; z-index: 120;
-            border-top: 1px solid #333; border-bottom: 1px solid #333;
+            position: absolute; bottom: 20%; left: 0; width: 100vw; height: 60px;
+            background-color: #1A1A1A; border-top: 1px solid #333; border-bottom: 1px solid #333;
+            display: flex; align-items: center; overflow: hidden; z-index: 120;
         }
         .ticker-move { display: flex; white-space: nowrap; animation: ticker 25s linear infinite; }
         .ticker-item {
             font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem;
             text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-bg);
-            padding: 0 2rem; display: flex; align-items: center; height: 60px;
+            padding: 0 2rem; display: flex; align-items: center;
         }
+        .ticker-item::after { content: '●'; margin-left: 4rem; font-size: 0.5rem; color: var(--color-accent); }
+
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
 
-        /* --- BIO BLOCK --- */
+        /* BIO BLOCK */
         .bio-block {
             position: absolute; bottom: 5%; left: 28%; width: 400px;
-            background-color: var(--color-accent); color: #FFF;
+            background-color: var(--color-accent); color: var(--color-text-on-accent);
             padding: 2.5rem 2rem; z-index: 130; box-shadow: 15px 15px 0px rgba(0,0,0,0.1);
         }
         .bio-block p { font-size: 0.75rem; line-height: 1.7; margin-bottom: 1.5rem; }
-        .bio-block a { color: #FFF; text-decoration: none; font-weight: 500; font-size: 0.75rem; border-bottom: 1px solid #FFF; padding-bottom: 2px; }
+        .bio-block a { display: inline-block; text-decoration: none; color: var(--color-text-on-accent); font-weight: 500; font-size: 0.75rem; border-bottom: 1px solid var(--color-text-on-accent); padding-bottom: 2px; transition: 0.3s; }
 
-        /* --- MOBILE OPTIMIZATION --- */
+        /* MOBILE OPTIMIZATION: Poprawiona stabilność napisów */
         @media (max-width: 850px) {
-            html, body { overflow-x: hidden; position: relative; width: 100%; }
-            .layout-wrapper { flex-direction: column; width: 100%; }
-            
+            body { overflow-y: auto; }
+            .layout-wrapper { flex-direction: column; }
             .left-column { 
                 width: 100%; height: auto; position: sticky; top: 0; 
                 padding: 1.5rem; align-items: center; text-align: center; 
-                background-size: 66px 66px; z-index: 500; border-right: none;
+                background-size: 66px 66px; z-index: 200; border-right: none;
                 border-bottom: 1px solid rgba(0,0,0,0.05);
             }
-            
             nav.vertical-menu { margin-top: 1rem; width: 100%; }
             nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+            nav.vertical-menu a { font-size: 0.75rem; }
             .tech-footer { display: none; }
-
-            .right-column { 
-                width: 100%; height: 60vh; margin-left: 0; 
-                z-index: 5;
-            }
-            
-            /* EFEKT NACHODZENIA NA ZDJĘCIE (MOBILE) */
+            .right-column { width: 100%; height: 60vh; margin-left: 0; }
             .giant-title { 
-                position: relative; 
-                margin-top: -60px; /* Podciągnięcie napisu na zdjęcie */
-                top: 0; 
-                left: 0; 
-                transform: none; 
-                padding: 0 1rem 1rem 1rem; 
-                font-size: 16vw; 
-                width: 100%; 
-                text-align: center;
-                background-color: transparent;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                z-index: 1000;
-                /* Cień tekstu poprawia czytelność na tle zdjęcia */
-                text-shadow: 0 4px 15px rgba(244, 244, 242, 0.9);
+                position: relative; top: 0; transform: none; padding: 3rem 1.5rem; 
+                font-size: calc(2rem + 8vw); width: 100%; background-color: var(--color-bg);
             }
-
-            .giant-title .dobro-font {
-                margin-left: 0;
-                text-align: center;
-                background-color: var(--color-bg); 
-                padding: 0 10px;
-            }
-            
-            /* Kontener stabilizujący tło pod tickerem i bio */
-            .bio-container-mobile {
-                background-color: var(--color-bg);
-                width: 100%;
-                margin-top: -1rem;
-                padding-top: 2rem;
-                position: relative;
-                z-index: 100;
-            }
-
-            .ticker-wrap { position: relative; bottom: auto; width: 100%; margin-bottom: 2rem; }
-
+            .ticker-wrap { position: relative; bottom: auto; }
             .bio-block { 
-                position: relative; width: 92%; margin: 0 auto 4rem auto; 
+                position: relative; width: 90%; margin: 2rem auto 4rem auto; 
                 left: auto; bottom: auto; box-shadow: 10px 10px 0px rgba(0,0,0,0.1); 
             }
         }
@@ -180,53 +192,54 @@
 <body>
 
     <main class="layout-wrapper">
-        <aside class="left-column">
-            <a href="index.html" class="logo-link">
-                <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
-            </a>
-            <nav class="vertical-menu">
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="projekty.html">Projekty</a></li>
-                    <li><a href="oferta.html">Oferta</a></li>
-                    <li><a href="omnie.html">O mnie</a></li>
-                    <li><a href="kontakt.html">Kontakt</a></li>
-                </ul>
-            </nav>
-            <div class="tech-footer">
-                ESTD. 2024<br>
-                SIEDLCE / WARSZAWA, PL
-            </div>
-        </aside>
+        <header>
+            <aside class="left-column">
+                <a href="index.html" class="logo-link" title="dobrostanSTUDIO Home">
+                    <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
+                </a>
+                <nav class="vertical-menu" aria-label="Menu główne">
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="projekty.html">Projekty</a></li>
+                        <li><a href="oferta.html">Oferta</a></li>
+                        <li><a href="omnie.html">O mnie</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </nav>
+                <div class="tech-footer">
+                    ESTD. 2024<br>
+                    SIEDLCE / WARSZAWA, PL
+                </div>
+            </aside>
+        </header>
 
         <article class="right-column">
-            <img src="MAIN/1.webp" alt="Projekt wnętrza dobrostanSTUDIO" class="hero-image">
+            <img src="MAIN/1.webp" alt="Neuroarchitektura - projektowanie wnętrz dobrostanSTUDIO" class="hero-image" loading="eager" width="1920" height="1080">
         </article>
 
         <h1 class="giant-title">
             <span class="dobro-font">dobrostan</span>
             STUDIO*
+            <span style="display:none">Architekt wnętrz Siedlce i Warszawa - świadome projektowanie wnętrz</span>
         </h1>
 
-        <div class="bio-container-mobile">
-            <div class="ticker-wrap">
-                <div class="ticker-move">
-                    <div class="ticker-item">Neuroarchitektura</div>
-                    <div class="ticker-item">Dobrostan</div>
-                    <div class="ticker-item">Świadoma Przestrzeń</div>
-                    <div class="ticker-item">Percepcja</div>
-                    <div class="ticker-item">Neuroarchitektura</div>
-                    <div class="ticker-item">Dobrostan</div>
-                    <div class="ticker-item">Świadoma Przestrzeń</div>
-                    <div class="ticker-item">Percepcja</div>
-                </div>
+        <div class="ticker-wrap" aria-hidden="true">
+            <div class="ticker-move">
+                <div class="ticker-item">Neuroarchitektura</div>
+                <div class="ticker-item">Dobrostan</div>
+                <div class="ticker-item">Świadoma Przestrzeń</div>
+                <div class="ticker-item">Percepcja</div>
+                <div class="ticker-item">Neuroarchitektura</div>
+                <div class="ticker-item">Dobrostan</div>
+                <div class="ticker-item">Świadoma Przestrzeń</div>
+                <div class="ticker-item">Percepcja</div>
             </div>
-
-            <section class="bio-block">
-                <p>W swoich projektach podkreślam, że otoczenie ma znaczenie. Doradzam jak tworzyć design, który poprawia komfort życia, efektywność i nasz szeroko pojęty dobrostan. Moim celem jest projektowanie przestrzeni, która jest wspierająca i uzdrawiająca.</p>
-                <a href="omnie.html">ZOBACZ PROFIL &rarr;</a>
-            </section>
         </div>
+
+        <section class="bio-block">
+            <p>W swoich projektach podkreślam, że otoczenie ma znaczenie. Doradzam jak tworzyć design, który poprawia komfort życia, efektywność i nasz szeroko pojęty dobrostan. Moim celem jest projektowanie przestrzeni, która jest wspierająca i uzdrawiająca.</p>
+            <a href="omnie.html" title="Poznaj Katarzynę Kryniewicz i filozofię dobrostanSTUDIO">ZOBACZ PROFIL &rarr;</a>
+        </section>
     </main>
 
 </body>
