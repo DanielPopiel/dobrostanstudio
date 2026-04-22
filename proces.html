@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dobrostan STUDIO | Proces</title>
+    <title>Proces Projektowy | dobrostanSTUDIO* | Neuroarchitektura</title>
+    <meta name="description" content="Poznaj etapy pracy w dobrostanSTUDIO. Od neuro-wywiadu, przez koncepcję 3D, aż po nadzór nad realizacją Twojego wnętrza.">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    
     <style>
         /* --- RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,7 +18,7 @@
             --color-text-dark: #1A1A1A;
             --color-accent: #50344f; 
             --color-gold: #b9a646; 
-            --grid-color: rgba(0, 0, 0, 0.1); 
+            --grid-color: rgba(0, 0, 0, 0.08); 
         }
 
         body {
@@ -25,7 +29,7 @@
             overflow-x: hidden; 
         }
 
-        /* --- LEWA KOLUMNA (STAŁA: 35% + KRATKA) --- */
+        /* --- LEWA KOLUMNA --- */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -37,15 +41,14 @@
             flex-direction: column; 
             justify-content: flex-start; 
             padding: 4rem 3rem; 
-            z-index: 1; /* Kratka w tle */
+            z-index: 1000;
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
         .logo-link { text-decoration: none; color: inherit; }
-        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
+        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; color: var(--color-accent); }
         .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
 
-        /* MENU GŁÓWNE - IDENTYCZNE POŁOŻENIE (5rem) */
         nav.vertical-menu { margin-top: 5rem; }
         nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
         nav.vertical-menu a { 
@@ -54,12 +57,8 @@
             transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
             display: inline-block; 
         }
-        nav.vertical-menu a:hover, nav.vertical-menu a.active { 
-            color: var(--color-accent); 
-            transform: translateX(10px);
-        }
+        nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); transform: translateX(10px); }
 
-        /* SUB-NAV (AKTYWNY PROCES) */
         .nav-divider { height: 1px; width: 40px; background: rgba(0,0,0,0.1); margin: 2rem 0; }
         .side-sub-nav { list-style: none; }
         .side-sub-nav li { margin-bottom: 0.8rem; }
@@ -68,18 +67,15 @@
             text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s; 
             display: inline-block;
         }
-        .side-sub-nav a.active, .side-sub-nav a:hover { 
-            color: var(--color-text-dark); 
-            transform: translateX(5px);
-        }
+        .side-sub-nav a.active, .side-sub-nav a:hover { color: var(--color-text-dark); transform: translateX(5px); }
 
         .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; color: #666; line-height: 1.5; }
 
-        /* --- PRAWA KOLUMNA (WARSTWA NAD KRATKĄ) --- */
+        /* --- PRAWA KOLUMNA --- */
         .right-column {
             width: 65%;
             margin-left: 35%; 
-            padding: 6rem 8% 10rem 8%;
+            padding: 6rem 10% 10rem 10%;
             min-height: 100vh;
             position: relative;
             z-index: 10; 
@@ -88,8 +84,9 @@
         .process-header { margin-bottom: 5rem; }
         .process-header h1 { 
             font-family: 'Inter', sans-serif; font-weight: 900; 
-            font-size: 5vw; text-transform: uppercase; 
+            font-size: 4.5vw; text-transform: uppercase; 
             color: var(--color-text-dark); letter-spacing: -0.02em;
+            line-height: 1;
         }
         .process-header span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); text-transform: lowercase; }
 
@@ -98,37 +95,39 @@
         
         .step-card {
             display: grid;
-            grid-template-columns: 100px 1fr;
+            grid-template-columns: 80px 1fr;
             border-top: 1px solid rgba(0,0,0,0.1);
-            padding-top: 2rem;
+            padding-top: 2.5rem;
         }
 
         .step-num { 
             font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.5rem; 
-            color: var(--color-accent); line-height: 1;
+            color: var(--color-accent); line-height: 0.8;
         }
 
         .step-content h2 { 
-            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; 
-            margin-bottom: 1.5rem; font-weight: 700;
+            font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.12em; 
+            margin-bottom: 1.2rem; font-weight: 700; color: var(--color-text-dark);
         }
 
         .step-content p { 
-            font-size: 0.85rem; line-height: 1.8; color: #555; 
-            max-width: 550px; margin-bottom: 1rem;
+            font-size: 0.9rem; line-height: 1.8; color: #555; 
+            max-width: 550px; margin-bottom: 1.5rem;
         }
 
-        .step-tags { display: flex; gap: 1rem; }
-        .tag { font-size: 0.6rem; text-transform: uppercase; background: #eee; padding: 4px 8px; color: #888; }
+        .step-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .tag { font-size: 0.65rem; text-transform: uppercase; background: #ececeb; padding: 5px 10px; color: #777; letter-spacing: 0.05em; font-weight: 500; }
 
         /* MOBI */
         @media (max-width: 850px) {
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; border-right: none; background-size: 66px 66px; z-index: 50; }
-            .nav-divider, .side-sub-nav { display: none; }
-            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .left-column { width: 100%; height: auto; position: sticky; top: 0; padding: 1.5rem; align-items: center; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; }
+            .nav-divider, .side-sub-nav, .tech-footer { display: none; }
+            nav.vertical-menu { margin-top: 1rem; }
+            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
             .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
-            .process-header h1 { font-size: 12vw; }
-            .step-card { grid-template-columns: 1fr; gap: 1rem; }
+            .process-header h1 { font-size: 14vw; }
+            .step-card { grid-template-columns: 1fr; gap: 1rem; padding-top: 2rem; }
+            .step-num { font-size: 2rem; }
         }
     </style>
 </head>
@@ -138,32 +137,31 @@
         
         <aside class="left-column">
             <a href="index.html" class="logo-link">
-                <div class="small-logo"><span>dobrostan</span>STUDIO</div>
+                <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
             </a>
 
-            <div class="nav-container">
-                <nav class="vertical-menu">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="projekty.html">Projekty</a></li>
-                        <li><a href="oferta.html">Oferta</a></li>
-                        <li><a href="omnie.html" class="active">O mnie</a></li>
-                        <li><a href="kontakt.html">Kontakt</a></li>
-                    </ul>
-                </nav>
-
-                <div class="nav-divider"></div>
-
-                <ul class="side-sub-nav">
-                    <li><a href="omnie.html">01 // O MNIE</a></li>
-                    <li><a href="filozofia.html">02 // FILOZOFIA</a></li>
-                    <li><a href="proces.html" class="active">03 // PROCES</a></li>
+            <nav class="vertical-menu" aria-label="Główne menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projekty.html">Projekty</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="omnie.html" class="active">O mnie</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
                 </ul>
-            </div>
+            </nav>
+
+            <div class="nav-divider"></div>
+
+            <ul class="side-sub-nav" aria-label="Menu procesu">
+                <li><a href="omnie.html">01 // O MNIE</a></li>
+                <li><a href="filozofia.html">02 // FILOZOFIA</a></li>
+                <li><a href="proces.html" class="active">03 // PROCES</a></li>
+            </ul>
 
             <div class="tech-footer">
                 ESTD. 2024<br>
-                WORKFLOW & METHOD
+                WORKFLOW & METHOD<br>
+                SIEDLCE / WARSZAWA
             </div>
         </aside>
 
@@ -173,53 +171,53 @@
             </header>
             
             <div class="steps-container">
-                <div class="step-card">
+                <article class="step-card">
                     <div class="step-num">01</div>
                     <div class="step-content">
                         <h2>Analiza i Neuro-wywiad</h2>
-                        <p>Zaczynamy od głębokiego wywiadu dotyczącego Twoich nawyków, potrzeb i tego, jak reagujesz na bodźce. To tutaj kładziemy fundament pod projekt oparty na dobrostanie.</p>
+                        <p>Zaczynamy od głębokiego wywiadu dotyczącego Twoich nawyków, potrzeb i tego, jak reagujesz na bodźce. To tutaj kładziemy fundament pod projekt oparty na Twoim biologicznym dobrostanie.</p>
                         <div class="step-tags">
-                            <span class="tag">Brief</span>
+                            <span class="tag">Brief potrzeb</span>
                             <span class="tag">Inwentaryzacja</span>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="step-card">
+                <article class="step-card">
                     <div class="step-num">02</div>
                     <div class="step-content">
                         <h2>Koncepcja i 3D</h2>
-                        <p>Tworzymy układ funkcjonalny i pierwsze wizualizacje. Testujemy proporcje, dobieramy haptyczne materiały i planujemy scenariusze świetlne.</p>
+                        <p>Tworzymy układ funkcjonalny i fotorealistyczne wizualizacje. Testujemy proporcje, dobieramy haptyczne materiały i planujemy scenariusze świetlne wspierające rytm dobowy.</p>
                         <div class="step-tags">
                             <span class="tag">Moodboard</span>
-                            <span class="tag">Wizualizacje</span>
+                            <span class="tag">Wizualizacje 3D</span>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="step-card">
+                <article class="step-card">
                     <div class="step-num">03</div>
                     <div class="step-content">
                         <h2>Dokumentacja Techniczna</h2>
-                        <p>Przekładamy wizję na język inżynierii. Otrzymujesz komplet rysunków dla wykonawców, kładów ścian i zestawień materiałowych.</p>
+                        <p>Przekładamy wizję na język inżynierii. Otrzymujesz komplet rysunków dla wykonawców: od instalacji po detale meblowe i zestawienia materiałów.</p>
                         <div class="step-tags">
                             <span class="tag">Rysunki Wykonawcze</span>
                             <span class="tag">Kosztorys</span>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="step-card">
+                <article class="step-card">
                     <div class="step-num">04</div>
                     <div class="step-content">
                         <h2>Realizacja</h2>
-                        <p>Wspieramy Cię na etapie budowy. Dbamy o to, by każdy detal został wykonany zgodnie z założeniami neuroarchitektury.</p>
+                        <p>Wspieramy Cię na etapie budowy. Dbamy o to, by każdy detal został wykonany zgodnie z założeniami neuroarchitektury, pilnując jakości i zgodności z projektem.</p>
                         <div class="step-tags">
                             <span class="tag">Nadzór Autorski</span>
-                            <span class="tag">Stylizacja</span>
+                            <span class="tag">Stylizacja końcowa</span>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 

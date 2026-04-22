@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dobrostan STUDIO | O Mnie</title>
+    <title>O mnie | dobrostanSTUDIO* | Katarzyna Kryniewicz</title>
+    
+    <meta name="description" content="Poznaj Katarzynę Kryniewicz – założycielkę dobrostanSTUDIO. Architekt wnętrz łącząca wiedzę medyczną z neuroarchitekturą i jogą.">
+    <meta name="keywords" content="Katarzyna Kryniewicz, neuroarchitektura, projektowanie wnętrz Siedlce, projektowanie wnętrz Warszawa, joga, dobrostan">
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    
     <style>
         /* --- RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,7 +32,7 @@
             overflow-x: hidden;
         }
 
-        /* --- LEWA KOLUMNA --- */
+        /* --- LEWA KOLUMNA (TŁO POD SPODEM) --- */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -38,12 +44,13 @@
             flex-direction: column; 
             justify-content: flex-start; 
             padding: 4rem 3rem; 
-            z-index: 1;
+            z-index: 5; /* Niższy z-index, żeby nie przykrywał treści głównej */
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
+        /* STYLIZACJA LOGO - UJEDNOLICONA */
         .logo-link { text-decoration: none; color: inherit; }
-        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
+        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; color: var(--color-accent); }
         .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
 
         nav.vertical-menu { margin-top: 5rem; }
@@ -82,17 +89,14 @@
         }
         .portrait-image { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); display: block; }
 
-        /* --- BARDZIEJ SUBTELNY NAPIS W ROGU --- */
         .corner-tag { 
             position: absolute; 
             top: 5rem; 
             right: 5%; 
             padding: 8px 16px;
-            
-            background-color: rgba(244, 244, 242, 0.35); /* Jeszcze bardziej przezroczyste */
-            backdrop-filter: blur(4px);                  /* Delikatniejszy blur */
-            border-left: 1px solid var(--color-gold);   /* Subtelna linia z boku zamiast ramki */
-            
+            background-color: rgba(244, 244, 242, 0.35); 
+            backdrop-filter: blur(4px);                  
+            border-left: 1px solid var(--color-gold);   
             font-size: 0.7rem; 
             letter-spacing: 0.2em; 
             text-transform: uppercase; 
@@ -101,21 +105,21 @@
             pointer-events: none;
         }
 
-        /* GIGANTYCZNY NAPIS */
+        /* GIGANTYCZNY NAPIS - ZMNIEJSZONY I PRZESUNIĘTY W LEWO */
         .about-giant-text {
             position: absolute;
             top: 45%;
-            left: -25%; 
+            left: -22%; /* Przesunięto bardziej w lewo */
             transform: translateY(-50%);
             font-family: 'Inter', sans-serif;
             font-weight: 900;
-            font-size: 10vw;
+            font-size: 9vw; /* Zmniejszono o 10% */
             line-height: 0.8;
             letter-spacing: -0.05em;
-            z-index: 100; 
+            z-index: 100; /* Wyżej niż lewa kolumna */
             pointer-events: none;
             white-space: nowrap;
-            color: var(--color-accent); 
+            color: var(--color-accent);
         }
 
         .about-giant-text .dobro-font {
@@ -129,10 +133,12 @@
             letter-spacing: 0.05em;
         }
 
+        .gold-star { color: var(--color-gold); }
+
         /* BIO BLOCK */
         .kobalt-bio-block {
             position: absolute;
-            bottom: -50%; 
+            bottom: -15%; 
             right: -18%; 
             background-color: var(--color-accent);
             color: #FFFFFF;
@@ -146,12 +152,13 @@
 
         /* MOBI */
         @media (max-width: 850px) {
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; border-right: none; }
+            .left-column { width: 100%; height: auto; position: sticky; top: 0; padding: 1.5rem; align-items: center; border-right: none; z-index: 2000; border-bottom: 1px solid rgba(0,0,0,0.05); }
+            nav.vertical-menu { margin-top: 1rem; }
             nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-            .nav-divider, .side-sub-nav { display: none; }
-            .right-column { width: 100%; margin-left: 0; height: auto; padding: 2rem 1.5rem; flex-direction: column; }
+            .nav-divider, .side-sub-nav, .tech-footer { display: none; }
+            .right-column { width: 100%; margin-left: 0; height: auto; padding: 3rem 1.5rem; flex-direction: column; }
             .portrait-frame { width: 100%; height: 50vh; }
-            .about-giant-text { font-size: 14vw; left: 0; top: 10%; position: relative; transform: none; margin: 2rem 0; }
+            .about-giant-text { font-size: 14vw; left: 0; top: 0; position: relative; transform: none; margin: 2rem 0; white-space: normal; text-align: center; z-index: 10; }
             .kobalt-bio-block { position: relative; width: 100%; margin-top: 2rem; right: 0; bottom: 0; }
             .corner-tag { position: relative; top: 0; right: 0; margin-bottom: 1rem; width: 100%; text-align: center; background: none; border: none; backdrop-filter: none; }
         }
@@ -163,10 +170,10 @@
         
         <aside class="left-column">
             <a href="index.html" class="logo-link">
-                <div class="small-logo"><span>dobrostan</span>STUDIO</div>
+                <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
             </a>
             
-            <nav class="vertical-menu">
+            <nav class="vertical-menu" aria-label="Główne menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="projekty.html">Projekty</a></li>
@@ -178,7 +185,7 @@
 
             <div class="nav-divider"></div>
             
-            <ul class="side-sub-nav">
+            <ul class="side-sub-nav" aria-label="Podmenu">
                 <li><a href="omnie.html" class="active">01 // O MNIE</a></li>
                 <li><a href="filozofia.html">02 // FILOZOFIA</a></li>
                 <li><a href="proces.html">03 // PROCES</a></li>
@@ -194,17 +201,17 @@
         <section class="right-column">
             <div class="corner-tag">PROJEKTUJĘ ŚWIADOME PRZESTRZENIE.</div>
 
-            <h1 class="about-giant-text">
+            <div class="about-giant-text" aria-hidden="true">
                 <span class="dobro-font">dobrostan</span>
-                STUDIO*
-            </h1>
+                STUDIO<span class="gold-star">*</span>
+            </div>
 
             <div class="portrait-frame">
-                <img src="portret.jpg" alt="Portret" class="portrait-image">
+                <img src="portret.jpg" alt="Portret Katarzyny Kryniewicz - dobrostanSTUDIO" class="portrait-image" loading="eager" decoding="async">
                 
-                <div class="kobalt-bio-block">
+                <article class="kobalt-bio-block">
                     <p>Architekt wnętrz, również po studiach medycznych, nieustannie zgłębiam temat NEUROARCHITEKTURY, czyli relacji człowieka z przestrzenią. Dodatkowo jestem nauczycielką Hatha Yogi – ucząc dobrej relacji ze swoim ciałem i psyche. Eksploruję wiedzę o biologii, neurobiologii i psychologii człowieka wraz z rozwiązaniami architektonicznymi, które najlepiej wspierają potrzeby i funkcje organizmu. W swoich projektach podkreślam, że otoczenie ma znaczenie. Doradzam, jak tworzyć design, który poprawia komfort życia, efektywność i dobrostan.</p>
-                </div>
+                </article>
             </div>
         </section>
 

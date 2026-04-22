@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dobrostan STUDIO | Kontakt</title>
+    <title>Kontakt | dobrostanSTUDIO* | Architekt Wnętrz Siedlce Warszawa</title>
+    <meta name="description" content="Skontaktuj się z dobrostanSTUDIO. Zapytaj o projekt wnętrz, neuroarchitekturę lub współpracę. Pracownia w Siedlcach i Warszawie.">
+    <meta name="keywords" content="kontakt architekt wnętrz Siedlce, projektowanie wnętrz Warszawa kontakt, Katarzyna Kryniewicz telefon, biuro projektowe Warszawa">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    
     <style>
         /* --- RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,7 +19,7 @@
             --color-text-dark: #1A1A1A;
             --color-accent: #50344f; 
             --color-gold: #b9a646; 
-            --grid-color: rgba(0, 0, 0, 0.1); 
+            --grid-color: rgba(0, 0, 0, 0.08); 
         }
 
         body {
@@ -25,7 +30,7 @@
             overflow-x: hidden; 
         }
 
-        /* --- LEWA KOLUMNA (STAŁA) --- */
+        /* --- LEWA KOLUMNA --- */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -37,12 +42,12 @@
             flex-direction: column; 
             justify-content: flex-start; 
             padding: 4rem 3rem; 
-            z-index: 10;
+            z-index: 1000;
             border-right: 1px solid rgba(0,0,0,0.05);
         }
 
         .logo-link { text-decoration: none; color: inherit; }
-        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; }
+        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; color: var(--color-accent); }
         .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
 
         nav.vertical-menu { margin-top: 5rem; }
@@ -53,10 +58,7 @@
             transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
             display: inline-block; 
         }
-        nav.vertical-menu a:hover, nav.vertical-menu a.active { 
-            color: var(--color-accent); 
-            transform: translateX(10px);
-        }
+        nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); transform: translateX(10px); }
 
         .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; color: #666; line-height: 1.5; }
 
@@ -67,7 +69,7 @@
             padding: 6rem 8% 10rem 8%;
             min-height: 100vh;
             position: relative;
-            z-index: 20; 
+            z-index: 10; 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -76,7 +78,7 @@
         .contact-header { margin-bottom: 4rem; }
         .contact-header h1 { 
             font-family: 'Inter', sans-serif; font-weight: 900; 
-            font-size: 5vw; text-transform: uppercase; 
+            font-size: 4.5vw; text-transform: uppercase; 
             color: var(--color-accent); letter-spacing: -0.02em;
         }
 
@@ -100,7 +102,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* --- NOWY STYL DANYCH OSOBOWYCH --- */
         .contact-name {
             font-family: 'Inter', sans-serif;
             font-weight: 900;
@@ -113,9 +114,9 @@
         }
 
         .contact-link {
-            font-family: 'IBM Plex Mono', monospace; /* Surowy, techniczny font */
+            font-family: 'IBM Plex Mono', monospace;
             font-weight: 400;
-            font-size: 0.95rem; /* Nieco mniejszy, żeby wyglądał szlachetniej */
+            font-size: 0.95rem;
             color: #444;
             text-decoration: none;
             display: block;
@@ -189,24 +190,26 @@
 
         /* MOBI */
         @media (max-width: 850px) {
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; border-right: none; }
-            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .left-column { width: 100%; height: auto; position: sticky; top: 0; padding: 1.5rem; align-items: center; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000;}
+            nav.vertical-menu { margin-top: 1rem; }
+            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+            .tech-footer { display: none; }
             .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; justify-content: flex-start; }
-            .contact-header h1 { font-size: 12vw; }
+            .contact-header h1 { font-size: 14vw; text-align: center; }
             .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
         }
     </style>
 </head>
 <body>
 
-    <main class="layout-wrapper">
+    <main class="layout-wrapper" itemscope itemtype="http://schema.org/ProfessionalService">
         
         <aside class="left-column">
             <a href="index.html" class="logo-link">
-                <div class="small-logo"><span>dobrostan</span>STUDIO</div>
+                <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
             </a>
 
-            <nav class="vertical-menu">
+            <nav class="vertical-menu" aria-label="Główne menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="projekty.html">Projekty</a></li>
@@ -225,15 +228,15 @@
 
         <section class="right-column">
             <header class="contact-header">
-                <h1>KONTAKT*</h1>
+                <h1 itemprop="name">KONTAKT*</h1>
             </header>
             
             <div class="contact-grid">
                 <div class="contact-block">
                     <h3>PROJEKTY / WSPÓŁPRACA</h3>
                     <span class="contact-name">Katarzyna Kryniewicz</span>
-                    <a href="mailto:biuro@dobrostanstudio.pl" class="contact-link">biuro@dobrostanstudio.pl</a>
-                    <a href="tel:+48504841587" class="contact-link">+48 504 841 587</a>
+                    <a href="mailto:biuro@dobrostanstudio.pl" class="contact-link" itemprop="email">biuro@dobrostanstudio.pl</a>
+                    <a href="tel:+48504841587" class="contact-link" itemprop="telephone">+48 504 841 587</a>
                 </div>
 
                 <div class="contact-block">
@@ -241,29 +244,29 @@
                     <div class="qr-container">
                         <img class="qr-code" 
                              src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.instagram.com/dobrostan_yo%3Figsh%3DMWgyenJzb2F3dG16" 
-                             alt="QR Kod Instagram">
+                             alt="QR Kod Instagram dobrostanSTUDIO" loading="lazy">
                         <span class="qr-label">INSTAGRAM @dobrostan_yo</span>
                     </div>
                 </div>
 
-                <div class="contact-block">
+                <div class="contact-block" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                     <h3>LOKALIZACJA</h3>
                     <div class="address-text">
                         Pracownia Architektury Wnętrz<br>
-                        Warszawa / Siedlce<br>
-                        Polska
+                        <span itemprop="addressLocality">Warszawa / Siedlce</span><br>
+                        <span itemprop="addressCountry">Polska</span>
                     </div>
                 </div>
             </div>
 
             <div class="social-links">
-                <a href="https://www.instagram.com/dobrostan_yo?igsh=MWgyenJzb2F3dG16" target="_blank">Instagram</a>
-                <a href="#" target="_blank">Pinterest</a>
-                <a href="#" target="_blank">Behance</a>
+                <a href="https://www.instagram.com/dobrostan_yo?igsh=MWgyenJzb2F3dG16" target="_blank" rel="noopener">Instagram</a>
+                <a href="#" target="_blank" rel="noopener">Pinterest</a>
+                <a href="#" target="_blank" rel="noopener">Behance</a>
             </div>
 
             <div class="instagram-invite">
-                Zajrzyj za kulisy moich projektów na <a href="https://www.instagram.com/dobrostan_yo?igsh=MWgyenJzb2F3dG16" target="_blank">@dobrostan_yo</a>
+                Zajrzyj za kulisy moich projektów na <a href="https://www.instagram.com/dobrostan_yo?igsh=MWgyenJzb2F3dG16" target="_blank" rel="noopener">@dobrostan_yo</a>
             </div>
         </section>
 
