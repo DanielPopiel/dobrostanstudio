@@ -16,7 +16,6 @@
         /* --- RESET & FIXES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* Kluczowe poprawki zapobiegające białemu paskowi po prawej */
         html, body { 
             width: 100%;
             overflow-x: hidden; 
@@ -38,7 +37,6 @@
             color: var(--color-text-dark);
         }
 
-        /* --- LAYOUT WRAPPER --- */
         .layout-wrapper {
             display: flex;
             min-height: 100vh;
@@ -47,7 +45,7 @@
             overflow-x: hidden;
         }
 
-        /* --- LEWA KOLUMNA --- */
+        /* --- LEWA KOLUMNA (DESKTOP) --- */
         .left-column {
             width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
             background-color: var(--color-bg);
@@ -78,7 +76,7 @@
         .right-column { width: 65%; height: 100vh; margin-left: 35%; position: relative; background-color: #000; z-index: 5; }
         .hero-image { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; display: block; }
 
-        /* --- TYTUŁY --- */
+        /* --- TYTUŁY (DESKTOP) --- */
         .giant-title {
             position: absolute; top: 35%; left: 20%; transform: translateY(-50%);
             font-family: 'Inter', sans-serif; font-weight: 900; font-size: 11vw;
@@ -121,7 +119,7 @@
             .left-column { 
                 width: 100%; height: auto; position: sticky; top: 0; 
                 padding: 1.5rem; align-items: center; text-align: center; 
-                background-size: 66px 66px; z-index: 200; border-right: none;
+                background-size: 66px 66px; z-index: 500; border-right: none;
                 border-bottom: 1px solid rgba(0,0,0,0.05);
             }
             
@@ -129,18 +127,49 @@
             nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
             .tech-footer { display: none; }
 
-            .right-column { width: 100%; height: 50vh; margin-left: 0; }
+            .right-column { 
+                width: 100%; height: 60vh; margin-left: 0; 
+                z-index: 5; /* Zdjęcie jest pod spodem */
+            }
             
+            /* EFEKT NACHODZENIA NA ZDJĘCIE */
             .giant-title { 
-                position: relative; top: 0; transform: none; padding: 3rem 1rem; 
-                font-size: 15vw; width: 100%; text-align: center;
-                background-color: var(--color-bg);
+                position: relative; 
+                margin-top: -8vh; /* Ujemny margines podciąga napis na zdjęcie */
+                top: 0; 
+                left: 0; 
+                transform: none; 
+                padding: 0 1rem 2rem 1rem; 
+                font-size: 16vw; 
+                width: 100%; 
+                text-align: center;
+                background-color: transparent; /* Przezroczyste tło, żeby widzieć zdjęcie pod spodem */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                z-index: 1000; /* Napis nad zdjęciem */
+                text-shadow: 0 0 20px rgba(244, 244, 242, 0.8); /* Delikatna poświata pod tekstem poprawia czytelność na zdjęciu */
             }
 
-            .ticker-wrap { position: relative; bottom: auto; width: 100%; }
+            .giant-title .dobro-font {
+                margin-left: 0;
+                text-align: center;
+                background-color: var(--color-bg); /* Tło tylko pod kursywą dla lepszego odcięcia */
+                padding: 0 15px;
+            }
+            
+            /* Kontener pod napisem, aby bio miało normalne tło */
+            .bio-container-mobile {
+                background-color: var(--color-bg);
+                width: 100%;
+                margin-top: -2rem; /* Dopasowanie do nachodzącego napisu */
+                padding-top: 3rem;
+            }
+
+            .ticker-wrap { position: relative; bottom: auto; width: 100%; margin-bottom: 2rem; }
 
             .bio-block { 
-                position: relative; width: 90%; margin: 2rem auto 4rem auto; 
+                position: relative; width: 90%; margin: 0 auto 4rem auto; 
                 left: auto; bottom: auto; box-shadow: 10px 10px 0px rgba(0,0,0,0.1); 
             }
         }
@@ -177,23 +206,25 @@
             STUDIO*
         </h1>
 
-        <div class="ticker-wrap">
-            <div class="ticker-move">
-                <div class="ticker-item">Neuroarchitektura</div>
-                <div class="ticker-item">Dobrostan</div>
-                <div class="ticker-item">Świadoma Przestrzeń</div>
-                <div class="ticker-item">Percepcja</div>
-                <div class="ticker-item">Neuroarchitektura</div>
-                <div class="ticker-item">Dobrostan</div>
-                <div class="ticker-item">Świadoma Przestrzeń</div>
-                <div class="ticker-item">Percepcja</div>
+        <div class="bio-container-mobile">
+            <div class="ticker-wrap">
+                <div class="ticker-move">
+                    <div class="ticker-item">Neuroarchitektura</div>
+                    <div class="ticker-item">Dobrostan</div>
+                    <div class="ticker-item">Świadoma Przestrzeń</div>
+                    <div class="ticker-item">Percepcja</div>
+                    <div class="ticker-item">Neuroarchitektura</div>
+                    <div class="ticker-item">Dobrostan</div>
+                    <div class="ticker-item">Świadoma Przestrzeń</div>
+                    <div class="ticker-item">Percepcja</div>
+                </div>
             </div>
-        </div>
 
-        <section class="bio-block">
-            <p>W swoich projektach podkreślam, że otoczenie ma znaczenie. Doradzam jak tworzyć design, który poprawia komfort życia, efektywność i nasz szeroko pojęty dobrostan. Moim celem jest projektowanie przestrzeni, która jest wspierająca i uzdrawiająca.</p>
-            <a href="omnie.html">ZOBACZ PROFIL &rarr;</a>
-        </section>
+            <section class="bio-block">
+                <p>W swoich projektach podkreślam, że otoczenie ma znaczenie. Doradzam jak tworzyć design, który poprawia komfort życia, efektywność i nasz szeroko pojęty dobrostan. Moim celem jest projektowanie przestrzeni, która jest wspierająca i uzdrawiająca.</p>
+                <a href="omnie.html">ZOBACZ PROFIL &rarr;</a>
+            </section>
+        </div>
     </main>
 
 </body>
