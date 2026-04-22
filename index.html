@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 
     <style>
-        /* --- RESET & FIXES --- */
+        /* --- RESET & GLOBAL FIXES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html, body { 
@@ -28,7 +28,6 @@
             --color-text-dark: #1A1A1A;
             --color-accent: #50344f; 
             --color-gold: #b9a646;
-            --color-text-on-accent: #FFFFFF;
             --grid-color: rgba(0, 0, 0, 0.1); 
         }
 
@@ -129,47 +128,50 @@
 
             .right-column { 
                 width: 100%; height: 60vh; margin-left: 0; 
-                z-index: 5; /* Zdjęcie jest pod spodem */
+                z-index: 5;
             }
             
-            /* EFEKT NACHODZENIA NA ZDJĘCIE */
+            /* EFEKT NACHODZENIA NA ZDJĘCIE (MOBILE) */
             .giant-title { 
                 position: relative; 
-                margin-top: -8vh; /* Ujemny margines podciąga napis na zdjęcie */
+                margin-top: -60px; /* Podciągnięcie napisu na zdjęcie */
                 top: 0; 
                 left: 0; 
                 transform: none; 
-                padding: 0 1rem 2rem 1rem; 
+                padding: 0 1rem 1rem 1rem; 
                 font-size: 16vw; 
                 width: 100%; 
                 text-align: center;
-                background-color: transparent; /* Przezroczyste tło, żeby widzieć zdjęcie pod spodem */
+                background-color: transparent;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                z-index: 1000; /* Napis nad zdjęciem */
-                text-shadow: 0 0 20px rgba(244, 244, 242, 0.8); /* Delikatna poświata pod tekstem poprawia czytelność na zdjęciu */
+                z-index: 1000;
+                /* Cień tekstu poprawia czytelność na tle zdjęcia */
+                text-shadow: 0 4px 15px rgba(244, 244, 242, 0.9);
             }
 
             .giant-title .dobro-font {
                 margin-left: 0;
                 text-align: center;
-                background-color: var(--color-bg); /* Tło tylko pod kursywą dla lepszego odcięcia */
-                padding: 0 15px;
+                background-color: var(--color-bg); 
+                padding: 0 10px;
             }
             
-            /* Kontener pod napisem, aby bio miało normalne tło */
+            /* Kontener stabilizujący tło pod tickerem i bio */
             .bio-container-mobile {
                 background-color: var(--color-bg);
                 width: 100%;
-                margin-top: -2rem; /* Dopasowanie do nachodzącego napisu */
-                padding-top: 3rem;
+                margin-top: -1rem;
+                padding-top: 2rem;
+                position: relative;
+                z-index: 100;
             }
 
             .ticker-wrap { position: relative; bottom: auto; width: 100%; margin-bottom: 2rem; }
 
             .bio-block { 
-                position: relative; width: 90%; margin: 0 auto 4rem auto; 
+                position: relative; width: 92%; margin: 0 auto 4rem auto; 
                 left: auto; bottom: auto; box-shadow: 10px 10px 0px rgba(0,0,0,0.1); 
             }
         }
