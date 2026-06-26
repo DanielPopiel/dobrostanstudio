@@ -23,6 +23,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 
     <script type="application/ld+json">
@@ -51,6 +53,45 @@
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Projekt Koncepcyjny" }, "price": "150", "priceCurrency": "PLN" }
         ]
       }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ile trwa zaprojektowanie wnętrza?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Zależy od zakresu i metrażu. Orientacyjnie: projekt koncepcyjny mieszkania to 3–5 tygodni, projekt wykonawczy kolejne 3–6 tygodni. Dokładny harmonogram ustalany jest indywidualnie po inwentaryzacji." }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy mogę zlecić projekt, jeśli nie mieszkam w Warszawie ani Siedlcach?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Tak. Pracownia ma siedzibę w Warszawie, ale projekty realizowane są zdalnie dla klientów z całej Polski – konsultacje i prezentacje koncepcji prowadzone są online, a obecność na miejscu dotyczy kluczowych etapów, np. inwentaryzacji czy nadzoru." }
+        },
+        {
+          "@type": "Question",
+          "name": "Czym różni się projekt koncepcyjny od wykonawczego?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Projekt koncepcyjny to układ funkcjonalny, moodboardy i wizualizacje 3D. Projekt wykonawczy to komplet rysunków technicznych dla wykonawców: instalacje, detale meblowe, zestawienia materiałów i kosztorys." }
+        },
+        {
+          "@type": "Question",
+          "name": "Czym właściwie jest neuroarchitektura?",
+          "acceptedAnswer": { "@type": "Answer", "text": "To podejście do projektowania uwzględniające, jak przestrzeń wpływa na układ nerwowy i samopoczucie – np. dobór światła wspierający rytm dobowy, materiały redukujące przebodźcowanie czy akustyka ograniczająca stres." }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy klient bierze udział w wyborze materiałów i wykonawców?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Tak, na każdym etapie. Architekt przedstawia propozycje i rekomendacje, ale ostateczne decyzje należą do klienta." }
+        },
+        {
+          "@type": "Question",
+          "name": "Od czego zacząć współpracę?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Najprościej napisać lub zadzwonić – podczas pierwszej rozmowy określany jest zakres, metraż i potrzeby klienta, a następnie przygotowywana jest wycena." }
+        }
+      ]
     }
     </script>
 
@@ -152,6 +193,21 @@
         .step-number { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 600; color: var(--color-gold); }
         .step-title { font-size: 0.75rem; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.08em; color: #222; font-weight: 700; }
 
+        /* --- FAQ --- */
+        .faq-section { margin-top: 10rem; }
+        .faq-section h2 {
+            font-family: 'Inter', sans-serif; font-weight: 900; font-size: 2.2rem;
+            text-transform: uppercase; color: var(--color-gold);
+            margin-bottom: 3rem;
+        }
+        .faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); padding: 2rem 0; }
+        .faq-item h3 {
+            font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.05rem;
+            color: var(--color-accent); margin-bottom: 0.8rem;
+        }
+        .faq-item p { font-size: 0.9rem; line-height: 1.7; color: #444; max-width: 650px; }
+        .faq-item p a { color: var(--color-accent); text-decoration: underline; }
+
         /* --- MOBILE (UJEDNOLICONE) --- */
         @media (max-width: 850px) {
             .left-column { 
@@ -164,7 +220,7 @@
                 flex-direction: row; flex-wrap: wrap; 
                 justify-content: center; gap: 1rem; /* Zgodne z resztą podstron */
             }
-            nav.vertical-menu a { font-size: 0.75rem; }
+            nav.vertical-menu a { font-size: 0.75rem; padding: 0.4rem 0.3rem; }
             .tech-footer { display: none; }
 
             .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
@@ -174,6 +230,9 @@
             .service-price { text-align: left; font-size: 1.1rem; color: var(--color-gold); }
 
             .stages-section h2 { font-size: 1.8rem; text-align: left; margin-bottom: 3rem; }
+            .faq-section { margin-top: 6rem; }
+            .faq-section h2 { font-size: 1.8rem; margin-bottom: 2rem; }
+            .faq-item { padding: 1.5rem 0; }
             .timeline-axis { flex-direction: column; border-top: none; gap: 0; overflow-x: visible; }
             .timeline-step { 
                 flex: 1; border-left: 2px solid var(--color-gold); 
@@ -284,6 +343,40 @@
                     <span class="step-title">Start realizacji</span>
                 </div>
             </div>
+        </section>
+
+        <section class="faq-section" aria-label="Najczęściej zadawane pytania">
+            <h2>FAQ*</h2>
+
+            <article class="faq-item">
+                <h3>Ile trwa zaprojektowanie wnętrza?</h3>
+                <p>Zależy od zakresu i metrażu. Orientacyjnie: projekt koncepcyjny mieszkania to 3–5 tygodni, projekt wykonawczy kolejne 3–6 tygodni. Dokładny harmonogram ustalamy indywidualnie po inwentaryzacji.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Czy mogę zlecić projekt, jeśli nie mieszkam w Warszawie ani Siedlcach?</h3>
+                <p>Tak. Pracownia ma siedzibę w Warszawie, ale projekty realizuję zdalnie dla klientów z całej Polski — konsultacje i prezentacje koncepcji prowadzimy online, a na miejscu jestem podczas kluczowych etapów, np. inwentaryzacji czy nadzoru.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Czym różni się projekt koncepcyjny od wykonawczego?</h3>
+                <p>Projekt koncepcyjny to układ funkcjonalny, moodboardy i wizualizacje 3D — pokazuje, jak wnętrze będzie wyglądać. Projekt wykonawczy to komplet rysunków technicznych dla wykonawców: instalacje, detale meblowe, zestawienia materiałów i kosztorys.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Czym właściwie jest neuroarchitektura?</h3>
+                <p>To podejście do projektowania, które uwzględnia, jak przestrzeń wpływa na układ nerwowy i samopoczucie — np. dobór światła wspierający rytm dobowy, materiały redukujące przebodźcowanie czy akustyka ograniczająca stres. Więcej na stronie <a href="filozofia.html">Filozofia</a>.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Czy biorę udział w wyborze materiałów i wykonawców?</h3>
+                <p>Tak, na każdym etapie. Przedstawiam propozycje i rekomendacje, ale ostateczne decyzje należą do Ciebie — moją rolą jest poprowadzić Cię przez proces i zadbać o zgodność efektu z założeniami projektu.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Od czego zacząć współpracę?</h3>
+                <p>Najprościej napisać lub zadzwonić — podczas pierwszej rozmowy określamy zakres, metraż i Twoje potrzeby, a ja przygotowuję wycenę. Kontakt znajdziesz na stronie <a href="kontakt.html">Kontakt</a>.</p>
+            </article>
         </section>
     </main>
 

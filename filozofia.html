@@ -19,6 +19,8 @@
     <meta name="twitter:description" content="Przestrzeń kształtuje samopoczucie. Światło, materia i akustyka w służbie neuroarchitektury.">
     <meta name="twitter:image" content="https://dobrostanstudio.com/detal.webp">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <style>
         /* --- RESET --- */
@@ -86,9 +88,9 @@
         .nav-divider { height: 1px; width: 40px; background: rgba(0,0,0,0.1); margin: 2rem 0; }
         .side-sub-nav { list-style: none; }
         .side-sub-nav li { margin-bottom: 0.8rem; }
-        .side-sub-nav a { 
-            text-decoration: none; font-size: 0.7rem; color: #888; 
-            text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s; 
+        .side-sub-nav a {
+            text-decoration: none; font-size: 0.7rem; color: #6b6b6b;
+            text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s;
             display: inline-block;
         }
         .side-sub-nav a.active, .side-sub-nav a:hover { color: var(--color-text-dark); transform: translateX(5px); }
@@ -132,6 +134,27 @@
             line-height: 1.8;
             max-width: 650px;
             margin-bottom: 5rem;
+            color: #444;
+        }
+
+        .neuro-explainer {
+            border-left: 2px solid var(--color-gold);
+            padding-left: 1.5rem;
+            margin-bottom: 5rem;
+            max-width: 650px;
+        }
+        .neuro-explainer h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+        .neuro-explainer p {
+            font-size: 0.9rem;
+            line-height: 1.8;
             color: #444;
         }
 
@@ -192,11 +215,17 @@
         }
 
         @media (max-width: 850px) {
-            .left-column { width: 100%; height: auto; position: relative; padding: 2rem 1.5rem; align-items: center; border-right: none; }
-            .nav-divider, .side-sub-nav { display: none; }
+            .left-column { width: 100%; height: auto; position: sticky; top: 0; padding: 1.5rem; align-items: center; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; }
+            .nav-divider, .tech-footer { display: none; }
+            nav.vertical-menu { margin-top: 1rem; }
             nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            nav.vertical-menu a { padding: 0.4rem 0.3rem; }
+            .side-sub-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1rem; width: 100%; margin-top: 0.6rem; }
+            .side-sub-nav li { margin-bottom: 0; }
+            .side-sub-nav a { font-size: 0.7rem; padding: 0.3rem 0.2rem; }
             .right-column { width: 100%; margin-left: 0; padding: 4rem 1.5rem; }
             .manifesto-title { font-size: 12vw; }
+            .neuro-explainer { padding-left: 1rem; margin-bottom: 3.5rem; }
             .detail-image-frame { margin-bottom: 3rem; }
             .detail-image { max-height: 50vh; } /* Krótsze na telefonach */
             .pillars-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -249,6 +278,11 @@
             <p class="manifesto-intro">
                 Wierzę, że przestrzeń nie jest tylko tłem dla codzienności – ona aktywnie ją kształtuje. W moim studiu projektuję w oparciu o neuroarchitekturę, co oznacza, że każda decyzja o świetle, materiale czy ergonomii służy Twojemu dobrostanowi. Tworzę miejsca, które redukują przebodźcowanie, koją zmysły i naturalnie wspierają regenerację. Bo dom powinien być narzędziem, które pomaga nam czuć się lepiej.
             </p>
+
+            <div class="neuro-explainer">
+                <h2>Czym jest neuroarchitektura?</h2>
+                <p>To dziedzina łącząca architekturę z neurobiologią i psychologią: bada, jak konkretne rozwiązania przestrzenne — natężenie i temperatura światła, proporcje pomieszczenia, akustyka, faktura materiałów — wpływają na nasz układ nerwowy. W praktyce oznacza to np. dobór światła wspierającego naturalny rytm dobowy, materiały haptyczne redukujące napięcie czy układ funkcjonalny ograniczający przebodźcowanie. Krótko: projektowanie, które bierze pod uwagę, jak naprawdę reagujemy na otoczenie.</p>
+            </div>
 
             <div class="detail-image-frame">
                 <img src="detal.webp" alt="Detal Architektoniczny" class="detail-image" loading="lazy" decoding="async">

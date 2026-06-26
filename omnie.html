@@ -22,8 +22,10 @@
 
     <link rel="icon" type="image/png" href="favicon.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
-    
+
     <style>
         /* --- RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -79,9 +81,9 @@
         .nav-divider { height: 1px; width: 40px; background: rgba(0,0,0,0.1); margin: 2rem 0; }
         .side-sub-nav { list-style: none; }
         .side-sub-nav li { margin-bottom: 0.8rem; }
-        .side-sub-nav a { 
-            text-decoration: none; font-size: 0.7rem; color: #888; 
-            text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s; 
+        .side-sub-nav a {
+            text-decoration: none; font-size: 0.7rem; color: #6b6b6b;
+            text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s;
             display: inline-block;
         }
         .side-sub-nav a.active, .side-sub-nav a:hover { color: var(--color-text-dark); transform: translateX(5px); }
@@ -173,11 +175,16 @@
             .left-column { width: 100%; height: auto; position: sticky; top: 0; padding: 1.5rem; align-items: center; border-right: none; z-index: 2000; border-bottom: 1px solid rgba(0,0,0,0.05); }
             nav.vertical-menu { margin-top: 1rem; }
             nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-            .nav-divider, .side-sub-nav, .tech-footer { display: none; }
+            nav.vertical-menu a { padding: 0.4rem 0.3rem; }
+            .nav-divider, .tech-footer { display: none; }
+            .side-sub-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1rem; width: 100%; margin-top: 0.6rem; }
+            .side-sub-nav li { margin-bottom: 0; }
+            .side-sub-nav a { font-size: 0.7rem; padding: 0.3rem 0.2rem; }
             .right-column { width: 100%; margin-left: 0; height: auto; padding: 3rem 1.5rem; flex-direction: column; }
             .portrait-frame { width: 100%; height: 50vh; }
             .about-giant-text { font-size: 14vw; left: 0; top: 0; position: relative; transform: none; margin: 2rem 0; white-space: normal; text-align: center; z-index: 10; }
             .kobalt-bio-block { position: relative; width: 100%; margin-top: 2rem; right: 0; bottom: 0; }
+            .kobalt-bio-block p { font-size: 0.85rem; }
             .corner-tag { position: relative; top: 0; right: 0; margin-bottom: 1rem; width: 100%; text-align: center; background: none; border: none; backdrop-filter: none; }
         }
     </style>
