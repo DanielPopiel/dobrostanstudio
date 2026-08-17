@@ -237,6 +237,7 @@
             .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
         }
     </style>
+    <link rel="stylesheet" href="mobile-nav.css">
 </head>
 <body>
 
@@ -247,6 +248,9 @@
                 <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
             </a>
 
+            <button class="m-burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mNav">
+                <span></span><span></span><span></span>
+            </button>
             <nav class="vertical-menu" aria-label="Główne menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -263,6 +267,25 @@
                 WARSZAWA / SIEDLCE
             </div>
         </aside>
+
+    <nav class="m-nav" id="mNav" aria-label="Menu główne">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projekty.html">Projekty</a></li>
+            <li><a href="oferta.html">Oferta</a></li>
+            <li><a href="omnie.html">O mnie</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <div class="m-nav-sub">
+            <a href="filozofia.html">Filozofia</a>
+            <a href="proces.html">Proces</a>
+        </div>
+        <div class="m-nav-foot">
+            ESTD. 2024 — Warszawa / Siedlce<br>
+            <a href="tel:+48504841587">+48 504 841 587</a>
+        </div>
+    </nav>
+
 
         <section class="right-column">
             <header class="contact-header">
@@ -309,5 +332,6 @@
 
     </main>
 
+    <script src="mobile-nav.js"></script>
 </body>
 </html>

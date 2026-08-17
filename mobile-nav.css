@@ -1,0 +1,116 @@
+/* ============================================================
+   dobrostanSTUDIO* — wspólna nawigacja mobilna (≤ 850px)
+   Podpinana przez <link> PO stylach danej strony, żeby wygrywała
+   z jej własnymi regułami dla .left-column.
+   Desktop nie jest tu w ogóle dotykany.
+   ============================================================ */
+
+/* hamburger i nakładka menu nie istnieją poza mobile */
+.m-nav, .m-burger { display: none; }
+
+@media (max-width: 850px) {
+
+    /* --- GÓRNY PASEK: logo + hamburger w jednym rzędzie --- */
+    .left-column {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0.85rem 1.25rem !important;
+        text-align: left !important;
+        background-color: rgba(244, 244, 242, 0.95) !important;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        /* musi być NAD nakładką (1500), inaczej przy otwartym menu
+           nie da się kliknąć krzyżyka */
+        z-index: 1600 !important;
+    }
+    .left-column .small-logo { font-size: 1.15rem !important; }
+
+    /* stare menu w rzędzie znika – jego rolę przejmuje nakładka */
+    .left-column nav.vertical-menu { display: none !important; }
+    .left-column .tech-footer { display: none !important; }
+    /* podmenu O mnie / Filozofia / Proces przenosi się do nakładki */
+    .left-column .side-sub-nav,
+    .left-column .nav-divider { display: none !important; }
+
+    /* --- HAMBURGER --- */
+    .m-burger {
+        display: flex; flex-direction: column; justify-content: center; align-items: flex-end;
+        gap: 5px; width: 44px; height: 44px; /* pełne pole dotyku */
+        background: none; border: 0; padding: 0; cursor: pointer;
+        flex-shrink: 0;
+    }
+    .m-burger span {
+        display: block; height: 2px; width: 26px; background: var(--color-accent);
+        transition: transform 0.35s ease, opacity 0.25s ease, width 0.35s ease;
+    }
+    .m-burger span:nth-child(2) { width: 18px; }
+    .m-burger[aria-expanded="true"] span { width: 26px; }
+    .m-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .m-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .m-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* --- MENU PEŁNOEKRANOWE --- */
+    .m-nav {
+        display: flex; flex-direction: column; justify-content: center;
+        position: fixed; inset: 0; z-index: 1500;
+        padding: 0 1.75rem;
+        background-color: var(--color-bg);
+        background-image:
+            linear-gradient(var(--grid-color) 1px, transparent 1px),
+            linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+        background-size: 66px 66px;
+        opacity: 0; visibility: hidden;
+        transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    .m-nav.is-open { opacity: 1; visibility: visible; }
+
+    .m-nav ul { list-style: none; margin: 0; padding: 0; }
+    .m-nav li { overflow: hidden; }
+    .m-nav a {
+        display: block; padding: 0.45rem 0;
+        font-family: 'Inter', sans-serif; font-weight: 900;
+        font-size: 2.4rem; line-height: 1.08; letter-spacing: -0.04em;
+        text-transform: uppercase; text-decoration: none; color: var(--color-accent);
+        transform: translateY(110%);
+        transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .m-nav a.is-current { color: var(--color-gold); }
+    /* pozycje wjeżdżają jedna po drugiej */
+    .m-nav.is-open a { transform: translateY(0); }
+    .m-nav.is-open li:nth-child(1) a { transition-delay: 0.06s; }
+    .m-nav.is-open li:nth-child(2) a { transition-delay: 0.12s; }
+    .m-nav.is-open li:nth-child(3) a { transition-delay: 0.18s; }
+    .m-nav.is-open li:nth-child(4) a { transition-delay: 0.24s; }
+    .m-nav.is-open li:nth-child(5) a { transition-delay: 0.30s; }
+
+    .m-nav-sub {
+        display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem;
+        margin-top: 1.8rem; padding-top: 1.4rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
+    }
+    .m-nav-sub a {
+        font-family: 'IBM Plex Mono', monospace; font-weight: 500;
+        font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
+        color: #6b6b6b; text-decoration: none;
+    }
+    .m-nav-sub a.is-current { color: var(--color-gold); }
+
+    .m-nav-foot {
+        margin-top: 2.5rem;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15em;
+        color: #777; line-height: 2;
+    }
+    .m-nav-foot a {
+        color: var(--color-accent); text-decoration: none;
+        border-bottom: 1px solid var(--color-gold); font-size: 0.74rem;
+    }
+
+    body.nav-open { overflow: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .m-nav a { transition: none; }
+}

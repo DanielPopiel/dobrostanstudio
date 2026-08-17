@@ -36,12 +36,16 @@
       "locationCreated": { "@type": "Place", "name": "Warszawa" }
     }
     </script>
+    <link rel="stylesheet" href="mobile-nav.css">
 </head>
 <body>
 
     <aside class="left-column">
         <a href="index.html" class="small-logo"><span>dobrostan</span>STUDIO*</a>
-        <nav class="vertical-menu" aria-label="Główne menu">
+        <button class="m-burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mNav">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="vertical-menu" aria-label="Główne menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projekty.html" class="active">Projekty</a></li>
@@ -51,6 +55,25 @@
             </ul>
         </nav>
     </aside>
+
+    <nav class="m-nav" id="mNav" aria-label="Menu główne">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projekty.html">Projekty</a></li>
+            <li><a href="oferta.html">Oferta</a></li>
+            <li><a href="omnie.html">O mnie</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <div class="m-nav-sub">
+            <a href="filozofia.html">Filozofia</a>
+            <a href="proces.html">Proces</a>
+        </div>
+        <div class="m-nav-foot">
+            ESTD. 2024 — Warszawa / Siedlce<br>
+            <a href="tel:+48504841587">+48 504 841 587</a>
+        </div>
+    </nav>
+
 
     <main class="right-column">
         <a href="projekty.html" class="back-link">&larr; Wszystkie projekty</a>
@@ -77,5 +100,6 @@
         </div>
     </main>
 
+    <script src="mobile-nav.js"></script>
 </body>
 </html>
