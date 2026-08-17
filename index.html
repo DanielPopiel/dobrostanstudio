@@ -31,7 +31,7 @@
       "image": "https://dobrostanstudio.com/MAIN/1.webp",
       "url": "https://dobrostanstudio.com/",
       "telephone": "+48504841587",
-      "email": "biuro@dobrostanstudio.pl",
+      "email": "kryniewiczkatarzyna@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Warszawa",
@@ -122,6 +122,19 @@
             font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
             font-size: 0.45em; color: var(--color-gold); display: block; margin-bottom: 0.1em;
         }
+        .giant-title .title-tagline {
+            display: block;
+            margin-top: 1.1rem;
+            text-align: right; /* równanie do prawej krawędzi gwiazdki w STUDIO* */
+            color: var(--color-gold);
+            font-family: 'Inter', sans-serif; font-weight: 700;
+            font-size: clamp(0.7rem, 1vw, 0.95rem);
+            line-height: 1; letter-spacing: 0.32em;
+            text-transform: uppercase;
+            padding-right: 0.32em; /* kompensuje światło po ostatniej literze */
+            /* napis leży na zdjęciu – cień trzyma czytelność na jasnych i ciemnych kadrach */
+            text-shadow: 0 2px 14px rgba(0,0,0,0.55), 0 0 2px rgba(0,0,0,0.35);
+        }
 
         /* --- TICKER --- */
         .ticker-wrap {
@@ -186,6 +199,19 @@
                 text-align: center;
             }
 
+            .giant-title .title-tagline {
+                width: 100%;
+                margin-top: 1.3rem;
+                text-align: center;
+                padding-right: 0;
+                padding-left: 0.25em; /* wyrównanie optyczne środka przy letter-spacingu */
+                font-size: 0.72rem;
+                letter-spacing: 0.25em;
+                /* na mobile napis leży na beżowym tle, nie na zdjęciu – cień zbędny */
+                text-shadow: none;
+                color: var(--color-accent);
+            }
+
             .ticker-wrap { position: relative; bottom: auto; width: 100%; }
 
             .bio-block {
@@ -225,15 +251,18 @@
         <h1 class="giant-title">
             <span class="dobro-font">dobrostan</span>
             STUDIO*
+            <span class="title-tagline">Architektura wnętrz</span>
         </h1>
 
         <div class="ticker-wrap">
             <div class="ticker-move">
                 <div class="ticker-item">Neuroarchitektura</div>
+                <div class="ticker-item">Architektura Wnętrz</div>
                 <div class="ticker-item">Dobrostan</div>
                 <div class="ticker-item">Świadoma Przestrzeń</div>
                 <div class="ticker-item">Percepcja</div>
                 <div class="ticker-item">Neuroarchitektura</div>
+                <div class="ticker-item">Architektura Wnętrz</div>
                 <div class="ticker-item">Dobrostan</div>
                 <div class="ticker-item">Świadoma Przestrzeń</div>
                 <div class="ticker-item">Percepcja</div>
