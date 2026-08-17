@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>WARIANT B | dobrostanSTUDIO*</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preload" as="image" href="MAIN/1.webp">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            width: 100%; overflow-x: hidden;
+            background-color: #F4F4F2; -webkit-font-smoothing: antialiased;
+        }
+
+        :root {
+            --color-bg: #F4F4F2;
+            --color-text-dark: #1A1A1A;
+            --color-accent: #50344f;
+            --color-gold: #b9a646;
+            --grid-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body { font-family: 'IBM Plex Mono', monospace; color: var(--color-text-dark); }
+
+        .m-index, .m-sticky-ticker { display: none; }
+
+        .layout-wrapper { display: flex; min-height: 100vh; width: 100%; position: relative; overflow-x: hidden; }
+
+        /* --- DESKTOP (bez zmian) --- */
+        .left-column {
+            width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
+            background-color: var(--color-bg);
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 132px 132px;
+            display: flex; flex-direction: column; padding: 4rem 3rem;
+            z-index: 100; border-right: 1px solid rgba(0,0,0,0.05);
+        }
+        .logo-link { text-decoration: none; color: inherit; }
+        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; color: var(--color-accent); }
+        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
+
+        nav.vertical-menu { margin-top: 5rem; }
+        nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+        nav.vertical-menu a {
+            text-decoration: none; color: var(--color-text-dark);
+            font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em;
+            transition: 0.3s ease; display: inline-block;
+        }
+        nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); transform: translateX(10px); }
+
+        .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; line-height: 1.5; color: #666; }
+
+        .right-column { width: 65%; height: 100vh; margin-left: 35%; position: relative; background-color: #000; z-index: 5; }
+        .hero-image { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; display: block; }
+
+        .giant-title {
+            position: absolute; top: 35%; left: 20%; transform: translateY(-50%);
+            font-family: 'Inter', sans-serif; font-weight: 900; font-size: 11vw;
+            line-height: 0.75; letter-spacing: -0.05em; z-index: 110;
+            pointer-events: none; color: var(--color-accent);
+        }
+        .giant-title .dobro-font {
+            font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
+            font-size: 0.45em; color: var(--color-gold); display: block; margin-bottom: 0.1em;
+        }
+        .giant-title .title-tagline {
+            display: block; margin-top: 1.1rem; text-align: right; color: var(--color-gold);
+            font-family: 'Inter', sans-serif; font-weight: 700;
+            font-size: clamp(0.7rem, 1vw, 0.95rem);
+            line-height: 1; letter-spacing: 0.32em; text-transform: uppercase;
+            padding-right: 0.32em;
+            text-shadow: 0 2px 14px rgba(0,0,0,0.55), 0 0 2px rgba(0,0,0,0.35);
+        }
+
+        .ticker-wrap {
+            position: absolute; bottom: 20%; left: 0; width: 100%; height: 60px;
+            background-color: #1A1A1A; overflow: hidden; z-index: 120;
+            border-top: 1px solid #333; border-bottom: 1px solid #333;
+        }
+        .ticker-move { display: flex; white-space: nowrap; animation: ticker 25s linear infinite; }
+        .ticker-item {
+            font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem;
+            text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-bg);
+            padding: 0 2rem; display: flex; align-items: center; height: 60px;
+        }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+
+        .bio-block {
+            position: absolute; bottom: 5%; left: 28%; width: 400px;
+            background-color: var(--color-accent); color: #FFF;
+            padding: 2.5rem 2rem; z-index: 130; box-shadow: 15px 15px 0px rgba(0,0,0,0.1);
+        }
+        .bio-block p { font-size: 0.75rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .bio-block a { color: #FFF; text-decoration: none; font-weight: 500; font-size: 0.75rem; border-bottom: 1px solid #FFF; padding-bottom: 2px; }
+
+        /* ============================================================
+           WARIANT B — MOBILE: SIATKA / INDEKS PROJEKTÓW
+           ============================================================ */
+        @media (max-width: 850px) {
+            html, body { position: relative; }
+            .layout-wrapper { flex-direction: column; width: 100%; padding-bottom: 54px; /* miejsce na przyklejony ticker */ }
+
+            .left-column {
+                width: 100%; height: auto; position: sticky; top: 0;
+                padding: 1rem 1.25rem; align-items: stretch; text-align: left;
+                background-size: 66px 66px; z-index: 200; border-right: none;
+                border-bottom: 1px solid rgba(0,0,0,0.08);
+                flex-direction: row; justify-content: space-between; align-items: center;
+                background-color: rgba(244,244,242,0.95); backdrop-filter: blur(6px);
+            }
+            .left-column .small-logo { font-size: 1.1rem; }
+            nav.vertical-menu { margin-top: 0; }
+            /* menu w jednym rzędzie, przewijalne w bok zamiast łamania na 2 linie */
+            nav.vertical-menu ul {
+                flex-direction: row; gap: 1.1rem; overflow-x: auto; scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            nav.vertical-menu ul::-webkit-scrollbar { display: none; }
+            nav.vertical-menu a { font-size: 0.68rem; white-space: nowrap; }
+            nav.vertical-menu a:hover, nav.vertical-menu a.active { transform: none; }
+            .tech-footer { display: none; }
+
+            /* --- BLOK TYTUŁOWY --- */
+            .giant-title {
+                position: relative; top: 0; left: 0; transform: none;
+                width: 100%; padding: 3.5rem 1.25rem 2.5rem 1.25rem;
+                font-size: 17vw; text-align: left;
+                background-color: var(--color-bg);
+                background-image:
+                    linear-gradient(var(--grid-color) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+                background-size: 66px 66px;
+                order: 1;
+            }
+            .giant-title .dobro-font { text-align: left; margin-left: 0; }
+            .giant-title .title-tagline {
+                text-align: left; padding-right: 0; margin-top: 1.2rem;
+                font-size: 0.72rem; letter-spacing: 0.25em;
+                color: var(--color-accent); text-shadow: none;
+            }
+
+            /* --- ZDJĘCIE GŁÓWNE JAKO KADR --- */
+            .right-column {
+                width: 100%; height: auto; margin-left: 0; order: 2;
+                padding: 0 1.25rem; background: transparent;
+            }
+            .hero-image { height: 62vw; opacity: 1; box-shadow: 8px 8px 0 rgba(80, 52, 79, 0.15); }
+
+            /* --- INDEKS PROJEKTÓW --- */
+            .m-index { display: block; order: 3; padding: 3rem 1.25rem 1rem 1.25rem; }
+            .m-index-head {
+                display: flex; align-items: baseline; justify-content: space-between;
+                border-bottom: 2px solid var(--color-text-dark); padding-bottom: 0.6rem; margin-bottom: 0.5rem;
+            }
+            .m-index-head h2 {
+                font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem;
+                text-transform: uppercase; letter-spacing: -0.03em; color: var(--color-accent);
+            }
+            .m-index-head span { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #888; }
+
+            .m-item {
+                display: flex; align-items: center; gap: 1rem;
+                padding: 1.1rem 0; border-bottom: 1px solid rgba(0,0,0,0.12);
+                text-decoration: none; color: inherit;
+            }
+            /* ukrywamy dopiero, gdy skrypt potwierdzi, że umie je pokazać –
+               bez JS lista po prostu jest widoczna */
+            .js-anim .m-item {
+                opacity: 0; transform: translateY(24px);
+                transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            }
+            .js-anim .m-item.is-in { opacity: 1; transform: translateY(0); }
+            .m-item:active { background: rgba(80, 52, 79, 0.06); }
+
+            .m-num {
+                font-family: 'Inter', sans-serif; font-weight: 900; font-size: 0.7rem;
+                color: var(--color-gold); letter-spacing: 0.05em; width: 1.8rem; flex-shrink: 0;
+            }
+            .m-thumb {
+                width: 76px; height: 76px; object-fit: cover; flex-shrink: 0; display: block;
+                background: #ddd;
+            }
+            .m-meta { flex: 1; min-width: 0; }
+            .m-city {
+                font-family: 'Playfair Display', serif; font-style: italic;
+                font-size: 0.8rem; color: var(--color-gold); display: block; line-height: 1.2;
+            }
+            .m-name {
+                font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1rem;
+                text-transform: uppercase; letter-spacing: -0.02em; color: var(--color-accent);
+                display: block; line-height: 1.15; margin: 0.1rem 0 0.2rem 0;
+                white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            }
+            .m-type { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: #777; display: block; }
+            .m-arrow { color: var(--color-gold); font-size: 1.1rem; flex-shrink: 0; }
+
+            .m-index-more {
+                display: block; margin: 2rem 0 0 0; padding: 1.1rem;
+                text-align: center; background: var(--color-text-dark); color: var(--color-bg);
+                text-decoration: none; font-family: 'Inter', sans-serif; font-weight: 700;
+                font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+            }
+
+            /* --- BIO --- */
+            .bio-block {
+                position: relative; order: 4; width: auto; left: auto; bottom: auto;
+                margin: 3rem 1.25rem 3rem 1.25rem; padding: 2.2rem 1.6rem;
+                box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+            }
+            .bio-block p { font-size: 0.88rem; line-height: 1.75; }
+
+            /* pierwotny ticker znika – zastępuje go przyklejony pasek */
+            .layout-wrapper > .ticker-wrap { display: none; }
+
+            .m-sticky-ticker {
+                display: block; position: fixed; bottom: 0; left: 0; width: 100%; height: 54px;
+                background: #1A1A1A; overflow: hidden; z-index: 500;
+                border-top: 1px solid #333;
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+            .m-sticky-ticker .ticker-move { animation: ticker 22s linear infinite; }
+            .m-sticky-ticker .ticker-item { height: 54px; font-size: 0.85rem; padding: 0 1.4rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-move { animation: none; }
+            .m-item { opacity: 1; transform: none; transition: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="layout-wrapper">
+        <aside class="left-column">
+            <a href="index.html" class="logo-link">
+                <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
+            </a>
+            <nav class="vertical-menu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="projekty.html">Projekty</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="omnie.html">O mnie</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="tech-footer">
+                ESTD. 2024<br>
+                WARSZAWA / SIEDLCE, PL
+            </div>
+        </aside>
+
+        <article class="right-column">
+            <img src="MAIN/1.webp" alt="Projekt wnętrza dobrostanSTUDIO" class="hero-image">
+        </article>
+
+        <h1 class="giant-title">
+            <span class="dobro-font">dobrostan</span>
+            STUDIO*
+            <span class="title-tagline">Architektura wnętrz</span>
+        </h1>
+
+        <section class="m-index" aria-label="Indeks projektów">
+            <div class="m-index-head">
+                <h2>Projekty</h2>
+                <span>08 realizacji</span>
+            </div>
+
+            <a class="m-item" href="projekt-bodega.html">
+                <span class="m-num">01</span>
+                <img class="m-thumb" src="Projekty/BODEGA/main.webp" alt="Bodega Sopot" loading="lazy" decoding="async">
+                <span class="m-meta">
+                    <span class="m-city">sopot</span>
+                    <span class="m-name">Bodega</span>
+                    <span class="m-type">Piwniczka na wino / Dom</span>
+                </span>
+                <span class="m-arrow">&rarr;</span>
+            </a>
+
+            <a class="m-item" href="projekt-boho.html">
+                <span class="m-num">02</span>
+                <img class="m-thumb" src="Projekty/BOHO/main.webp" alt="Boho Chic Siedlce" loading="lazy" decoding="async">
+                <span class="m-meta">
+                    <span class="m-city">siedlce</span>
+                    <span class="m-name">Boho Chic</span>
+                    <span class="m-type">Mieszkanie / Sypialnia</span>
+                </span>
+                <span class="m-arrow">&rarr;</span>
+            </a>
+
+            <a class="m-item" href="projekt-essence.html">
+                <span class="m-num">03</span>
+                <img class="m-thumb" src="Projekty/ESSENCE/main.webp" alt="Essence Poznań" loading="lazy" decoding="async">
+                <span class="m-meta">
+                    <span class="m-city">poznań</span>
+                    <span class="m-name">Essence</span>
+                    <span class="m-type">Aneks kuchenny / Agroturystyka</span>
+                </span>
+                <span class="m-arrow">&rarr;</span>
+            </a>
+
+            <a class="m-item" href="projekt-sentient.html">
+                <span class="m-num">04</span>
+                <img class="m-thumb" src="Projekty/SENTIENT/main.webp" alt="Sentient Siedlce" loading="lazy" decoding="async">
+                <span class="m-meta">
+                    <span class="m-city">siedlce</span>
+                    <span class="m-name">Sentient</span>
+                    <span class="m-type">Apartament / Sypialnia</span>
+                </span>
+                <span class="m-arrow">&rarr;</span>
+            </a>
+
+            <a class="m-item" href="projekt-forma.html">
+                <span class="m-num">05</span>
+                <img class="m-thumb" src="Projekty/FORMA/main.webp" alt="Funkcja i Forma Warszawa" loading="lazy" decoding="async">
+                <span class="m-meta">
+                    <span class="m-city">warszawa</span>
+                    <span class="m-name">Funkcja i Forma</span>
+                    <span class="m-type">Wnętrza prywatne / Mieszkanie</span>
+                </span>
+                <span class="m-arrow">&rarr;</span>
+            </a>
+
+            <a class="m-item" href="projekt-nowo.html">
+                <span class="m-num">06</span>
+                <img class="m-thumb" src="Projekty/NOWO/main.webp" alt="Nowo Warszawa" loading="lazy" decoding="async">
+                <span class="m-meta">
+                    <span class="m-city">warszawa</span>
+                    <span class="m-name">Nowo</span>
+                    <span class="m-type">Mieszkanie / Kamienica</span>
+                </span>
+                <span class="m-arrow">&rarr;</span>
+            </a>
+
+            <a class="m-item" href="projekt-dobrostan.html">
+                <span class="m-num">07</span>
+                <img class="m-thumb" src="Projekty/DOBROSTAN/main.webp" alt="Dobrostan Warszawa" loading="lazy" decoding="async">
+                <span class="m-meta">
+                    <span class="m-city">warszawa</span>
+                    <span class="m-name">Dobrostan</span>
+                    <span class="m-type">Przestrzeń pracy / Gabinet</span>
+                </span>
+                <span class="m-arrow">&rarr;</span>
+            </a>
+
+            <a class="m-item" href="projekt-skosy.html">
+                <span class="m-num">08</span>
+                <img class="m-thumb" src="Projekty/SKOSY/main.webp" alt="Skosy Warszawa" loading="lazy" decoding="async">
+                <span class="m-meta">
+                    <span class="m-city">warszawa</span>
+                    <span class="m-name">Skosy</span>
+                    <span class="m-type">Mieszkanie / Poddasze</span>
+                </span>
+                <span class="m-arrow">&rarr;</span>
+            </a>
+
+            <a class="m-index-more" href="kontakt.html">Umów konsultację</a>
+        </section>
+
+        <div class="ticker-wrap">
+            <div class="ticker-move">
+                <div class="ticker-item">Neuroarchitektura</div>
+                <div class="ticker-item">Architektura Wnętrz</div>
+                <div class="ticker-item">Dobrostan</div>
+                <div class="ticker-item">Świadoma Przestrzeń</div>
+                <div class="ticker-item">Percepcja</div>
+                <div class="ticker-item">Neuroarchitektura</div>
+                <div class="ticker-item">Architektura Wnętrz</div>
+                <div class="ticker-item">Dobrostan</div>
+                <div class="ticker-item">Świadoma Przestrzeń</div>
+                <div class="ticker-item">Percepcja</div>
+            </div>
+        </div>
+
+        <section class="bio-block">
+            <p>W swoich projektach podkreślam, że otoczenie ma znaczenie. Doradzam jak tworzyć design, który poprawia komfort życia, efektywność i nasz szeroko pojęty dobrostan. Moim celem jest projektowanie przestrzeni, która jest wspierająca i uzdrawiająca.</p>
+            <a href="omnie.html">ZOBACZ PROFIL &rarr;</a>
+        </section>
+    </main>
+
+    <div class="m-sticky-ticker" aria-hidden="true">
+        <div class="ticker-move">
+            <div class="ticker-item">Neuroarchitektura</div>
+            <div class="ticker-item">Architektura Wnętrz</div>
+            <div class="ticker-item">Dobrostan</div>
+            <div class="ticker-item">Świadoma Przestrzeń</div>
+            <div class="ticker-item">Percepcja</div>
+            <div class="ticker-item">Neuroarchitektura</div>
+            <div class="ticker-item">Architektura Wnętrz</div>
+            <div class="ticker-item">Dobrostan</div>
+            <div class="ticker-item">Świadoma Przestrzeń</div>
+            <div class="ticker-item">Percepcja</div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var items = document.querySelectorAll('.m-item');
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (!('IntersectionObserver' in window) || !items.length || reduce) return;
+
+            document.body.classList.add('js-anim');
+
+            var showAll = function () {
+                items.forEach(function (i) { i.classList.add('is-in'); });
+            };
+
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+                });
+            }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+            items.forEach(function (i) { io.observe(i); });
+
+            // bezpiecznik: gdyby obserwator nie zadziałał, lista i tak się pokaże
+            setTimeout(showAll, 2500);
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>WARIANT C | dobrostanSTUDIO*</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preload" as="image" href="MAIN/1.webp">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            width: 100%; overflow-x: hidden;
+            background-color: #F4F4F2; -webkit-font-smoothing: antialiased;
+        }
+
+        :root {
+            --color-bg: #F4F4F2;
+            --color-text-dark: #1A1A1A;
+            --color-accent: #50344f;
+            --color-gold: #b9a646;
+            --grid-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body { font-family: 'IBM Plex Mono', monospace; color: var(--color-text-dark); }
+
+        .m-cue, .m-quick { display: none; }
+
+        .layout-wrapper { display: flex; min-height: 100vh; width: 100%; position: relative; overflow-x: hidden; }
+
+        /* --- DESKTOP (bez zmian) --- */
+        .left-column {
+            width: 35%; height: 100vh; position: fixed; top: 0; left: 0;
+            background-color: var(--color-bg);
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 132px 132px;
+            display: flex; flex-direction: column; padding: 4rem 3rem;
+            z-index: 100; border-right: 1px solid rgba(0,0,0,0.05);
+        }
+        .logo-link { text-decoration: none; color: inherit; }
+        .small-logo { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; color: var(--color-accent); }
+        .small-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--color-gold); margin-right: 0.1em; }
+
+        nav.vertical-menu { margin-top: 5rem; }
+        nav.vertical-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+        nav.vertical-menu a {
+            text-decoration: none; color: var(--color-text-dark);
+            font-weight: 500; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em;
+            transition: 0.3s ease; display: inline-block;
+        }
+        nav.vertical-menu a:hover, nav.vertical-menu a.active { color: var(--color-accent); transform: translateX(10px); }
+
+        .tech-footer { margin-top: auto; font-size: 0.65rem; text-transform: uppercase; line-height: 1.5; color: #666; }
+
+        .right-column { width: 65%; height: 100vh; margin-left: 35%; position: relative; background-color: #000; z-index: 5; }
+        .hero-image { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; display: block; }
+
+        .giant-title {
+            position: absolute; top: 35%; left: 20%; transform: translateY(-50%);
+            font-family: 'Inter', sans-serif; font-weight: 900; font-size: 11vw;
+            line-height: 0.75; letter-spacing: -0.05em; z-index: 110;
+            pointer-events: none; color: var(--color-accent);
+        }
+        .giant-title .dobro-font {
+            font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
+            font-size: 0.45em; color: var(--color-gold); display: block; margin-bottom: 0.1em;
+        }
+        .giant-title .title-tagline {
+            display: block; margin-top: 1.1rem; text-align: right; color: var(--color-gold);
+            font-family: 'Inter', sans-serif; font-weight: 700;
+            font-size: clamp(0.7rem, 1vw, 0.95rem);
+            line-height: 1; letter-spacing: 0.32em; text-transform: uppercase;
+            padding-right: 0.32em;
+            text-shadow: 0 2px 14px rgba(0,0,0,0.55), 0 0 2px rgba(0,0,0,0.35);
+        }
+
+        .ticker-wrap {
+            position: absolute; bottom: 20%; left: 0; width: 100%; height: 60px;
+            background-color: #1A1A1A; overflow: hidden; z-index: 120;
+            border-top: 1px solid #333; border-bottom: 1px solid #333;
+        }
+        .ticker-move { display: flex; white-space: nowrap; animation: ticker 25s linear infinite; }
+        .ticker-item {
+            font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem;
+            text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-bg);
+            padding: 0 2rem; display: flex; align-items: center; height: 60px;
+        }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+
+        .bio-block {
+            position: absolute; bottom: 5%; left: 28%; width: 400px;
+            background-color: var(--color-accent); color: #FFF;
+            padding: 2.5rem 2rem; z-index: 130; box-shadow: 15px 15px 0px rgba(0,0,0,0.1);
+        }
+        .bio-block p { font-size: 0.75rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .bio-block a { color: #FFF; text-decoration: none; font-weight: 500; font-size: 0.75rem; border-bottom: 1px solid #FFF; padding-bottom: 2px; }
+
+        /* ============================================================
+           WARIANT C — MOBILE: TEN SAM UKŁAD, ALE W RUCHU
+           ============================================================ */
+        @media (max-width: 850px) {
+            html, body { position: relative; }
+            .layout-wrapper { flex-direction: column; width: 100%; }
+
+            .left-column {
+                width: 100%; height: auto; position: sticky; top: 0;
+                padding: 1.5rem; align-items: center; text-align: center;
+                background-size: 66px 66px; z-index: 200; border-right: none;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                background-color: rgba(244,244,242,0.95); backdrop-filter: blur(6px);
+                transition: padding 0.35s ease;
+            }
+            /* pasek kurczy się po przewinięciu, oddając miejsce treści */
+            .left-column.is-compact { padding: 0.7rem 1.5rem; }
+            .left-column.is-compact .small-logo { font-size: 1.15rem; }
+            .left-column .small-logo { transition: font-size 0.35s ease; }
+
+            nav.vertical-menu { margin-top: 1rem; width: 100%; transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease; max-height: 120px; overflow: hidden; }
+            .left-column.is-compact nav.vertical-menu { max-height: 0; opacity: 0; margin-top: 0; }
+            nav.vertical-menu ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+            nav.vertical-menu a { padding: 0.4rem 0.3rem; }
+            nav.vertical-menu a:hover, nav.vertical-menu a.active { transform: none; }
+            .tech-footer { display: none; }
+
+            /* --- TYTUŁ: LITERY WJEŻDŻAJĄ PO STARCIE --- */
+            .giant-title {
+                position: relative; top: 0; left: 0; transform: none;
+                padding: 4rem 1rem 2.5rem 1rem; font-size: 15vw;
+                width: 100%; text-align: center; background-color: var(--color-bg);
+                display: flex; flex-direction: column; align-items: center;
+                order: 1;
+            }
+            .giant-title .dobro-font { margin-left: 0; text-align: center; }
+            .giant-title .title-tagline {
+                width: 100%; margin-top: 1.3rem; text-align: center;
+                padding-right: 0; padding-left: 0.25em;
+                font-size: 0.72rem; letter-spacing: 0.25em;
+                text-shadow: none; color: var(--color-accent);
+            }
+
+            /* każdy wiersz tytułu ma własną maskę i wjeżdża z opóźnieniem.
+               Chowamy go dopiero wtedy, gdy skrypt potwierdzi, że umie go pokazać –
+               bez JS tytuł jest normalnie widoczny. */
+            .giant-title .line-mask { display: block; overflow: hidden; }
+            .js-anim .giant-title .line-mask > span { display: block; transform: translateY(105%); }
+            .js-anim.anim-ready .giant-title .line-mask > span {
+                transform: translateY(0);
+                transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .js-anim.anim-ready .giant-title .line-mask:nth-of-type(1) > span { transition-delay: 0.05s; }
+            .js-anim.anim-ready .giant-title .line-mask:nth-of-type(2) > span { transition-delay: 0.18s; }
+            .js-anim .giant-title .title-tagline { opacity: 0; transition: opacity 0.6s ease 0.7s; }
+            .js-anim.anim-ready .giant-title .title-tagline { opacity: 1; }
+
+            /* --- ZDJĘCIE Z PARALAKSĄ --- */
+            .right-column {
+                width: 100%; height: 62vh; margin-left: 0; order: 2;
+                overflow: hidden; position: relative;
+            }
+            .hero-image {
+                position: absolute; top: -12%; left: 0;
+                width: 100%; height: 124%; /* zapas na przesuw */
+                will-change: transform;
+            }
+
+            .m-cue {
+                display: block; position: absolute; z-index: 3; left: 50%; bottom: 1.2rem;
+                transform: translateX(-50%); color: rgba(255,255,255,0.85); font-size: 1.3rem;
+                animation: cue 2s ease-in-out infinite; text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            }
+            @keyframes cue { 0%, 100% { transform: translate(-50%, 0); opacity: 0.45; } 50% { transform: translate(-50%, 8px); opacity: 1; } }
+
+            .ticker-wrap { position: relative; bottom: auto; width: 100%; order: 3; height: 54px; }
+            .ticker-wrap .ticker-item { height: 54px; font-size: 0.85rem; padding: 0 1.4rem; }
+
+            .bio-block {
+                position: relative; width: auto; margin: 2.5rem 1.25rem 2rem 1.25rem;
+                left: auto; bottom: auto; padding: 2.2rem 1.6rem;
+                box-shadow: 10px 10px 0 rgba(0,0,0,0.1); order: 4;
+            }
+            .bio-block p { font-size: 0.88rem; line-height: 1.75; }
+
+            .m-quick { display: block; order: 5; padding: 1rem 1.25rem 3.5rem 1.25rem; }
+            .m-quick a {
+                display: flex; align-items: center; justify-content: space-between;
+                padding: 1.15rem 0; border-bottom: 1px solid rgba(0,0,0,0.12);
+                text-decoration: none; color: var(--color-text-dark);
+                font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.9rem;
+                text-transform: uppercase; letter-spacing: 0.08em;
+            }
+            .m-quick a span { color: var(--color-gold); font-size: 1.1rem; }
+
+            /* --- POJAWIANIE SIĘ SEKCJI PRZY PRZEWIJANIU --- */
+            .js-anim .reveal { opacity: 0; transform: translateY(30px); }
+            .js-anim.anim-ready .reveal { transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); }
+            .js-anim .reveal.is-in { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-move { animation: none; }
+            .m-cue { animation: none; }
+            .reveal, .giant-title .line-mask > span, .giant-title .title-tagline { opacity: 1 !important; transform: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="layout-wrapper">
+        <aside class="left-column" id="mBar">
+            <a href="index.html" class="logo-link">
+                <div class="small-logo"><span>dobrostan</span>STUDIO*</div>
+            </a>
+            <nav class="vertical-menu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="projekty.html">Projekty</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="omnie.html">O mnie</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="tech-footer">
+                ESTD. 2024<br>
+                WARSZAWA / SIEDLCE, PL
+            </div>
+        </aside>
+
+        <article class="right-column">
+            <img src="MAIN/1.webp" alt="Projekt wnętrza dobrostanSTUDIO" class="hero-image" id="mHeroImg">
+            <div class="m-cue" aria-hidden="true">&darr;</div>
+        </article>
+
+        <h1 class="giant-title">
+            <span class="line-mask"><span class="dobro-font">dobrostan</span></span>
+            <span class="line-mask"><span>STUDIO*</span></span>
+            <span class="title-tagline">Architektura wnętrz</span>
+        </h1>
+
+        <div class="ticker-wrap reveal">
+            <div class="ticker-move">
+                <div class="ticker-item">Neuroarchitektura</div>
+                <div class="ticker-item">Architektura Wnętrz</div>
+                <div class="ticker-item">Dobrostan</div>
+                <div class="ticker-item">Świadoma Przestrzeń</div>
+                <div class="ticker-item">Percepcja</div>
+                <div class="ticker-item">Neuroarchitektura</div>
+                <div class="ticker-item">Architektura Wnętrz</div>
+                <div class="ticker-item">Dobrostan</div>
+                <div class="ticker-item">Świadoma Przestrzeń</div>
+                <div class="ticker-item">Percepcja</div>
+            </div>
+        </div>
+
+        <section class="bio-block reveal">
+            <p>W swoich projektach podkreślam, że otoczenie ma znaczenie. Doradzam jak tworzyć design, który poprawia komfort życia, efektywność i nasz szeroko pojęty dobrostan. Moim celem jest projektowanie przestrzeni, która jest wspierająca i uzdrawiająca.</p>
+            <a href="omnie.html">ZOBACZ PROFIL &rarr;</a>
+        </section>
+
+        <nav class="m-quick reveal" aria-label="Skróty">
+            <a href="projekty.html">Projekty <span>&rarr;</span></a>
+            <a href="oferta.html">Oferta <span>&rarr;</span></a>
+            <a href="kontakt.html">Kontakt <span>&rarr;</span></a>
+        </nav>
+    </main>
+
+    <script>
+        (function () {
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var isMobile = function () { return window.matchMedia('(max-width: 850px)').matches; };
+
+            var reveals = document.querySelectorAll('.reveal');
+            var canAnimate = ('IntersectionObserver' in window) && !reduce;
+
+            if (canAnimate) {
+                // dopiero teraz pozwalamy CSS-owi coś ukryć
+                document.body.classList.add('js-anim');
+
+                // animacje startują po pierwszej klatce, żeby nie było przeskoku;
+                // timeout jest zapasem na wypadek wstrzymanych klatek (karta w tle)
+                var start = function () { document.body.classList.add('anim-ready'); };
+                requestAnimationFrame(function () { requestAnimationFrame(start); });
+                setTimeout(start, 600);
+
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+                    });
+                }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+                reveals.forEach(function (r) { io.observe(r); });
+
+                // bezpiecznik: gdyby obserwator nie zadziałał, treść i tak się pokaże
+                setTimeout(function () {
+                    reveals.forEach(function (r) { r.classList.add('is-in'); });
+                }, 2500);
+            }
+
+            // paralaksa zdjęcia + kurczenie paska górnego
+            var img = document.getElementById('mHeroImg');
+            var col = img.parentElement;
+            var bar = document.getElementById('mBar');
+            var ticking = false;
+
+            function frame() {
+                ticking = false;
+                if (!isMobile() || reduce) { img.style.transform = ''; return; }
+
+                var r = col.getBoundingClientRect();
+                if (r.bottom > 0 && r.top < window.innerHeight) {
+                    // -1..1 w zależności od pozycji kadru na ekranie
+                    var progress = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
+                    img.style.transform = 'translate3d(0,' + (progress * 6).toFixed(2) + '%,0)';
+                }
+                bar.classList.toggle('is-compact', window.scrollY > 60);
+            }
+
+            window.addEventListener('scroll', function () {
+                if (!ticking) { ticking = true; requestAnimationFrame(frame); }
+            }, { passive: true });
+            window.addEventListener('resize', frame, { passive: true });
+            frame();
+        })();
+    </script>
+
+</body>
+</html>
