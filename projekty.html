@@ -148,15 +148,28 @@
         }
     </style>
     <link rel="stylesheet" href="mobile-nav.css">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18399166892"></script>
+<!-- Google tag (gtag.js) + Consent Mode v2: domyślnie brak zgody, baner w cookie-consent.js -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+  try {
+    var dsc = JSON.parse(localStorage.getItem('dobrostan_consent'));
+    if (dsc && dsc.v === 1 && dsc.ads === 'granted' && Date.now() - dsc.t < 31536000000) {
+      gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
+    }
+  } catch (e) {}
   gtag('js', new Date());
-
   gtag('config', 'AW-18399166892');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18399166892"></script>
+<script src="cookie-consent.js" defer></script>
 </head>
 <body>
 
